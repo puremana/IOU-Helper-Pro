@@ -1123,27 +1123,27 @@ namespace IOU_Helper
 
         private void startIOURPG()
         {
-            if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
+            if (tabControl.SelectedTab.Text == "Client")
             {
-                string username;
-                string tabUser = tabControl.SelectedTab.Text;
+                setClient(tabControl, IOUclient);
+                IOUclient.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
+            }
+            else
+            {
+                string title = "TabPage " + (tabControl.TabCount + 1).ToString();
+                TabPage myTabPage = new TabPage(title);
+                tabControl.TabPages.Add(myTabPage);
+                myTabPage.Name = title;
+                myTabPage.Text = "IOURPG";
+                tabControl.SelectedTab = myTabPage;
+                myTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#222222");
 
-                try
-                {
-                    foreach (Tab tab in tabList)
-                    {
-                        username = tab.getUsername();
-                        if (username == tabUser)
-                        {
-                            tab.getClient().Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
-                            break;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+                //Browser
+                WebKit.WebKitBrowser IOUrpgclient = new WebKit.WebKitBrowser();
+                myTabPage.Controls.Add(IOUrpgclient);
+                IOUrpgclient.Visible = true;
+                setClient(tabControl, IOUrpgclient);
+                IOUrpgclient.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
             }
         }
     }
