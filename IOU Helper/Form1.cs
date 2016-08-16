@@ -327,6 +327,13 @@ namespace IOU_Helper
                     string[] words = raw.Split('|');
                     code = words[1];
                     Tab.setCode(code);
+                    string check = words[2];
+                    //UPDATE CHECKER
+                    if (check != "1.2")
+                    {
+                        //Image red = Image.FromFile("imgs/red.jpg");
+                        //versionCheckToolStripMenuItem.Image = red;
+                    }
                 }
                 catch
                 {
@@ -1116,6 +1123,11 @@ namespace IOU_Helper
         private void iOUHelperChatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://discord.gg/wczWVmZ");
+        }
+
+        private void versionCheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
