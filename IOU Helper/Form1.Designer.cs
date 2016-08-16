@@ -75,6 +75,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
+            this.newIourpgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.versionCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -100,6 +102,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newTabToolStripMenuItem,
+            this.newIourpgToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.loadToolStripMenuItem,
@@ -112,40 +115,40 @@
             // newTabToolStripMenuItem
             // 
             this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
-            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.newTabToolStripMenuItem.Text = "New";
             this.newTabToolStripMenuItem.Click += new System.EventHandler(this.newTabToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(231, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(324, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -165,7 +168,8 @@
             this.iOUChatToolStripMenuItem,
             this.iOUForumToolStripMenuItem,
             this.iOUWikiToolStripMenuItem,
-            this.petAnalyzerFerretToolStripMenuItem});
+            this.petAnalyzerFerretToolStripMenuItem,
+            this.versionCheckToolStripMenuItem});
             this.linksToolStripMenuItem.Name = "linksToolStripMenuItem";
             this.linksToolStripMenuItem.Size = new System.Drawing.Size(96, 45);
             this.linksToolStripMenuItem.Text = "Links";
@@ -459,6 +463,19 @@
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
             // 
+            // newIourpgToolStripMenuItem
+            // 
+            this.newIourpgToolStripMenuItem.Name = "newIourpgToolStripMenuItem";
+            this.newIourpgToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.newIourpgToolStripMenuItem.Text = "Start iourpg";
+            // 
+            // versionCheckToolStripMenuItem
+            // 
+            this.versionCheckToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("versionCheckToolStripMenuItem.Image")));
+            this.versionCheckToolStripMenuItem.Name = "versionCheckToolStripMenuItem";
+            this.versionCheckToolStripMenuItem.Size = new System.Drawing.Size(409, 46);
+            this.versionCheckToolStripMenuItem.Text = "Version Check";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -534,6 +551,8 @@
         private System.Windows.Forms.ToolStripMenuItem screenshotToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iOUHelperChatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem petAnalyzerFerretToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newIourpgToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem versionCheckToolStripMenuItem;
     }
 }
 
