@@ -218,13 +218,13 @@ namespace IOU_Helper
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveDetails();
+            saveDetails(true);
         }
 
         /// <summary>
         /// Saves the details into the AutoSave CSV
         /// </summary>
-        public void saveDetails() {
+        public void saveDetails(Boolean message) {
             try
             {
                 string details = "";
@@ -235,7 +235,10 @@ namespace IOU_Helper
                 StreamWriter writer = File.CreateText(Application.StartupPath + @"\AutoSave.CSV");
                 writer.WriteLine(details);
                 writer.Close();
-                MessageBox.Show("Your account/s details have been saved to the AutoSave.CSV File.");
+                if (message == true)
+                {
+                    MessageBox.Show("Your account/s details have been saved to the AutoSave.CSV File.");
+                }
             }
             catch (Exception ex)
             {
@@ -290,7 +293,7 @@ namespace IOU_Helper
                 setClient(tabControl, IOUclient);
                 updateClient(tab);
                 tabList.Add(tab);
-                saveDetails();
+                saveDetails(true);
             }
             else
             {
@@ -816,30 +819,28 @@ namespace IOU_Helper
                     tempLabel.Visible = false;
                     tempBox.Visible = false;
                     tempButton.Visible = false;
+                    browser.Location = new Point(0, 0);
 
                     //Set the IOU Client to its approiate sizing
                     if (size == "small")
                     {
                         browser.Height = iouSmallHeight;
                         browser.Width = iouSmallWidth;
-                        browser.Location = new Point(0, 0);
                     }
                     else if (size == "medium")
                     {
                         browser.Height = iouMediumHeight;
                         browser.Width = iouMediumWidth;
-                        browser.Location = new Point(0, 0);
                     }
                     else if (size == "large")
                     {
                         browser.Height = iouLargeHeight;
                         browser.Width = iouLargeWidth;
-                        browser.Location = new Point(0, 0);
                     }
                     //Update the client
                     updateClient(tab);
                     tabList.Add(tab);
-                    saveDetails();
+                    saveDetails(false);
                     browser = null;
                 }
                 else
@@ -1143,6 +1144,14 @@ namespace IOU_Helper
             }
             MessageBox.Show("You are currently using version " + version.ToString() + " of IOU Helper." + Environment.NewLine + "This version is " +
             message);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (tabList.Count != 0)
+            {
+                saveDetails(false);
+            }
         }
     }
 }
