@@ -23,6 +23,10 @@ namespace IOU_Helper
         [DllImport("user32.dll")]
         static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
 
+        //Current version number
+        private string version = "1.2";
+        private string check = "";
+
         // constants for the mouse_input() API function
         private const int MOUSEEVENTF_MOVE = 0x0001;
         private const int MOUSEEVENTF_LEFTDOWN = 0x0002;
@@ -327,12 +331,12 @@ namespace IOU_Helper
                     string[] words = raw.Split('|');
                     code = words[1];
                     Tab.setCode(code);
-                    string check = words[2];
+                    check = words[2];
                     //UPDATE CHECKER
-                    if (check != "1.2")
+                    if (check != version)
                     {
-                        //Image red = Image.FromFile("imgs/red.jpg");
-                        //versionCheckToolStripMenuItem.Image = red;
+                        Image red = Image.FromFile("imgs/red.jpg");
+                        versionCheckToolStripMenuItem.Image = red;
                     }
                 }
                 catch
@@ -1127,7 +1131,18 @@ namespace IOU_Helper
 
         private void versionCheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string message = "";
+            //UPDATE CHECKER
+            if (check != version)
+            {
+                message = "currently out of date as the latest version is v" + check + "." + Environment.NewLine + 
+                    "Please download the latest version at http://www.iouhelper.com/";
+            }
+            else {
+                message = "the latest version of IOU Helper.";
+            }
+            MessageBox.Show("You are currently using version " + version.ToString() + " of IOU Helper." + Environment.NewLine + "This version is " +
+            message);
         }
     }
 }
