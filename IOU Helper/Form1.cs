@@ -639,28 +639,7 @@ namespace IOU_Helper
             }
             else if (keyData == Keys.F8)
             {
-                if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
-                {
-                    string username;
-                    string tabUser = tabControl.SelectedTab.Text;
-
-                    try
-                    {
-                        foreach (Tab tab in tabList)
-                        {
-                            username = tab.getUsername();
-                            if (username == tabUser)
-                            {
-                                tab.getClient().Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
-                                break;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
+                startIOURPG();
                 return true;
             }
             // Call the base class
@@ -1133,7 +1112,6 @@ namespace IOU_Helper
         private void versionCheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string message = "";
-            //UPDATE CHECKER
             if (check != version)
             {
                 message = "currently out of date as the latest version is v" + check + "." + Environment.NewLine + 
@@ -1151,6 +1129,37 @@ namespace IOU_Helper
             if (tabList.Count != 0)
             {
                 saveDetails(false);
+            }
+        }
+
+        private void newIourpgToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startIOURPG();
+        }
+
+        private void startIOURPG()
+        {
+            if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
+            {
+                string username;
+                string tabUser = tabControl.SelectedTab.Text;
+
+                try
+                {
+                    foreach (Tab tab in tabList)
+                    {
+                        username = tab.getUsername();
+                        if (username == tabUser)
+                        {
+                            tab.getClient().Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
+                            break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
     }

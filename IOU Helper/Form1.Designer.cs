@@ -94,7 +94,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 49);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 52);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -109,7 +109,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 45);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 48);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newTabToolStripMenuItem
@@ -122,8 +122,9 @@
             // newIourpgToolStripMenuItem
             // 
             this.newIourpgToolStripMenuItem.Name = "newIourpgToolStripMenuItem";
-            this.newIourpgToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.newIourpgToolStripMenuItem.Text = "Start iourpg";
+            this.newIourpgToolStripMenuItem.Size = new System.Drawing.Size(355, 46);
+            this.newIourpgToolStripMenuItem.Text = "Start iourpg.com";
+            this.newIourpgToolStripMenuItem.Click += new System.EventHandler(this.newIourpgToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
