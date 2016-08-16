@@ -15,12 +15,19 @@ namespace IOU_Helper
         private static string _code;
         private WebKit.WebKitBrowser _client;
 
+        //Kongregate Tab Creation
         public Tab(string kongUsername, string kongID, string kongToken, WebKit.WebKitBrowser client)
         {
             _kongUsername = kongUsername;
             _kongID = kongID;
             _kongToken = kongToken;
             _client = client;
+        }
+
+        //IOURPG Tab Creation
+        public Tab(WebKit.WebKitBrowser client)
+        {
+            _kongUsername = "IOURPG";
         }
 
         public override string ToString()
@@ -47,6 +54,11 @@ namespace IOU_Helper
         public static void setCode(string code) 
         {
             _code = code;
+        }
+
+        public void reloadIOURPG()
+        {
+            _client.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
         }
     }
 }

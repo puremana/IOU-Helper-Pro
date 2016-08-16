@@ -501,7 +501,11 @@ namespace IOU_Helper
 
         private void singleRefresh()
         {
-            if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
+            if (tabControl.SelectedTab.Text == "IOURPG")
+            {
+
+            }
+            else if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
             {
                 string username;
                 string tabUser = tabControl.SelectedTab.Text;
