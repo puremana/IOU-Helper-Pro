@@ -250,35 +250,35 @@
             this.screenshotToolStripMenuItem,
             this.closeTabToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 45);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 48);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // startAutoClickerToolStripMenuItem1
             // 
             this.startAutoClickerToolStripMenuItem1.Name = "startAutoClickerToolStripMenuItem1";
-            this.startAutoClickerToolStripMenuItem1.Size = new System.Drawing.Size(354, 46);
-            this.startAutoClickerToolStripMenuItem1.Text = "Start AutoClicker";
+            this.startAutoClickerToolStripMenuItem1.Size = new System.Drawing.Size(411, 46);
+            this.startAutoClickerToolStripMenuItem1.Text = "Start AutoClicker (F1)";
             this.startAutoClickerToolStripMenuItem1.Click += new System.EventHandler(this.startAutoClickerToolStripMenuItem1_Click);
             // 
             // abilitesToolStripMenuItem
             // 
             this.abilitesToolStripMenuItem.Name = "abilitesToolStripMenuItem";
-            this.abilitesToolStripMenuItem.Size = new System.Drawing.Size(354, 46);
-            this.abilitesToolStripMenuItem.Text = "Start Abilities";
+            this.abilitesToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
+            this.abilitesToolStripMenuItem.Text = "Start Abilities (F3)";
             this.abilitesToolStripMenuItem.Click += new System.EventHandler(this.abilitesToolStripMenuItem_Click);
             // 
             // refreshToolStripMenuItem1
             // 
             this.refreshToolStripMenuItem1.Name = "refreshToolStripMenuItem1";
-            this.refreshToolStripMenuItem1.Size = new System.Drawing.Size(354, 46);
-            this.refreshToolStripMenuItem1.Text = "Refresh";
+            this.refreshToolStripMenuItem1.Size = new System.Drawing.Size(411, 46);
+            this.refreshToolStripMenuItem1.Text = "Refresh (F5)";
             this.refreshToolStripMenuItem1.Click += new System.EventHandler(this.refreshToolStripMenuItem1_Click);
             // 
             // refreshAllToolStripMenuItem
             // 
             this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
-            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(354, 46);
-            this.refreshAllToolStripMenuItem.Text = "Refresh All";
+            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
+            this.refreshAllToolStripMenuItem.Text = "Refresh All (F6)";
             this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
             // 
             // timersToolStripMenuItem
@@ -291,15 +291,15 @@
             // screenshotToolStripMenuItem
             // 
             this.screenshotToolStripMenuItem.Name = "screenshotToolStripMenuItem";
-            this.screenshotToolStripMenuItem.Size = new System.Drawing.Size(354, 46);
-            this.screenshotToolStripMenuItem.Text = "Take Screenshot";
+            this.screenshotToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
+            this.screenshotToolStripMenuItem.Text = "Take Screenshot (F7)";
             this.screenshotToolStripMenuItem.Click += new System.EventHandler(this.screenshotToolStripMenuItem_Click);
             // 
             // closeTabToolStripMenuItem
             // 
             this.closeTabToolStripMenuItem.Name = "closeTabToolStripMenuItem";
-            this.closeTabToolStripMenuItem.Size = new System.Drawing.Size(354, 46);
-            this.closeTabToolStripMenuItem.Text = "Close Tab";
+            this.closeTabToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
+            this.closeTabToolStripMenuItem.Text = "Close Tab (F8)";
             this.closeTabToolStripMenuItem.Click += new System.EventHandler(this.closeTabToolStripMenuItem_Click);
             // 
             // textBoxKongUser

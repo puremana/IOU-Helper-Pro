@@ -496,6 +496,11 @@ namespace IOU_Helper
 
         private void refreshToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            singleRefresh();
+        }
+
+        private void singleRefresh()
+        {
             if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
             {
                 string username;
@@ -527,14 +532,14 @@ namespace IOU_Helper
         /// <param name="e"></param>
         private void startAutoClickerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (startAutoClickerToolStripMenuItem1.Text == "Start AutoClicker") {
+            if (autoClickTimer.Enabled == false) {
                 autoClickTimer.Enabled = true;
-                startAutoClickerToolStripMenuItem1.Text = "Stop AutoClicker";
+                startAutoClickerToolStripMenuItem1.Text = "Stop AutoClicker (F2)";
             }
-            else if (startAutoClickerToolStripMenuItem1.Text == "Stop AutoClicker")
+            else if (autoClickTimer.Enabled == true)
             {
                 autoClickTimer.Enabled = false;
-                startAutoClickerToolStripMenuItem1.Text = "Start AutoClicker";
+                startAutoClickerToolStripMenuItem1.Text = "Start AutoClicker (F1)";
             }
         }
 
@@ -575,62 +580,41 @@ namespace IOU_Helper
             if ((keyData == Keys.F1) && (autoClickTimer.Enabled == false))
             {
                 autoClickTimer.Enabled = true;
-                startAutoClickerToolStripMenuItem1.Text = "Stop AutoClicker";
+                startAutoClickerToolStripMenuItem1.Text = "Stop AutoClicker (F2)";
                 return true;
             }
             else if ((keyData == Keys.F2) && (autoClickTimer.Enabled == true))
             {
                 autoClickTimer.Enabled = false;
-                startAutoClickerToolStripMenuItem1.Text = "Start AutoClicker";
+                startAutoClickerToolStripMenuItem1.Text = "Start AutoClicker (F1)";
                 return true;
             }
             else if (keyData == Keys.F3)
             {
-                if (abilitesToolStripMenuItem.Text == "Start Abilities")
+                if (abilityTimer.Enabled == false)
                 {
                     abilityTimer.Enabled = true;
-                    abilitesToolStripMenuItem.Text = "Stop Abilities";
+                    abilitesToolStripMenuItem.Text = "Stop Abilities (F4)";
                 }
                 return true;
             }
             else if (keyData == Keys.F4)
             {
-                if (abilitesToolStripMenuItem.Text == "Stop Abilities")
+                if (abilityTimer.Enabled == true)
                 {
                     abilityTimer.Enabled = false;
-                    abilitesToolStripMenuItem.Text = "Start Abilities";
+                    abilitesToolStripMenuItem.Text = "Start Abilities (F3)";
                 }
                 return true;
             }
             else if (keyData == Keys.F5)
             {
-                if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
-                {
-                    string username;
-                    string tabUser = tabControl.SelectedTab.Text;
-
-                    try
-                    {
-                        foreach (Tab tab in tabList)
-                        {
-                            username = tab.getUsername();
-                            if (username == tabUser)
-                            {
-                                updateClient(tab);
-                                break;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
+                singleRefresh();
                 return true;
             }
             else if (keyData == Keys.F6)
             {
-                closeTab();
+                refreshAll();
                 return true;
             }
             else if (keyData == Keys.F7) {
@@ -639,7 +623,7 @@ namespace IOU_Helper
             }
             else if (keyData == Keys.F8)
             {
-                startIOURPG();
+                closeTab();
                 return true;
             }
             // Call the base class
@@ -889,15 +873,15 @@ namespace IOU_Helper
 
         private void abilitesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (abilitesToolStripMenuItem.Text == "Start Abilities")
+            if (abilityTimer.Enabled == false)
             {
                 abilityTimer.Enabled = true;
-                abilitesToolStripMenuItem.Text = "Stop Abilities";
+                abilitesToolStripMenuItem.Text = "Stop Abilities (F4)";
             }
-            else if (abilitesToolStripMenuItem.Text == "Stop Abilities")
+            else if (abilityTimer.Enabled == true)
             {
                 abilityTimer.Enabled = false;
-                abilitesToolStripMenuItem.Text = "Start Abilities";
+                abilitesToolStripMenuItem.Text = "Start Abilities (F3)";
             }
         }
 
