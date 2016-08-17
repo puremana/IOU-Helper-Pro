@@ -1154,5 +1154,15 @@ namespace IOU_Helper
                 IOUrpgclient.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
             }
         }
+
+        private void IOUclient_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            this.Text = "Loading...";
+        }
+
+        private void IOUclient_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            this.Text = "IOU Helper v" + version;
+        }
     }
 }

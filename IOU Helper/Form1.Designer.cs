@@ -474,6 +474,8 @@
             this.IOUclient.TabIndex = 7;
             this.IOUclient.Url = null;
             this.IOUclient.Visible = false;
+            this.IOUclient.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.IOUclient_DocumentCompleted);
+            this.IOUclient.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.IOUclient_Navigated);
             // 
             // abilityTimer
             // 
