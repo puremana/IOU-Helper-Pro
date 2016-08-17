@@ -330,9 +330,13 @@ namespace IOU_Helper
                 System.Net.WebClient wc = new System.Net.WebClient();
                 try
                 {
+                    string rawCode = wc.DownloadString("http://www.kongregate.com/games/iouRPG/idle-online-universe");
+                    string[] codeWords = rawCode.Split(new string[] { "FAPI_AS3_", ".swf" }, StringSplitOptions.None);
+
                     string raw = wc.DownloadString("http://iouhelper.com/code.html");
                     string[] words = raw.Split('|');
-                    code = words[1];
+
+                    code = codeWords[3];
                     Tab.setCode(code);
                     check = words[2];
                     //UPDATE CHECKER
