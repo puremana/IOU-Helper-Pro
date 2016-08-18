@@ -666,6 +666,14 @@ namespace IOU_Helper
 
         private void newTabToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (TabPage page in tabControl.TabPages)
+            {
+                if (page.Text.Equals("Client"))
+                {
+                    tabControl.SelectedTab = page;
+                    return;
+                }
+            }
             //Tab
             string title = "TabPage " + (tabControl.TabCount + 1).ToString();
             TabPage myTabPage = new TabPage(title);
@@ -783,7 +791,8 @@ namespace IOU_Helper
             myTabPage.Controls.Add(IOUclient2);
             IOUclient2.Visible = false;
 
-            if (this.Height == 642) {
+            if (this.Height == 642)
+            {
                 label.Location = new System.Drawing.Point(278, 123);
                 groupBox.Location = new System.Drawing.Point(200, 182);
                 button.Location = new System.Drawing.Point(285, 351);
