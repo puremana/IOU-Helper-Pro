@@ -1081,7 +1081,13 @@ namespace IOU_Helper
                     updateClient(tab);
                     tabList.Add(tab);
                 }
-            }                        
+            }
+            int iourpgCount = IOURPGtabList.Count();
+            IOURPGtabList.Clear();
+            for (int i = 0; i < iourpgCount; i++)
+            {
+                startIOURPG();
+            }           
         }
         public void createTimer(int interval, Tab tab)
         {
