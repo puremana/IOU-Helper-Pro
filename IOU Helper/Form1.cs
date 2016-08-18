@@ -1118,6 +1118,24 @@ namespace IOU_Helper
             timer.Enabled = true;
             timerDictionary.Add(timer, tab);
         }
+        public void createIOUTimer(int interval)
+        {
+            var timer = new System.Timers.Timer();
+            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent2);
+            timer.Interval = interval;
+            timer.Enabled = true;
+            timerDictionary.Add(timer, IOURPGtabList[0]);
+        }
+
+        public void OnTimedEvent2(object sender, ElapsedEventArgs e)
+        {
+            var tempTimer = new System.Timers.Timer();
+            //Play a sound?!@#!@#
+            System.Media.SystemSounds.Exclamation.Play();
+            MessageBox.Show("IOURPG's, timer has just completed");
+            tempTimer.Stop();
+        }
+
         public void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
             string name = "";
@@ -1130,7 +1148,6 @@ namespace IOU_Helper
                     tempTimer = entry.Key;
                 }
             }
-
             //Play a sound?!@#!@#
             System.Media.SystemSounds.Exclamation.Play();
             MessageBox.Show(name + "'s, timer has just completed");
@@ -1139,7 +1156,7 @@ namespace IOU_Helper
 
         private void timersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Timers timersForm = new Timers(tabList, this);
+            Timers timersForm = new Timers(tabList, IOURPGtabList, this);
             timersForm.Show();
         }
 

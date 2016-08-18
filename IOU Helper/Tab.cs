@@ -30,6 +30,7 @@ namespace IOU_Helper
         //IOURPG Tab Creation
         public Tab(WebKit.WebKitBrowser client, TabPage tabpage)
         {
+            _kongUsername = "IOURPG";
             _client = client;
             _tabpage = tabpage;
         }

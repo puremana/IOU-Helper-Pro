@@ -14,13 +14,15 @@ namespace IOU_Helper
     public partial class Timers : Form
     {
         List<Tab> _tabList = new List<Tab>();
+        List<Tab> _IOURPGtabList = new List<Tab>();
         private readonly Form1 _form1;
 
-        public Timers(List<Tab> tabList, Form1 form1)
+        public Timers(List<Tab> tabList, List<Tab> IOURPGtabList, Form1 form1)
         {
             InitializeComponent();
             _tabList = tabList;
             _form1 = form1;
+            _IOURPGtabList = IOURPGtabList;
         }
 
         private void Timers_Load(object sender, EventArgs e)
@@ -29,6 +31,10 @@ namespace IOU_Helper
                 foreach (Tab tab in _tabList)
                 {
                     comboBoxUsers.Items.Add(tab.getUsername());
+                }
+                foreach (Tab tab in _IOURPGtabList)
+                {
+                    comboBoxUsers.Items.Add("IOURPG");
                 }
                 refreshtimerListBox();
             }
@@ -51,16 +57,26 @@ namespace IOU_Helper
                 if (textBoxMinutes.Text != "") {
                     totalTime = totalTime + (int.Parse(textBoxMinutes.Text) * 60 * 1000);
                 }
-                foreach (Tab tab in _tabList)
+                if (comboBoxUsers.Text == "IOURPG")
                 {
-                    if (comboBoxUsers.Text == tab.getUsername())
-                    {
-                        _form1.createTimer(totalTime, tab);
-                        MessageBox.Show("Timer for " + tab.getUsername() + " created.");
-                        listBoxTimers.Items.Clear();
-                        refreshtimerListBox();
-                    }
+                    _form1.createIOUTimer(totalTime);
+                    MessageBox.Show("Timer for IOURPG created.");
+                    listBoxTimers.Items.Clear();
+                    refreshtimerListBox();
                 }
+                else
+                {
+                    foreach (Tab tab in _tabList)
+                    {
+                        if (comboBoxUsers.Text == tab.getUsername())
+                        {
+                            _form1.createTimer(totalTime, tab);
+                            MessageBox.Show("Timer for " + tab.getUsername() + " created.");
+                            listBoxTimers.Items.Clear();
+                            refreshtimerListBox();
+                        }
+                    }
+                }             
             }
             else {
                 MessageBox.Show("Please select a user from the dropdown box and input a time.");
@@ -109,9 +125,7 @@ namespace IOU_Helper
                 username = words[0];
                 minutes = int.Parse(words[1]);
                 minutes = minutes * 60000;
-                MessageBox.Show(username + ", " + minutes);
-
-                
+                MessageBox.Show(username + "'s timer has been deleted.");               
 
                 foreach (KeyValuePair<System.Timers.Timer, Tab> entry in _form1.timerDictionary)
                 {
@@ -171,6 +185,16 @@ namespace IOU_Helper
                             MessageBox.Show("This timer is already enabled.");
                         }
                     }
+                    else if ((entry.Key.Interval == minutes) && (entry.Value.getUsername() == username)) {
+                        if (entry.Key.Enabled != true)
+                        {
+                            entry.Key.Enabled = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("This timer is already enabled.");
+                        }
+                    }
                 }
                 refreshtimerListBox();
             }
@@ -197,6 +221,16 @@ namespace IOU_Helper
                 {
                     if ((entry.Key.Interval == minutes) && (entry.Value.getUsername() == username))
                     {
+                        if (entry.Key.Enabled != false)
+                        {
+                            entry.Key.Enabled = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("This timer is already disabled.");
+                        }
+                    }
+                    else if ((entry.Key.Interval == minutes) && (entry.Value.getUsername() == username)) {
                         if (entry.Key.Enabled != false)
                         {
                             entry.Key.Enabled = false;
