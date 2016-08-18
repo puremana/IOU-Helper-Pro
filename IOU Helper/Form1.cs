@@ -871,6 +871,7 @@ namespace IOU_Helper
             {
                 string username;
                 string tabUser = tabControl.SelectedTab.Text;
+                Tab tempTab = new Tab(null, null);
 
                 if (tabUser == "Client")
                 {
@@ -883,10 +884,11 @@ namespace IOU_Helper
                     {
                         if (tabControl.SelectedTab == tab.getTabPage())
                         {
-                            tabList.Remove(tab);
+                            tempTab = tab;
                             tabControl.TabPages.Remove(tabControl.SelectedTab);
                         }
                     }
+                    IOURPGtabList.Remove(tempTab);
                 }
                 try
                 {
@@ -1001,6 +1003,11 @@ namespace IOU_Helper
                 {
                     internalLoad();
                 }
+
+                if (IOURPGtabList.Count != 0)
+                {
+                    IOURPGinternalLoad();
+                }
                 tabControl.Width = tabSmallWidth;
                 tabControl.Height = tabSmallHeight;
                 this.Size = new Size(tabSmallWidth, tabSmallHeight);
@@ -1012,6 +1019,11 @@ namespace IOU_Helper
                 {
                     internalLoad();
                 }
+
+                if (IOURPGtabList.Count != 0)
+                {
+                    IOURPGinternalLoad();
+                }
                 tabControl.Width = tabMediumWidth;
                 tabControl.Height = tabMediumHeight;
                 this.Size = new Size(tabMediumWidth, tabMediumHeight);
@@ -1022,6 +1034,11 @@ namespace IOU_Helper
                 if (tabList.Count != 0)
                 {
                     internalLoad();
+                }
+
+                if (IOURPGtabList.Count != 0)
+                {
+                    IOURPGinternalLoad();
                 }
                 tabControl.Width = tabLargeWidth;
                 tabControl.Height = tabLargeHeight;
@@ -1081,13 +1098,17 @@ namespace IOU_Helper
                     updateClient(tab);
                     tabList.Add(tab);
                 }
-            }
+            }         
+        }
+
+        private void IOURPGinternalLoad()
+        {
             int iourpgCount = IOURPGtabList.Count();
             IOURPGtabList.Clear();
             for (int i = 0; i < iourpgCount; i++)
             {
                 startIOURPG();
-            }           
+            }  
         }
         public void createTimer(int interval, Tab tab)
         {
