@@ -13,6 +13,7 @@ namespace IOU_Helper
         private string _kongID;
         private string _kongToken;
         private static string _code;
+        private static string _gameVersion;
         private WebKit.WebKitBrowser _client;
 
         //Kongregate Tab Creation
@@ -37,7 +38,7 @@ namespace IOU_Helper
 
         public System.Uri URL()
         {
-            System.Uri uri = new System.Uri("http://chat.kongregate.com/gamez/0022/7576/live/iou.swf?kongregate_username=" + _kongUsername + "&kongregate_user_id=" + _kongID + "&kongregate_game_auth_token=" + _kongToken + "&kongregate_api_path=http%3A%2F%2Fchat.kongregate.com%2Fflash%2FAPI_AS3_" + _code + ".swf");
+            System.Uri uri = new System.Uri("http://chat.kongregate.com/gamez/0022/7576/live/iou.swf?" + _gameVersion + "&kongregate_username=" + _kongUsername + "&kongregate_user_id=" + _kongID + "&kongregate_game_auth_token=" + _kongToken + "&kongregate_api_path=http%3A%2F%2Fchat.kongregate.com%2Fflash%2FAPI_AS3_" + _code + ".swf");
             return uri;
         }
 
@@ -51,9 +52,10 @@ namespace IOU_Helper
             return _kongUsername;
         }
 
-        public static void setCode(string code) 
+        public static void setCodes(string code, string gameVersion) 
         {
             _code = code;
+            _gameVersion = gameVersion;
         }
 
         public void reloadIOURPG()

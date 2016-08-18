@@ -51,6 +51,7 @@ namespace IOU_Helper
         //Global Variables
         private string kongUsername;
         private string code;
+        private string gameVersion;
         private int tabSmallWidth = 596;
         private int tabSmallHeight = 465;
         private int iouSmallHeight = 440;
@@ -332,12 +333,14 @@ namespace IOU_Helper
                 {
                     string rawCode = wc.DownloadString("http://www.kongregate.com/games/iouRPG/idle-online-universe");
                     string[] codeWords = rawCode.Split(new string[] { "FAPI_AS3_", ".swf" }, StringSplitOptions.None);
+                    string[] gameWords = rawCode.Split(new string[] {"kongregate_game_version=", "\";" }, StringSplitOptions.None);
 
                     string raw = wc.DownloadString("http://iouhelper.com/code.html");
                     string[] words = raw.Split('|');
 
                     code = codeWords[3];
-                    Tab.setCode(code);
+                    gameVersion = gameWords[8];
+                    Tab.setCodes(code, gameVersion);
                     check = words[2];
                     //UPDATE CHECKER
                     if (check != version)
