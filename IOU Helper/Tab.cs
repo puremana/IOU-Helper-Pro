@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows.Forms;
 
 namespace IOU_Helper
 {
@@ -15,6 +16,7 @@ namespace IOU_Helper
         private static string _code;
         private static string _gameVersion;
         private WebKit.WebKitBrowser _client;
+        private TabPage _tabpage;
 
         //Kongregate Tab Creation
         public Tab(string kongUsername, string kongID, string kongToken, WebKit.WebKitBrowser client)
@@ -26,9 +28,10 @@ namespace IOU_Helper
         }
 
         //IOURPG Tab Creation
-        public Tab(WebKit.WebKitBrowser client)
+        public Tab(WebKit.WebKitBrowser client, TabPage tabpage)
         {
-            _kongUsername = "IOURPG";
+            _client = client;
+            _tabpage = tabpage;
         }
 
         public override string ToString()
@@ -50,6 +53,11 @@ namespace IOU_Helper
         public string getUsername()
         {
             return _kongUsername;
+        }
+
+        public TabPage getTabPage()
+        {
+            return _tabpage;
         }
 
         public static void setCodes(string code, string gameVersion) 

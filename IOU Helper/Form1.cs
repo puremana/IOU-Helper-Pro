@@ -38,6 +38,7 @@ namespace IOU_Helper
         private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
 
         List<Tab> tabList = new List<Tab>();
+        List<Tab> IOURPGtabList = new List<Tab>();
         List<TextBox> textboxes = new List<TextBox>();
         public Dictionary<System.Timers.Timer, Tab> timerDictionary = new Dictionary<System.Timers.Timer, Tab>();
         
@@ -514,7 +515,13 @@ namespace IOU_Helper
         {
             if (tabControl.SelectedTab.Text == "IOURPG")
             {
-
+                foreach (Tab tab in IOURPGtabList)
+                {
+                    if (tabControl.SelectedTab == tab.getTabPage())
+                    {
+                        tab.reloadIOURPG();
+                    }
+                }
             }
             else if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
             {
@@ -861,6 +868,17 @@ namespace IOU_Helper
                     textboxes.Clear();
                     tabControl.TabPages.Remove(tabControl.SelectedTab);
                 }
+                else if (tabUser == "IOURPG")
+                {
+                    foreach (Tab tab in IOURPGtabList)
+                    {
+                        if (tabControl.SelectedTab == tab.getTabPage())
+                        {
+                            tabList.Remove(tab);
+                            tabControl.TabPages.Remove(tabControl.SelectedTab);
+                        }
+                    }
+                }
                 try
                 {
                     foreach (Tab tab in tabList)
@@ -945,9 +963,19 @@ namespace IOU_Helper
         {
             try
             {
-                foreach (Tab tab in tabList)
+                if (IOURPGtabList.Count != 0)
                 {
-                    updateClient(tab);
+                    foreach (Tab tab in IOURPGtabList)
+                    {
+                        tab.reloadIOURPG(); //) = new System.Uri("http://scripts.iouscripts.com/iou.swf");
+                    }
+                }
+                if (tabList.Count != 0)
+                {
+                    foreach (Tab tab in tabList)
+                    {
+                        updateClient(tab);
+                    }
                 }
             }
             catch (Exception ex)
@@ -1142,30 +1170,24 @@ namespace IOU_Helper
 
         private void startIOURPG()
         {
-            if (tabControl.SelectedTab.Text == "Client")
-            {
-                setClient(tabControl, IOUclient);
-                IOUclient.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
-            }
-            else
-            {
-                string title = "TabPage " + (tabControl.TabCount + 1).ToString();
-                TabPage myTabPage = new TabPage(title);
-                tabControl.TabPages.Add(myTabPage);
-                myTabPage.Name = title;
-                myTabPage.Text = "IOURPG";
-                tabControl.SelectedTab = myTabPage;
-                myTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#222222");
+            string title = "TabPage " + (tabControl.TabCount + 1).ToString();
+            TabPage myTabPage = new TabPage(title);
+            tabControl.TabPages.Add(myTabPage);
+            myTabPage.Name = title;
+            myTabPage.Text = "IOURPG";
+            tabControl.SelectedTab = myTabPage;
+            myTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#222222");
 
-                //IOURPG Client
-                WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
-                IOUclient2.Navigated += IOUclient2_Navigated;
-                IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
-                myTabPage.Controls.Add(IOUclient2);
-                IOUclient2.Visible = true;
-                setClient(tabControl, IOUclient2);
-                IOUclient2.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
-            }
+            //IOURPG Client
+            WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
+            IOUclient2.Navigated += IOUclient2_Navigated;
+            IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
+            myTabPage.Controls.Add(IOUclient2);
+            IOUclient2.Visible = true;
+            setClient(tabControl, IOUclient2);
+            IOUclient2.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
+            Tab tab = new Tab(IOUclient2, myTabPage);
+            IOURPGtabList.Add(tab);
         }
 
         private void IOUclient_Navigated(object sender, WebBrowserNavigatedEventArgs e)
