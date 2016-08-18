@@ -135,6 +135,8 @@ namespace IOU_Helper
                                     myTabPage.Name = title;
                                     tabControl.SelectedTab = myTabPage;
                                     WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
+                                    IOUclient2.Navigated += IOUclient2_Navigated;
+                                    IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
                                     myTabPage.Controls.Add(IOUclient2);
                                     Tab tab = new Tab(lineRead[i - 2], lineRead[i - 1], lineRead[i], IOUclient2);
                                     //Set the IOU Client to its approiate sizing
@@ -435,6 +437,8 @@ namespace IOU_Helper
                                     myTabPage.Name = title;
                                     tabControl.SelectedTab = myTabPage;
                                     WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
+                                    IOUclient2.Navigated += IOUclient2_Navigated;
+                                    IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
                                     myTabPage.Controls.Add(IOUclient2);
                                     Tab tab = new Tab(lineRead[i - 2], lineRead[i - 1], lineRead[i], IOUclient2);
                                     //Set the IOU Client to its approiate sizing
@@ -767,6 +771,8 @@ namespace IOU_Helper
 
             //Browser
             WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
+            IOUclient2.Navigated += IOUclient2_Navigated;
+            IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
             myTabPage.Controls.Add(IOUclient2);
             IOUclient2.Visible = false;
 
@@ -1028,6 +1034,8 @@ namespace IOU_Helper
                     myTabPage.Name = title;
                     tabControl.SelectedTab = myTabPage;
                     WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
+                    IOUclient2.Navigated += IOUclient2_Navigated;
+                    IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
                     myTabPage.Controls.Add(IOUclient2);
                     Tab tab = new Tab(lineRead[i - 2], lineRead[i - 1], lineRead[i], IOUclient2);
                     //Set the IOU Client to its approiate sizing
@@ -1149,12 +1157,14 @@ namespace IOU_Helper
                 tabControl.SelectedTab = myTabPage;
                 myTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#222222");
 
-                //Browser
-                WebKit.WebKitBrowser IOUrpgclient = new WebKit.WebKitBrowser();
-                myTabPage.Controls.Add(IOUrpgclient);
-                IOUrpgclient.Visible = true;
-                setClient(tabControl, IOUrpgclient);
-                IOUrpgclient.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
+                //IOURPG Client
+                WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
+                IOUclient2.Navigated += IOUclient2_Navigated;
+                IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
+                myTabPage.Controls.Add(IOUclient2);
+                IOUclient2.Visible = true;
+                setClient(tabControl, IOUclient2);
+                IOUclient2.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
             }
         }
 
@@ -1163,7 +1173,17 @@ namespace IOU_Helper
             this.Text = "Loading...";
         }
 
+        private void IOUclient2_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            this.Text = "Loading...";
+        }
+
         private void IOUclient_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            this.Text = "IOU Helper v" + version;
+        }
+
+        private void IOUclient2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             this.Text = "IOU Helper v" + version;
         }
