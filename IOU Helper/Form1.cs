@@ -24,7 +24,7 @@ namespace IOU_Helper
         static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
 
         //Current version number
-        private string version = "1.2";
+        private string version = "1.3";
         private string check = "";
 
         // constants for the mouse_input() API function
@@ -994,6 +994,57 @@ namespace IOU_Helper
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void hardRefreshAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hardRefreshAll();
+        }
+
+        private void hardRefreshAll()
+        {
+            //Download the iou client code online
+            System.Net.WebClient wc = new System.Net.WebClient();
+            try
+            {
+                string rawCode = wc.DownloadString("http://www.kongregate.com/games/iouRPG/idle-online-universe");
+                string[] codeWords = rawCode.Split(new string[] { "FAPI_AS3_", ".swf" }, StringSplitOptions.None);
+                string[] gameWords = rawCode.Split(new string[] {"kongregate_game_version=", "\";" }, StringSplitOptions.None);
+
+                string raw = wc.DownloadString("http://iouhelper.com/code.html");
+                string[] words = raw.Split('|');
+
+                code = codeWords[3];
+                gameVersion = gameWords[8];
+                Tab.setCodes(code, gameVersion);
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                if (IOURPGtabList.Count != 0)
+                {
+                    foreach (Tab tab in IOURPGtabList)
+                    {
+                        tab.reloadIOURPG();
+                    }
+                }
+                if (tabList.Count != 0)
+                {
+                    foreach (Tab tab in tabList)
+                    {
+                        updateClient(tab);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         public void setSize(string theSize)
         {
             if (theSize == "small")

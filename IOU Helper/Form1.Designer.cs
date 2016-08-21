@@ -77,6 +77,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
+            this.hardRefreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -94,7 +95,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 49);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 52);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -246,11 +247,12 @@
             this.abilitesToolStripMenuItem,
             this.refreshToolStripMenuItem1,
             this.refreshAllToolStripMenuItem,
+            this.hardRefreshAllToolStripMenuItem,
             this.timersToolStripMenuItem,
             this.screenshotToolStripMenuItem,
             this.closeTabToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 45);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 48);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // startAutoClickerToolStripMenuItem1
@@ -481,6 +483,13 @@
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
             // 
+            // hardRefreshAllToolStripMenuItem
+            // 
+            this.hardRefreshAllToolStripMenuItem.Name = "hardRefreshAllToolStripMenuItem";
+            this.hardRefreshAllToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
+            this.hardRefreshAllToolStripMenuItem.Text = "Hard Refresh All";
+            this.hardRefreshAllToolStripMenuItem.Click += new System.EventHandler(this.hardRefreshAllToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -494,7 +503,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "IOU Helper v1.2";
+            this.Text = "IOU Helper v1.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -559,6 +568,7 @@
         private System.Windows.Forms.ToolStripMenuItem petAnalyzerFerretToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newIourpgToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versionCheckToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hardRefreshAllToolStripMenuItem;
     }
 }
 
