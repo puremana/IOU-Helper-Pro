@@ -897,8 +897,7 @@ namespace IOU_Helper
                         username = tab.getUsername();
                         if (username == tabUser)
                         {
-                            //hacky fix for now, until I can find the pointers ._.
-                            tab.getClient().Url = new System.Uri("http://www.google.co.nz");
+                            tab.getClient().Dispose();
                             tabList.Remove(tab);
                             tabControl.TabPages.Remove(tabControl.SelectedTab);
                             break;
@@ -1019,7 +1018,7 @@ namespace IOU_Helper
             }
             catch
             {
-
+                
             }
 
             try
