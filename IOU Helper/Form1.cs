@@ -57,16 +57,22 @@ namespace IOU_Helper
         private int tabSmallHeight = 465;
         private int iouSmallHeight = 440;
         private int iouSmallWidth = 589;
+        private int formSmallWidth = 613;
+        private int formSmallHeight = 527;
 
         private int tabMediumWidth = 746;
         private int tabMediumHeight = 580;
         private int iouMediumHeight = 550;
         private int iouMediumWidth = 736;
+        private int formMediumWidth = 763;
+        private int formMediumHeight = 642;
 
         private int tabLargeWidth = 922;
         private int tabLargeHeight = 713;
         private int iouLargeHeight = 688;
         private int iouLargeWidth = 920;
+        private int formLargeWidth = 939;
+        private int formLargeHeight = 775;
 
         public Form1()
         {
@@ -170,6 +176,8 @@ namespace IOU_Helper
                 tabControl.Height = tabSmallHeight;
                 IOUclient.Height = iouSmallHeight;
                 IOUclient.Width = iouSmallWidth;
+                this.Width = formSmallWidth;
+                this.Height = formSmallHeight;
                 IOUclient.Location = new Point(0, 0);
             }
             else if (size == "medium")
@@ -178,6 +186,9 @@ namespace IOU_Helper
                 tabControl.Height = tabMediumHeight;
                 IOUclient.Height = iouMediumHeight;
                 IOUclient.Width = iouMediumWidth;
+                this.Width = formMediumWidth;
+                this.Height = formMediumHeight;
+
                 IOUclient.Location = new Point(0, 0);
             }
             else if (size == "large")
@@ -186,6 +197,8 @@ namespace IOU_Helper
                 tabControl.Height = tabLargeHeight;
                 IOUclient.Height = iouLargeHeight;
                 IOUclient.Width = iouLargeWidth;
+                this.Width = formLargeWidth;
+                this.Height = formLargeHeight;
                 IOUclient.Location = new Point(0, 0);
             }
         }
@@ -288,7 +301,6 @@ namespace IOU_Helper
         /// <param name="e"></param>
         private void buttonStartClient_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(IOUtitle.Location.ToString());
             if (textBoxKongUser.Text != "" && textBoxKongID.Text != "" && textBoxKongToken.Text != "")
             {
                 Tab tab = new Tab(textBoxKongUser.Text, textBoxKongID.Text, textBoxKongToken.Text, IOUclient);
@@ -323,7 +335,7 @@ namespace IOU_Helper
         private void Form1_Load(object sender, EventArgs e)
         {
             //Form Settings
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            //this.FormBorderStyle = FormBorderStyle.FixedSingle; <--- Makes not resizeable
 
             string[] lineRead = null;
             string lineReadFull = "";
@@ -1311,6 +1323,20 @@ namespace IOU_Helper
         private void IOUclient2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             this.Text = "IOU Helper v" + version;
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            tabControl.Width = this.Width;
+            tabControl.Height = this.Height;
+
+            foreach (Tab tab in tabList)
+            {
+                tab.getClient().Width = this.Width;
+                tab.getClient().Height = this.Height;
+
+                tab.getClient().Location = new Point(-10, -40);
+            }
         }
     }
 }

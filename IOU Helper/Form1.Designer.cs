@@ -54,6 +54,7 @@
             this.abilitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hardRefreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.screenshotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +78,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
-            this.hardRefreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -95,7 +95,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 52);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 49);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -252,7 +252,7 @@
             this.screenshotToolStripMenuItem,
             this.closeTabToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 48);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 45);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // startAutoClickerToolStripMenuItem1
@@ -282,6 +282,13 @@
             this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
             this.refreshAllToolStripMenuItem.Text = "Refresh All (F6)";
             this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
+            // 
+            // hardRefreshAllToolStripMenuItem
+            // 
+            this.hardRefreshAllToolStripMenuItem.Name = "hardRefreshAllToolStripMenuItem";
+            this.hardRefreshAllToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
+            this.hardRefreshAllToolStripMenuItem.Text = "Hard Refresh All";
+            this.hardRefreshAllToolStripMenuItem.Click += new System.EventHandler(this.hardRefreshAllToolStripMenuItem_Click);
             // 
             // timersToolStripMenuItem
             // 
@@ -483,18 +490,10 @@
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
             // 
-            // hardRefreshAllToolStripMenuItem
-            // 
-            this.hardRefreshAllToolStripMenuItem.Name = "hardRefreshAllToolStripMenuItem";
-            this.hardRefreshAllToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
-            this.hardRefreshAllToolStripMenuItem.Text = "Hard Refresh All";
-            this.hardRefreshAllToolStripMenuItem.Click += new System.EventHandler(this.hardRefreshAllToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(1264, 926);
             this.Controls.Add(this.tabControl);
@@ -506,6 +505,7 @@
             this.Text = "IOU Helper v1.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBoxAccount.ResumeLayout(false);
