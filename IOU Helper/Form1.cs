@@ -1345,5 +1345,41 @@ namespace IOU_Helper
                 tab.getClient().Location = new Point(-10, -40);
             }
         }
+
+        private void runTestClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab.Text == "IOURPG")
+            {
+                
+            }
+            else if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
+            {
+                string username;
+                string tabUser = tabControl.SelectedTab.Text;
+                System.Uri uri;
+
+                try
+                {
+                    foreach (Tab tab in tabList)
+                    {
+                        username = tab.getUsername();
+                        if (username == tabUser)
+                        {
+                            //get all the details
+                            uri = tab.URL();
+                            break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please have an active client before attempting to create a test client.");
+            }
+        }
     }
 }

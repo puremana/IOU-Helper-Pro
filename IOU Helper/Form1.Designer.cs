@@ -78,6 +78,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
+            this.runTestClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -95,7 +96,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 49);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 52);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,13 +105,14 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newTabToolStripMenuItem,
             this.newIourpgToolStripMenuItem,
+            this.runTestClientToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.loadToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 45);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 48);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newTabToolStripMenuItem
@@ -490,6 +492,13 @@
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
             // 
+            // runTestClientToolStripMenuItem
+            // 
+            this.runTestClientToolStripMenuItem.Name = "runTestClientToolStripMenuItem";
+            this.runTestClientToolStripMenuItem.Size = new System.Drawing.Size(366, 46);
+            this.runTestClientToolStripMenuItem.Text = "Run Test Client";
+            this.runTestClientToolStripMenuItem.Click += new System.EventHandler(this.runTestClientToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -569,6 +578,7 @@
         private System.Windows.Forms.ToolStripMenuItem newIourpgToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versionCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hardRefreshAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem runTestClientToolStripMenuItem;
     }
 }
 
