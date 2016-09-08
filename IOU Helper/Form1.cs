@@ -1337,6 +1337,13 @@ namespace IOU_Helper
 
                 tab.getClient().Location = new Point(-10, -40);
             }
+            foreach (Tab tab in IOURPGtabList)
+            {
+                tab.getClient().Width = this.Width;
+                tab.getClient().Height = this.Height;
+
+                tab.getClient().Location = new Point(-10, -40);
+            }
         }
     }
 }
