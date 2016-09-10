@@ -1014,6 +1014,13 @@ namespace IOU_Helper
                         updateClient(tab);
                     }
                 }
+                if (testTabList.Count != 0)
+                {
+                    foreach (Tab tab in testTabList)
+                    {
+                        tab.getClient().Url = tab.getTestURL();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -1062,6 +1069,13 @@ namespace IOU_Helper
                     foreach (Tab tab in tabList)
                     {
                         updateClient(tab);
+                    }
+                }
+                if (testTabList.Count != 0)
+                {
+                    foreach (Tab tab in testTabList)
+                    {
+                        tab.getClient().Url = tab.getTestURL();
                     }
                 }
             }
