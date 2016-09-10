@@ -38,6 +38,7 @@ namespace IOU_Helper
         private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
 
         List<Tab> tabList = new List<Tab>();
+        List<Tab> testTabList = new List<Tab>();
         List<Tab> IOURPGtabList = new List<Tab>();
         List<TextBox> textboxes = new List<TextBox>();
         public Dictionary<System.Timers.Timer, Tab> timerDictionary = new Dictionary<System.Timers.Timer, Tab>();
@@ -539,6 +540,7 @@ namespace IOU_Helper
             {
                 string username;
                 string tabUser = tabControl.SelectedTab.Text;
+                Boolean found = false;
 
                 try
                 {
@@ -548,9 +550,22 @@ namespace IOU_Helper
                         if (username == tabUser)
                         {
                             updateClient(tab);
+                            found = true;
                             break;
                         }
                     }
+                    if (found == false)
+                    {
+                        foreach (Tab tab in testTabList)
+                        {
+                            username = tab.getUsername() + " test";
+                            if (username == tabUser)
+                            {
+                                tab.getClient().Url = tab.getTestURL();
+                                break;
+                            }
+                        }
+                    }                
                 }
                 catch (Exception ex)
                 {
@@ -1344,6 +1359,13 @@ namespace IOU_Helper
 
                 tab.getClient().Location = new Point(0, 0);
             }
+            foreach (Tab tab in testTabList)
+            {
+                tab.getClient().Width = this.Width;
+                tab.getClient().Height = this.Height;
+
+                tab.getClient().Location = new Point(-10, -40);
+            }
         }
 
         private void runTestClientToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1378,8 +1400,7 @@ namespace IOU_Helper
                             myTabPage.Controls.Add(IOUclient2);
                             //Set the IOU Client to its approiate sizing
                             setClient(tabControl, IOUclient2);
-                            //Update the client
-                            tabList.Add(newTab);
+                            testTabList.Add(newTab);
 
                             break;
                         }
