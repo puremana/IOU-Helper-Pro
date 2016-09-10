@@ -1342,17 +1342,13 @@ namespace IOU_Helper
                 tab.getClient().Width = this.Width;
                 tab.getClient().Height = this.Height;
 
-                tab.getClient().Location = new Point(-10, -40);
+                tab.getClient().Location = new Point(0, 0);
             }
         }
 
         private void runTestClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tabControl.SelectedTab.Text == "IOURPG")
-            {
-                
-            }
-            else if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
+            if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client" && tabControl.SelectedTab.Text != "IOURPG")
             {
                 string username;
                 string tabUser = tabControl.SelectedTab.Text;
@@ -1366,7 +1362,25 @@ namespace IOU_Helper
                         if (username == tabUser)
                         {
                             //get all the details
-                            uri = tab.URL();
+                            Tab newTab = (Tab)tab.Clone();
+
+                            string title = "TabPage " + (tabControl.TabCount + 1).ToString();
+                            TabPage myTabPage = new TabPage(title);
+                            tabControl.TabPages.Add(myTabPage);
+                            myTabPage.Text = kongUsername + " test";
+                            myTabPage.Name = title;
+                            tabControl.SelectedTab = myTabPage;
+                            WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
+                            newTab.setClient(IOUclient2);
+                            newTab.getClient().Url = newTab.getTestURL();
+                            IOUclient2.Navigated += IOUclient2_Navigated;
+                            IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
+                            myTabPage.Controls.Add(IOUclient2);
+                            //Set the IOU Client to its approiate sizing
+                            setClient(tabControl, IOUclient2);
+                            //Update the client
+                            tabList.Add(newTab);
+
                             break;
                         }
                     }
@@ -1378,7 +1392,24 @@ namespace IOU_Helper
             }
             else
             {
-                MessageBox.Show("Please have an active client before attempting to create a test client.");
+                string title = "TabPage " + (tabControl.TabCount + 1).ToString();
+                TabPage myTabPage = new TabPage(title);
+                tabControl.TabPages.Add(myTabPage);
+                myTabPage.Name = title;
+                myTabPage.Text = "IOURPG";
+                tabControl.SelectedTab = myTabPage;
+                myTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#222222");
+
+                //IOURPG Client
+                WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
+                IOUclient2.Navigated += IOUclient2_Navigated;
+                IOUclient2.DocumentCompleted += IOUclient2_DocumentCompleted;
+                myTabPage.Controls.Add(IOUclient2);
+                IOUclient2.Visible = true;
+                setClient(tabControl, IOUclient2);
+                IOUclient2.Url = new System.Uri("http://iourpg.com/test.swf");
+                Tab tab = new Tab(IOUclient2, myTabPage);
+                IOURPGtabList.Add(tab);
             }
         }
     }

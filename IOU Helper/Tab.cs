@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace IOU_Helper
 {
-    public class Tab
+    public class Tab : ICloneable
     {
         private string _kongUsername;
         private string _kongID;
@@ -51,6 +51,11 @@ namespace IOU_Helper
             return _client;
         }
 
+        public void setClient(WebKit.WebKitBrowser client)
+        {
+            _client = client;
+        }
+
         public string getUsername()
         {
             return _kongUsername;
@@ -70,6 +75,17 @@ namespace IOU_Helper
         public void reloadIOURPG()
         {
             _client.Url = new System.Uri("http://scripts.iouscripts.com/iou.swf");
+        }
+
+        public System.Uri getTestURL()
+        {
+            System.Uri uri = new System.Uri("http://iourpg.com/test.swf?" + _gameVersion + "&kongregate_username=" + _kongUsername + "&kongregate_user_id=" + _kongID + "&kongregate_game_auth_token=" + _kongToken + "&kongregate_api_path=http%3A%2F%2Fchat.kongregate.com%2Fflash%2FAPI_AS3_" + _code + ".swf");
+            return uri;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }
