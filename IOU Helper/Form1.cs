@@ -532,7 +532,14 @@ namespace IOU_Helper
                 {
                     if (tabControl.SelectedTab == tab.getTabPage())
                     {
-                        tab.reloadIOURPG();
+                        if (tab.getIsTest() == true)
+                        {
+                            tab.reloadTestIOURPG();
+                        }
+                        else
+                        {
+                            tab.reloadIOURPG();
+                        }
                     }
                 }
             }
@@ -899,6 +906,7 @@ namespace IOU_Helper
                 string username;
                 string tabUser = tabControl.SelectedTab.Text;
                 Tab tempTab = new Tab(null, null);
+                bool found = false;
 
                 if (tabUser == "Client")
                 {
@@ -911,6 +919,7 @@ namespace IOU_Helper
                     {
                         if (tabControl.SelectedTab == tab.getTabPage())
                         {
+                            tab.getClient().Dispose();
                             tempTab = tab;
                             tabControl.TabPages.Remove(tabControl.SelectedTab);
                         }
@@ -927,9 +936,24 @@ namespace IOU_Helper
                             tab.getClient().Dispose();
                             tabList.Remove(tab);
                             tabControl.TabPages.Remove(tabControl.SelectedTab);
+                            found = true;
                             break;
                         }
                     }
+                    if (found == false)
+                    {
+                        foreach (Tab tab in testTabList)
+                        {
+                            username = tab.getUsername() + " test";
+                            if (username == tabUser)
+                            {
+                                tab.getClient().Dispose();
+                                tabList.Remove(tab);
+                                tabControl.TabPages.Remove(tabControl.SelectedTab);
+                                break;
+                            }
+                        }
+                    }                
                 }
                 catch (Exception ex)
                 {
@@ -1004,7 +1028,14 @@ namespace IOU_Helper
                 {
                     foreach (Tab tab in IOURPGtabList)
                     {
-                        tab.reloadIOURPG(); //) = new System.Uri("http://scripts.iouscripts.com/iou.swf");
+                        if (tab.getIsTest() == true)
+                        {
+                            tab.reloadTestIOURPG();
+                        }
+                        else
+                        {
+                            tab.reloadIOURPG();
+                        }
                     }
                 }
                 if (tabList.Count != 0)
@@ -1061,7 +1092,14 @@ namespace IOU_Helper
                 {
                     foreach (Tab tab in IOURPGtabList)
                     {
-                        tab.reloadIOURPG();
+                        if (tab.getIsTest() == true)
+                        {
+                            tab.reloadTestIOURPG();
+                        }
+                        else
+                        {
+                            tab.reloadIOURPG();
+                        }
                     }
                 }
                 if (tabList.Count != 0)
@@ -1399,7 +1437,7 @@ namespace IOU_Helper
                         {
                             //get all the details
                             Tab newTab = (Tab)tab.Clone();
-
+                            newTab.setIsTest(true);
                             string title = "TabPage " + (tabControl.TabCount + 1).ToString();
                             TabPage myTabPage = new TabPage(title);
                             tabControl.TabPages.Add(myTabPage);
@@ -1444,6 +1482,7 @@ namespace IOU_Helper
                 setClient(tabControl, IOUclient2);
                 IOUclient2.Url = new System.Uri("http://iourpg.com/test.swf");
                 Tab tab = new Tab(IOUclient2, myTabPage);
+                tab.setIsTest(true);
                 IOURPGtabList.Add(tab);
             }
         }
