@@ -1409,7 +1409,7 @@ namespace IOU_Helper
                 tab.getClient().Width = this.Width;
                 tab.getClient().Height = this.Height;
 
-                tab.getClient().Location = new Point(0, 0);
+                tab.getClient().Location = new Point(0, -40);
             }
             foreach (Tab tab in testTabList)
             {
@@ -1441,7 +1441,7 @@ namespace IOU_Helper
                             string title = "TabPage " + (tabControl.TabCount + 1).ToString();
                             TabPage myTabPage = new TabPage(title);
                             tabControl.TabPages.Add(myTabPage);
-                            myTabPage.Text = kongUsername + " test";
+                            myTabPage.Text = tab.getUsername() + " test";
                             myTabPage.Name = title;
                             tabControl.SelectedTab = myTabPage;
                             WebKit.WebKitBrowser IOUclient2 = new WebKit.WebKitBrowser();
