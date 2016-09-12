@@ -56,6 +56,7 @@
             this.buttonSaveAsSettings = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxRefresh.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -215,7 +216,7 @@
             // 
             // buttonApply
             // 
-            this.buttonApply.Location = new System.Drawing.Point(640, 581);
+            this.buttonApply.Location = new System.Drawing.Point(640, 627);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(283, 60);
             this.buttonApply.TabIndex = 2;
@@ -225,7 +226,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(332, 581);
+            this.buttonCancel.Location = new System.Drawing.Point(332, 627);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(283, 60);
             this.buttonCancel.TabIndex = 3;
@@ -235,7 +236,7 @@
             // 
             // buttonDefault
             // 
-            this.buttonDefault.Location = new System.Drawing.Point(29, 581);
+            this.buttonDefault.Location = new System.Drawing.Point(29, 627);
             this.buttonDefault.Name = "buttonDefault";
             this.buttonDefault.Size = new System.Drawing.Size(283, 60);
             this.buttonDefault.TabIndex = 4;
@@ -298,7 +299,7 @@
             // 
             // buttonLoadSettings
             // 
-            this.buttonLoadSettings.Location = new System.Drawing.Point(29, 647);
+            this.buttonLoadSettings.Location = new System.Drawing.Point(29, 693);
             this.buttonLoadSettings.Name = "buttonLoadSettings";
             this.buttonLoadSettings.Size = new System.Drawing.Size(283, 60);
             this.buttonLoadSettings.TabIndex = 6;
@@ -308,7 +309,7 @@
             // 
             // buttonSaveSettings
             // 
-            this.buttonSaveSettings.Location = new System.Drawing.Point(332, 647);
+            this.buttonSaveSettings.Location = new System.Drawing.Point(332, 693);
             this.buttonSaveSettings.Name = "buttonSaveSettings";
             this.buttonSaveSettings.Size = new System.Drawing.Size(283, 60);
             this.buttonSaveSettings.TabIndex = 7;
@@ -318,7 +319,7 @@
             // 
             // buttonSaveAsSettings
             // 
-            this.buttonSaveAsSettings.Location = new System.Drawing.Point(640, 647);
+            this.buttonSaveAsSettings.Location = new System.Drawing.Point(640, 693);
             this.buttonSaveAsSettings.Name = "buttonSaveAsSettings";
             this.buttonSaveAsSettings.Size = new System.Drawing.Size(283, 60);
             this.buttonSaveAsSettings.TabIndex = 8;
@@ -330,11 +331,23 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(145, 583);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(682, 32);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "(Applying these settings will perform an internal load)";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 718);
+            this.ClientSize = new System.Drawing.Size(964, 771);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonSaveAsSettings);
             this.Controls.Add(this.buttonSaveSettings);
             this.Controls.Add(this.buttonLoadSettings);
@@ -356,6 +369,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -388,5 +402,6 @@
         private System.Windows.Forms.Button buttonSaveAsSettings;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label2;
     }
 }

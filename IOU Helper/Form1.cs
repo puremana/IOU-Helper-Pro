@@ -55,25 +55,25 @@ namespace IOU_Helper
         private string code;
         private string gameVersion;
         private int tabSmallWidth = 596;
-        private int tabSmallHeight = 465;
-        private int iouSmallHeight = 440;
+        private int tabSmallHeight = 493;
+        private int iouSmallHeight = 468;
         private int iouSmallWidth = 589;
         private int formSmallWidth = 613;
-        private int formSmallHeight = 527;
+        private int formSmallHeight = 537;
 
         private int tabMediumWidth = 746;
-        private int tabMediumHeight = 580;
-        private int iouMediumHeight = 550;
+        private int tabMediumHeight = 600;
+        private int iouMediumHeight = 570;
         private int iouMediumWidth = 736;
-        private int formMediumWidth = 763;
-        private int formMediumHeight = 642;
+        private int formMediumWidth = 758;
+        private int formMediumHeight = 652;
 
         private int tabLargeWidth = 922;
-        private int tabLargeHeight = 713;
-        private int iouLargeHeight = 688;
+        private int tabLargeHeight = 740;
+        private int iouLargeHeight = 715;
         private int iouLargeWidth = 920;
         private int formLargeWidth = 939;
-        private int formLargeHeight = 775;
+        private int formLargeHeight = 795;
 
         public Form1()
         {
