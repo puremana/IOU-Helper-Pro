@@ -337,6 +337,8 @@ namespace IOU_Helper
         {
             //Form Settings
             //this.FormBorderStyle = FormBorderStyle.FixedSingle; <--- Makes not resizeable
+            tabControl.Width = this.Width;
+            tabControl.Height = this.Height;
 
             string[] lineRead = null;
             string lineReadFull = "";
@@ -721,6 +723,7 @@ namespace IOU_Helper
 
             //Label          
             Label label = new Label();
+            //label.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             label.Location = new System.Drawing.Point(144, 17);
             label.Parent = myTabPage;
             label.Name = "IOUtitle" + c.ToString();
@@ -733,6 +736,7 @@ namespace IOU_Helper
 
             //GroupBox
             GroupBox groupBox = new GroupBox();
+            //groupBox.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             groupBox.Location = new System.Drawing.Point(66, 76);
             groupBox.Parent = myTabPage;
             groupBox.Name = "groupBoxAccount" + c.ToString();
@@ -807,6 +811,7 @@ namespace IOU_Helper
 
             //Button
             Button button = new Button();
+            //button.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             button.Location = new System.Drawing.Point(151, 245);
             button.Parent = myTabPage;
             button.Name = "buttonStartClient" + c.ToString();
