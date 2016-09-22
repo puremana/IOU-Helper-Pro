@@ -24,7 +24,7 @@ namespace IOU_Helper
         static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
 
         //Current version number
-        private string version = "1.3";
+        private string version = "1.0";
         private string check = "";
 
         // constants for the mouse_input() API function
@@ -1389,12 +1389,12 @@ namespace IOU_Helper
 
         private void IOUclient_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            this.Text = "IOU Helper v" + version;
+            this.Text = "IOU Helper v" + version + " - Pro";
         }
 
         private void IOUclient2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            this.Text = "IOU Helper v" + version;
+            this.Text = "IOU Helper v" + version + " - Pro";
         }
 
         private void Form1_Resize(object sender, EventArgs e)

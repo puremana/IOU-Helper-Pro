@@ -29,3 +29,9 @@ C:\Users\Jeremy\Desktop\IOU Helper\IOU Helper\obj\Release\IOU_Helper.Properties.
 C:\Users\Jeremy\Desktop\IOU Helper\IOU Helper\obj\Release\IOU_Helper.Settings.resources
 C:\Users\Jeremy\Desktop\IOU Helper\IOU Helper\obj\Release\IOU Helper.csproj.GenerateResource.Cache
 C:\Users\Jeremy\Desktop\IOU Helper\IOU Helper\obj\Release\IOU_Helper.Timers.resources
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\IOU Helper.exe.config
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\Interop.ShockwaveFlashObjects.dll
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU Helper.csproj.ResolveComReference.cache
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU Helper.exe
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU Helper.pdb

@@ -34,6 +34,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newIourpgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runTestClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,7 +79,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
-            this.runTestClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -96,7 +96,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 52);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 49);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -112,7 +112,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 48);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 45);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newTabToolStripMenuItem
@@ -128,6 +128,13 @@
             this.newIourpgToolStripMenuItem.Size = new System.Drawing.Size(366, 46);
             this.newIourpgToolStripMenuItem.Text = "Run IOURPG.com";
             this.newIourpgToolStripMenuItem.Click += new System.EventHandler(this.newIourpgToolStripMenuItem_Click);
+            // 
+            // runTestClientToolStripMenuItem
+            // 
+            this.runTestClientToolStripMenuItem.Name = "runTestClientToolStripMenuItem";
+            this.runTestClientToolStripMenuItem.Size = new System.Drawing.Size(366, 46);
+            this.runTestClientToolStripMenuItem.Text = "Run Test Client";
+            this.runTestClientToolStripMenuItem.Click += new System.EventHandler(this.runTestClientToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -492,13 +499,6 @@
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
             // 
-            // runTestClientToolStripMenuItem
-            // 
-            this.runTestClientToolStripMenuItem.Name = "runTestClientToolStripMenuItem";
-            this.runTestClientToolStripMenuItem.Size = new System.Drawing.Size(366, 46);
-            this.runTestClientToolStripMenuItem.Text = "Run Test Client";
-            this.runTestClientToolStripMenuItem.Click += new System.EventHandler(this.runTestClientToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -511,7 +511,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "IOU Helper v1.3";
+            this.Text = "IOU Helper v1.0 - Pro";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
