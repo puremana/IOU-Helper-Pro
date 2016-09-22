@@ -27,6 +27,10 @@ namespace IOU_Helper
         private string version = "1.0";
         private string check = "";
 
+        //Single Overlay
+        Plexiglass overlay;
+        //Example3.BasicCapCpnsole gConsole;
+
         // constants for the mouse_input() API function
         private const int MOUSEEVENTF_MOVE = 0x0001;
         private const int MOUSEEVENTF_LEFTDOWN = 0x0002;
@@ -340,7 +344,7 @@ namespace IOU_Helper
             tabControl.Width = this.Width;
             tabControl.Height = this.Height;
 
-            Plexiglass overlay = new Plexiglass(this);
+            overlay = new Plexiglass(this);
 
             string[] lineRead = null;
             string lineReadFull = "";
@@ -1493,5 +1497,23 @@ namespace IOU_Helper
                 IOURPGtabList.Add(tab);
             }
         }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (startToolStripMenuItem.Text == "Start")
+            {
+                //Example3.BasicCapCpnsole console = new Example3.BasicCapCpnsole();
+                //gConsole = console;
+            }
+            else if (startToolStripMenuItem.Text == "Stop")
+            {
+
+            }
+        }
+
+        //public Plexiglass getOverlay()
+        //{
+        //    return overlay;
+        //}
     }
 }

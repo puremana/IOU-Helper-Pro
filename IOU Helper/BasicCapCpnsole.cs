@@ -20,10 +20,6 @@
 //    {
 //        public static void Main(string[] args)
 //        {
-
-//            //process(new byte[] { 0x00, 0x10, 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00, 0x06, 0x32, 0x2c, 0x37, 0x2c, 0x33, 0x2c, 0x00, 0x06, 0x00, 0x02, 0x70, 0x70 });
-
-
 //            // Print SharpPcap version
 //            string ver = SharpPcap.Version.VersionString;
 //            Console.WriteLine("SharpPcap {0}, Example3.BasicCap.cs", ver);
@@ -114,37 +110,39 @@
 
 //        //private static BasicCap.frmFishing frm = new BasicCap.frmFishing();
 
-//        private static ConcurrentDictionary<int, BasicCap.frmFishing> frms = new ConcurrentDictionary<int, BasicCap.frmFishing>();
+//        //private static ConcurrentDictionary<int, BasicCap.frmFishing> frms = new ConcurrentDictionary<int, BasicCap.frmFishing>();
 //        private static byte[] find = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
 //        private static Regex regex = new Regex(@"^(\d+)(,\d+)*$");
 //        private static int frmCount = 0;
 
 
-//        private static void StartForm(int port, BasicCap.frmFishing myFrm)
-//        {
-//            (new Thread(()=>
-//                {
-//                    Application.EnableVisualStyles();
-//                    Application.Run(myFrm);
-//                    for (int i = 0; i < 5; ++i)
-//                    {
-//                        if (frms.TryRemove(port, out myFrm))
-//                        {
-//                            break;
-//                        }
-//                    }
-//                }
-//                )).Start();
+//        //private static void StartForm(int port, BasicCap.frmFishing myFrm)
+//        //{
+//        //    (new Thread(() =>
+//        //        {
+//        //            Application.EnableVisualStyles();
+//        //            Application.Run(myFrm);
+//        //            for (int i = 0; i < 5; ++i)
+//        //            {
+//        //                if (frms.TryRemove(port, out myFrm))
+//        //                {
+//        //                    break;
+//        //                }
+//        //            }
+//        //        }
+//        //        )).Start();
 
-//        }
+//        //}
 
 //        /// <summary>
 //        /// Prints the time and length of each received packet
 //        /// </summary>
 //        private static void device_OnPacketArrival(object sender, CaptureEventArgs e)
 //        {
-//            BasicCap.frmFishing myFrm;
-           
+//            //BasicCap.frmFishing myFrm;
+//            IOU_Helper.Form1 form;
+//            Plexiglass drawForm = form.getOverlay();
+
 //            string fish;
 //            if (process(e.Packet.Data, out fish))
 //            {
@@ -169,10 +167,10 @@
 //                            throw new Exception("hmm stupid ConcurrentDictionary");
 //                        }
 
-//                        myFrm.Text = myFrm.Text + " Client " +  Interlocked.Increment(ref frmCount).ToString();
+//                        myFrm.Text = myFrm.Text + " Client " + Interlocked.Increment(ref frmCount).ToString();
 //                        StartForm(dstPort, myFrm);
 //                    }
-                   
+
 
 //                    logNewLine(fish, myFrm);
 //                }
@@ -186,7 +184,7 @@
 
 //            try
 //            {
-                
+
 //                var sb = new StringBuilder();
 
 //                for (int i = 0; i < data.Length; ++i)
@@ -195,9 +193,9 @@
 //                    if (data[i] == find[0] && (i + find.Length) < data.Length)
 //                    {
 //                        ok = true;
-//                        for (int j = 0; j < find.Length;++j)
+//                        for (int j = 0; j < find.Length; ++j)
 //                        {
-//                            if (data[i+j] != find[j])
+//                            if (data[i + j] != find[j])
 //                            {
 //                                ok = false;
 //                                i += j;
@@ -209,7 +207,7 @@
 //                        {
 //                            i += find.Length;
 //                            var toRead = data[i++] - 1;
-                            
+
 //                            while (toRead-- > 0)
 //                            {
 //                                sb.Append((char)data[i++]);
@@ -251,7 +249,7 @@
 
 //            var fish = data.Split(',');
 //            double howMany = fish.Count();
-            
+
 //            var one = from f in fish join o in lookingForOne on f equals o select f;
 
 //            var must = from f in fish join m in lookingMust on f equals m select f;
@@ -263,12 +261,12 @@
 //                one.Count() <= 1 //pool should have at max one fish from "only one", zero is ok too
 //                )
 //            {
-//                if(ShowCatchConsole) data = "CATCH ---- " + data;
+//                if (ShowCatchConsole) data = "CATCH ---- " + data;
 //                myFrm.CatchMe();
 //            }
-//            else if(must.Any() && // must have at least one or more from must
+//            else if (must.Any() && // must have at least one or more from must
 //                   (must.Count() / howMany) >= 0.60 //  must be 2/3 or 3/4 from must
-//                   ) 
+//                   )
 //            {
 //                if (!forbid.Any() || forbid.Select(x => int.Parse(x)).Min() >= myFrm.MinMust) //last fish must be equal or above level
 //                {
@@ -280,9 +278,9 @@
 //                    if (ShowCatchConsole) data = "CATCH -##- " + data + " under minimum level";
 //                }
 //            }
-           
-//            Console.WriteLine((myFrm.ShowClientNumber ? myFrm.Text + " " : "")  + data);
-//            if(myFrm.Log) System.IO.File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\ioufish.csv", (myFrm.ShowClientNumber ? myFrm.Text + " " : "") + data + Environment.NewLine);
+
+//            Console.WriteLine((myFrm.ShowClientNumber ? myFrm.Text + " " : "") + data);
+//            if (myFrm.Log) System.IO.File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\ioufish.csv", (myFrm.ShowClientNumber ? myFrm.Text + " " : "") + data + Environment.NewLine);
 //        }
 //    }
 //}

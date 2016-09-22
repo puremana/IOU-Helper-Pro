@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-class Plexiglass : Form
+public partial class Plexiglass : Form
 {
     //Make it click through
     public enum GWL
@@ -43,8 +43,10 @@ class Plexiglass : Form
 
     public Plexiglass(Form tocover)
     {
-        this.BackColor = Color.DarkGray;
-        this.Opacity = 0.30;      // Tweak as desired
+        InitializeComponent();
+
+        this.BackColor = Color.Red;
+        this.Opacity = 0.1;      // Tweak as desired
         this.FormBorderStyle = FormBorderStyle.None;
         this.ControlBox = false;
         this.ShowInTaskbar = false;
@@ -90,19 +92,59 @@ class Plexiglass : Form
         // Always keep the owner activated instead
         this.BeginInvoke(new Action(() => this.Owner.Activate()));
     }
+
+    private GroupBox groupBox1;
+    private Label label2;
+    private Label label1;
     private const int DWMWA_TRANSITIONS_FORCEDISABLED = 3;
     [DllImport("dwmapi.dll")]
     private static extern int DwmSetWindowAttribute(IntPtr hWnd, int attr, ref int value, int attrLen);
 
     private void InitializeComponent()
     {
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(80, 70);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(347, 333);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Statistics";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(130, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 32);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "blah";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 32);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Blah : ";
             // 
             // Plexiglass
             // 
-            this.ClientSize = new System.Drawing.Size(308, 212);
+            this.ClientSize = new System.Drawing.Size(637, 602);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Plexiglass";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-    }
 
+    }
 }
