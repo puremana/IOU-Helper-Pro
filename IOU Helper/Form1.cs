@@ -340,6 +340,8 @@ namespace IOU_Helper
             tabControl.Width = this.Width;
             tabControl.Height = this.Height;
 
+            Plexiglass overlay = new Plexiglass(this);
+
             string[] lineRead = null;
             string lineReadFull = "";
 

@@ -35,3 +35,16 @@ C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\AxInterop.Shockwav
 C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU Helper.csproj.ResolveComReference.cache
 C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU Helper.exe
 C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU Helper.pdb
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU Helper.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU_Helper.Form1.resources
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU_Helper.Properties.Resources.resources
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU_Helper.Settings.resources
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU_Helper.Timers.resources
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU Helper.csproj.GenerateResource.Cache
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\IOU Helper.exe
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\IOU Helper.pdb
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\PacketDotNet.dll
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\SharpPcap.dll
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\Interop.ShockwaveFlashObjects.dll
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\Plexiglass.resources
