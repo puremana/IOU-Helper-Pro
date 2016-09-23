@@ -29,7 +29,7 @@ namespace IOU_Helper
 
         //Single Overlay
         Plexiglass overlay;
-        //Example3.BasicCapCpnsole gConsole;
+        //Example3.BasicCap gConsole;
 
         // constants for the mouse_input() API function
         private const int MOUSEEVENTF_MOVE = 0x0001;
@@ -1502,7 +1502,7 @@ namespace IOU_Helper
         {
             if (startToolStripMenuItem.Text == "Start")
             {
-                //Example3.BasicCapCpnsole console = new Example3.BasicCapCpnsole();
+                //Example3.BasicCap console = new Example3.BasicCap();
                 //gConsole = console;
             }
             else if (startToolStripMenuItem.Text == "Stop")
