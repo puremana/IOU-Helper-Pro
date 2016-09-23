@@ -59,6 +59,9 @@
             this.timersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.screenshotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxKongUser = new System.Windows.Forms.TextBox();
             this.groupBoxAccount = new System.Windows.Forms.GroupBox();
             this.textBoxKongToken = new System.Windows.Forms.TextBox();
@@ -79,9 +82,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
-            this.proToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -116,7 +118,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 45);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 48);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newTabToolStripMenuItem
@@ -176,7 +178,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(137, 45);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(137, 48);
             this.optionsToolStripMenuItem.Text = "Settings";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -192,7 +194,7 @@
             this.petAnalyzerFerretToolStripMenuItem,
             this.versionCheckToolStripMenuItem});
             this.linksToolStripMenuItem.Name = "linksToolStripMenuItem";
-            this.linksToolStripMenuItem.Size = new System.Drawing.Size(96, 45);
+            this.linksToolStripMenuItem.Size = new System.Drawing.Size(96, 48);
             this.linksToolStripMenuItem.Text = "Links";
             // 
             // iOUHelperToolStripMenuItem
@@ -265,7 +267,7 @@
             this.screenshotToolStripMenuItem,
             this.closeTabToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 45);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 48);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // startAutoClickerToolStripMenuItem1
@@ -323,6 +325,31 @@
             this.closeTabToolStripMenuItem.Size = new System.Drawing.Size(411, 46);
             this.closeTabToolStripMenuItem.Text = "Close Tab (F8)";
             this.closeTabToolStripMenuItem.Click += new System.EventHandler(this.closeTabToolStripMenuItem_Click);
+            // 
+            // proToolStripMenuItem
+            // 
+            this.proToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startToolStripMenuItem,
+            this.hideOverlayToolStripMenuItem,
+            this.hideConsoleToolStripMenuItem,
+            this.helpGuideToolStripMenuItem});
+            this.proToolStripMenuItem.Name = "proToolStripMenuItem";
+            this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 48);
+            this.proToolStripMenuItem.Text = "Pro Features";
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("startToolStripMenuItem.Image")));
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.startToolStripMenuItem.Text = "Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            // 
+            // helpGuideToolStripMenuItem
+            // 
+            this.helpGuideToolStripMenuItem.Name = "helpGuideToolStripMenuItem";
+            this.helpGuideToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.helpGuideToolStripMenuItem.Text = "Help Guide";
             // 
             // textBoxKongUser
             // 
@@ -503,28 +530,19 @@
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
             // 
-            // proToolStripMenuItem
+            // hideOverlayToolStripMenuItem
             // 
-            this.proToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem,
-            this.helpGuideToolStripMenuItem});
-            this.proToolStripMenuItem.Name = "proToolStripMenuItem";
-            this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 48);
-            this.proToolStripMenuItem.Text = "Pro Features";
+            this.hideOverlayToolStripMenuItem.Name = "hideOverlayToolStripMenuItem";
+            this.hideOverlayToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.hideOverlayToolStripMenuItem.Text = "Hide Overlay";
+            this.hideOverlayToolStripMenuItem.Click += new System.EventHandler(this.hideOverlayToolStripMenuItem_Click);
             // 
-            // startToolStripMenuItem
+            // hideConsoleToolStripMenuItem
             // 
-            this.startToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("startToolStripMenuItem.Image")));
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.startToolStripMenuItem.Text = "Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
-            // 
-            // helpGuideToolStripMenuItem
-            // 
-            this.helpGuideToolStripMenuItem.Name = "helpGuideToolStripMenuItem";
-            this.helpGuideToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.helpGuideToolStripMenuItem.Text = "Help Guide";
+            this.hideConsoleToolStripMenuItem.Name = "hideConsoleToolStripMenuItem";
+            this.hideConsoleToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.hideConsoleToolStripMenuItem.Text = "Hide Console";
+            this.hideConsoleToolStripMenuItem.Click += new System.EventHandler(this.hideConsoleToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -609,6 +627,8 @@
         private System.Windows.Forms.ToolStripMenuItem proToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpGuideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hideOverlayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hideConsoleToolStripMenuItem;
     }
 }
 

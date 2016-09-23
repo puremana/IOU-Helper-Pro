@@ -409,4 +409,9 @@ public partial class Plexiglass : Form
             }
         }
     }
+
+    public Panel getConsole()
+    {
+        return panelConsole;
+    }
 }

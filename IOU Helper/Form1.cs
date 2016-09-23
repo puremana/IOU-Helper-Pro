@@ -1511,6 +1511,34 @@ namespace IOU_Helper
             }
         }
 
+        private void hideOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (hideOverlayToolStripMenuItem.Text == "Hide Overlay")
+            {
+                overlay.Hide();
+                hideOverlayToolStripMenuItem.Text = "Show Overlay";
+            }
+            else if (hideOverlayToolStripMenuItem.Text == "Show Overlay")
+            {
+                overlay.Show();
+                hideOverlayToolStripMenuItem.Text = "Hide Overlay";
+            }
+        }
+
+        private void hideConsoleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (hideConsoleToolStripMenuItem.Text == "Hide Console")
+            {
+                overlay.getConsole().Hide();
+                hideConsoleToolStripMenuItem.Text = "Show Console";
+            }
+            else if (hideConsoleToolStripMenuItem.Text == "Show Console")
+            {
+                overlay.getConsole().Show();
+                hideConsoleToolStripMenuItem.Text = "Hide Console";
+            }
+        }
+
         //public Plexiglass getOverlay()
         //{
         //    return overlay;
