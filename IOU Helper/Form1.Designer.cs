@@ -102,7 +102,7 @@
             this.proToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 52);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 49);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -334,12 +334,13 @@
             this.hideConsoleToolStripMenuItem,
             this.helpGuideToolStripMenuItem});
             this.proToolStripMenuItem.Name = "proToolStripMenuItem";
-            this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 48);
+            this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 45);
             this.proToolStripMenuItem.Text = "Pro Features";
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("startToolStripMenuItem.Image")));
+            this.startToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
             this.startToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.startToolStripMenuItem.Text = "Start";

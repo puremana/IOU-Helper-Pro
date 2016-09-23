@@ -1504,10 +1504,14 @@ namespace IOU_Helper
             {
                 //Example3.BasicCap console = new Example3.BasicCap();
                 //gConsole = console;
+                Image orange = Image.FromFile("imgs/orange.jpg");
+                startToolStripMenuItem.Image = orange;
+                startToolStripMenuItem.Text = "Stop";
             }
             else if (startToolStripMenuItem.Text == "Stop")
             {
-
+                Image red = Image.FromFile("imgs/red.jpg");
+                startToolStripMenuItem.Image = red;
             }
         }
 
