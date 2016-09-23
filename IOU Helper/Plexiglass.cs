@@ -6,47 +6,69 @@ using System.Runtime.InteropServices;
 public partial class Plexiglass : Form
 {
     //Make it click through
-    public enum GWL
+    /// <summary>
+    /// 0: the window is completely transparent ... 255: the window is opaque
+    /// </summary>
+    private byte _alpha;
+
+    private enum GetWindowLong
     {
-        ExStyle = -20
+        /// <summary>
+        /// Sets a new extended window style.
+        /// </summary>
+        GWL_EXSTYLE = -20
     }
 
-    public enum WS_EX
+    private enum ExtendedWindowStyles
     {
-        Transparent = 0x20,
-        Layered = 0x80000
+        /// <summary>
+        /// Transparent window.
+        /// </summary>
+        WS_EX_TRANSPARENT = 0x20,
+        /// <summary>
+        /// Layered window. http://msdn.microsoft.com/en-us/library/windows/desktop/ms632599%28v=vs.85%29.aspx#layered
+        /// </summary>
+        WS_EX_LAYERED = 0x80000
     }
 
-    public enum LWA
+    private enum LayeredWindowAttributes
     {
-        ColorKey = 0x1,
-        Alpha = 0x2
+        /// <summary>
+        /// Use bAlpha to determine the opacity of the layered window.
+        /// </summary>
+        LWA_COLORKEY = 0x1,
+        /// <summary>
+        /// Use crKey as the transparency color.
+        /// </summary>
+        LWA_ALPHA = 0x20
     }
 
     [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
-    public static extern int GetWindowLong(IntPtr hWnd, GWL nIndex);
+    private static extern int User32_GetWindowLong(IntPtr hWnd, GetWindowLong nIndex);
 
     [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-    public static extern int SetWindowLong(IntPtr hWnd, GWL nIndex, int dwNewLong);
+    private static extern int User32_SetWindowLong(IntPtr hWnd, GetWindowLong nIndex, int dwNewLong);
 
     [DllImport("user32.dll", EntryPoint = "SetLayeredWindowAttributes")]
-    public static extern bool SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte alpha, LWA dwFlags);
+    private static extern bool User32_SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte bAlpha, LayeredWindowAttributes dwFlags);
 
     protected override void OnShown(EventArgs e)
     {
         base.OnShown(e);
-        int wl = GetWindowLong(this.Handle, GWL.ExStyle);
-        wl = wl | 0x80000 | 0x20;
-        SetWindowLong(this.Handle, GWL.ExStyle, wl);
-        SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
+        //Click through
+        int wl = User32_GetWindowLong(this.Handle, GetWindowLong.GWL_EXSTYLE);
+        User32_SetWindowLong(this.Handle, GetWindowLong.GWL_EXSTYLE, wl | (int)ExtendedWindowStyles.WS_EX_LAYERED | (int)ExtendedWindowStyles.WS_EX_TRANSPARENT);
+        //Change alpha
+        User32_SetLayeredWindowAttributes(this.Handle, (TransparencyKey.B << 16) + (TransparencyKey.G << 8) + TransparencyKey.R, _alpha, LayeredWindowAttributes.LWA_COLORKEY | LayeredWindowAttributes.LWA_ALPHA);
     }
 
     public Plexiglass(Form tocover)
     {
         InitializeComponent();
 
-        this.BackColor = Color.Red;
-        this.Opacity = 0.1;      // Tweak as desired
+        this.TransparencyKey = Color.Turquoise;
+        this.BackColor = Color.Turquoise;
+        this.Opacity = 0.9;      // Tweak as desired
         this.FormBorderStyle = FormBorderStyle.None;
         this.ControlBox = false;
         this.ShowInTaskbar = false;
