@@ -100,6 +100,8 @@ public partial class Plexiglass : Form
 
         int clientWidth = this.Width;
         int clientHeight = this.Height;
+
+        //Statistics Panel
         int p1LocationWidth = Convert.ToInt32(clientWidth * 0.64);
         int p1LocationHeight = Convert.ToInt32(clientHeight * 0.60); //0.32
         int p1SizeWidth = Convert.ToInt32(clientWidth * 0.24);
@@ -107,6 +109,14 @@ public partial class Plexiglass : Form
 
         panel1.Location = new System.Drawing.Point(p1LocationWidth, p1LocationHeight);
         panel1.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight);
+
+        //Console Panel
+        int p2LocationHeight = Convert.ToInt32(clientHeight * 0.39);
+        panelConsole.Location = new System.Drawing.Point(p1LocationWidth, p2LocationHeight);
+        panelConsole.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight);
+        //textConsole.Location = new System.Drawing.Point(0, 20);
+        //textConsole.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight - 100);
+
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
@@ -125,9 +135,6 @@ public partial class Plexiglass : Form
         // Always keep the owner activated instead
         this.BeginInvoke(new Action(() => this.Owner.Activate()));
     }
-    private GroupBox groupBox2;
-    private TextBox textBox2;
-    private TextBox textBox1;
     private Panel panel1;
     private Label label13;
     private Label label14;
@@ -141,15 +148,15 @@ public partial class Plexiglass : Form
     private Label label22;
     private Label label23;
     private Label label24;
+    private Panel panelConsole;
+    private Label labelConsole;
+    private TextBox textConsole;
     private const int DWMWA_TRANSITIONS_FORCEDISABLED = 3;
     [DllImport("dwmapi.dll")]
     private static extern int DwmSetWindowAttribute(IntPtr hWnd, int attr, ref int value, int attrLen);
 
     private void InitializeComponent()
     {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -163,36 +170,12 @@ public partial class Plexiglass : Form
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.groupBox2.SuspendLayout();
+            this.panelConsole = new System.Windows.Forms.Panel();
+            this.textConsole = new System.Windows.Forms.TextBox();
+            this.labelConsole = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panelConsole.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Location = new System.Drawing.Point(508, 70);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(404, 333);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Console";
-            this.groupBox2.Visible = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(7, 289);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(391, 38);
-            this.textBox2.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(7, 48);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(391, 216);
-            this.textBox1.TabIndex = 0;
             // 
             // panel1
             // 
@@ -336,17 +319,51 @@ public partial class Plexiglass : Form
             this.label24.TabIndex = 12;
             this.label24.Text = "XP/min :";
             // 
+            // panelConsole
+            // 
+            this.panelConsole.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelConsole.Controls.Add(this.labelConsole);
+            this.panelConsole.Controls.Add(this.textConsole);
+            this.panelConsole.Location = new System.Drawing.Point(88, 175);
+            this.panelConsole.Name = "panelConsole";
+            this.panelConsole.Size = new System.Drawing.Size(451, 233);
+            this.panelConsole.TabIndex = 3;
+            this.panelConsole.Paint += new System.Windows.Forms.PaintEventHandler(this.panelConsole_Paint);
+            // 
+            // textConsole
+            // 
+            this.textConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textConsole.Location = new System.Drawing.Point(3, 20);
+            this.textConsole.Multiline = true;
+            this.textConsole.Name = "textConsole";
+            this.textConsole.Size = new System.Drawing.Size(443, 208);
+            this.textConsole.TabIndex = 0;
+            // 
+            // labelConsole
+            // 
+            this.labelConsole.AutoSize = true;
+            this.labelConsole.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConsole.Location = new System.Drawing.Point(60, 2);
+            this.labelConsole.Name = "labelConsole";
+            this.labelConsole.Size = new System.Drawing.Size(129, 41);
+            this.labelConsole.TabIndex = 1;
+            this.labelConsole.Text = "Console";
+            // 
             // Plexiglass
             // 
             this.ClientSize = new System.Drawing.Size(1058, 877);
+            this.Controls.Add(this.panelConsole);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox2);
             this.Name = "Plexiglass";
             this.ResizeEnd += new System.EventHandler(this.Plexiglass_ResizeEnd);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelConsole.ResumeLayout(false);
+            this.panelConsole.PerformLayout();
             this.ResumeLayout(false);
 
     }
@@ -375,5 +392,21 @@ public partial class Plexiglass : Form
     private void Plexiglass_ResizeEnd(object sender, EventArgs e)
     {
 
+    }
+
+    private void panelConsole_Paint(object sender, PaintEventArgs e)
+    {
+        if (panelConsole.BorderStyle == BorderStyle.FixedSingle)
+        {
+            int thickness = 2;
+            int halfThickness = thickness / 2;
+            using (Pen p = new Pen(Color.Black, thickness))
+            {
+                e.Graphics.DrawRectangle(p, new Rectangle(halfThickness,
+                                                          halfThickness,
+                                                          panelConsole.ClientSize.Width - thickness,
+                                                          panelConsole.ClientSize.Height - thickness));
+            }
+        }
     }
 }
