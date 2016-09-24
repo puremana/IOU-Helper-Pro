@@ -83,6 +83,9 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Tab.cs" />
+    <Compile Include="TextConsole.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Timers.cs">
       <SubType>Form</SubType>
     </Compile>

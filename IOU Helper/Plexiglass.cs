@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 public partial class Plexiglass : Form
 {
     private Color gColor = Color.White;
+    private IOU_Helper.TextConsole textConsole;
     //Make it click through
     private byte _alpha;
 
@@ -148,7 +149,6 @@ public partial class Plexiglass : Form
     private Label label24;
     private Panel panelConsole;
     private Label labelConsole;
-    private TextBox textConsole;
     private const int DWMWA_TRANSITIONS_FORCEDISABLED = 3;
     [DllImport("dwmapi.dll")]
     private static extern int DwmSetWindowAttribute(IntPtr hWnd, int attr, ref int value, int attrLen);
@@ -169,8 +169,8 @@ public partial class Plexiglass : Form
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panelConsole = new System.Windows.Forms.Panel();
-            this.textConsole = new System.Windows.Forms.TextBox();
             this.labelConsole = new System.Windows.Forms.Label();
+            this.textConsole = new IOU_Helper.TextConsole();
             this.panel1.SuspendLayout();
             this.panelConsole.SuspendLayout();
             this.SuspendLayout();
@@ -321,25 +321,13 @@ public partial class Plexiglass : Form
             // 
             this.panelConsole.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelConsole.Controls.Add(this.labelConsole);
             this.panelConsole.Controls.Add(this.textConsole);
+            this.panelConsole.Controls.Add(this.labelConsole);
             this.panelConsole.Location = new System.Drawing.Point(88, 175);
             this.panelConsole.Name = "panelConsole";
             this.panelConsole.Size = new System.Drawing.Size(451, 233);
             this.panelConsole.TabIndex = 3;
             this.panelConsole.Paint += new System.Windows.Forms.PaintEventHandler(this.panelConsole_Paint);
-            // 
-            // textConsole
-            // 
-            this.textConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textConsole.Location = new System.Drawing.Point(3, 20);
-            this.textConsole.Multiline = true;
-            this.textConsole.Name = "textConsole";
-            this.textConsole.Size = new System.Drawing.Size(443, 208);
-            this.textConsole.TabIndex = 0;
             // 
             // labelConsole
             // 
@@ -350,6 +338,17 @@ public partial class Plexiglass : Form
             this.labelConsole.Size = new System.Drawing.Size(129, 41);
             this.labelConsole.TabIndex = 1;
             this.labelConsole.Text = "Console";
+            // 
+            // textConsole
+            // 
+            this.textConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textConsole.Location = new System.Drawing.Point(3, 20);
+            this.textConsole.Multiline = true;
+            this.textConsole.Name = "textConsole";
+            this.textConsole.Size = new System.Drawing.Size(443, 208);
+            this.textConsole.TabIndex = 0;
             // 
             // Plexiglass
             // 

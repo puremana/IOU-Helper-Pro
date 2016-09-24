@@ -1512,6 +1512,7 @@ namespace IOU_Helper
             {
                 Image red = Image.FromFile("imgs/red.jpg");
                 startToolStripMenuItem.Image = red;
+                startToolStripMenuItem.Text = "Start";
             }
         }
 
@@ -1546,7 +1547,7 @@ namespace IOU_Helper
         private void overlayColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog colorDlg = new ColorDialog();
-            colorDlg.AllowFullOpen = false;
+            colorDlg.AllowFullOpen = true;
             colorDlg.AnyColor = true;
             colorDlg.SolidColorOnly = false;
             colorDlg.Color = Color.Red;
