@@ -83,6 +83,7 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Tab.cs" />
+    <Compile Include="TextBoxStreamWriter.cs" />
     <Compile Include="TextConsole.cs">
       <SubType>Component</SubType>
     </Compile>

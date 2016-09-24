@@ -349,6 +349,7 @@ public partial class Plexiglass : Form
             this.textConsole.Name = "textConsole";
             this.textConsole.Size = new System.Drawing.Size(443, 208);
             this.textConsole.TabIndex = 0;
+            this.textConsole.TextChanged += new System.EventHandler(this.Plexiglass_Resize);
             // 
             // Plexiglass
             // 
@@ -356,6 +357,7 @@ public partial class Plexiglass : Form
             this.Controls.Add(this.panelConsole);
             this.Controls.Add(this.panel1);
             this.Name = "Plexiglass";
+            this.Load += new System.EventHandler(this.Plexiglass_Load);
             this.ResizeEnd += new System.EventHandler(this.Plexiglass_ResizeEnd);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -418,5 +420,10 @@ public partial class Plexiglass : Form
         gColor = color;
         panel1.BackColor = color;
         panelConsole.BackColor = color;
+    }
+
+    private void Plexiglass_Load(object sender, EventArgs e)
+    {
+        textConsole.start(textConsole);
     }
 }
