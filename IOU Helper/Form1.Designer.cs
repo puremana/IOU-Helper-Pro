@@ -61,6 +61,8 @@
             this.closeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxKongUser = new System.Windows.Forms.TextBox();
             this.groupBoxAccount = new System.Windows.Forms.GroupBox();
@@ -82,8 +84,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
-            this.hideOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hideConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overlayColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -332,9 +334,10 @@
             this.startToolStripMenuItem,
             this.hideOverlayToolStripMenuItem,
             this.hideConsoleToolStripMenuItem,
+            this.overlayColorToolStripMenuItem,
             this.helpGuideToolStripMenuItem});
             this.proToolStripMenuItem.Name = "proToolStripMenuItem";
-            this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 45);
+            this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 48);
             this.proToolStripMenuItem.Text = "Pro Features";
             // 
             // startToolStripMenuItem
@@ -345,6 +348,20 @@
             this.startToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            // 
+            // hideOverlayToolStripMenuItem
+            // 
+            this.hideOverlayToolStripMenuItem.Name = "hideOverlayToolStripMenuItem";
+            this.hideOverlayToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.hideOverlayToolStripMenuItem.Text = "Hide Overlay";
+            this.hideOverlayToolStripMenuItem.Click += new System.EventHandler(this.hideOverlayToolStripMenuItem_Click);
+            // 
+            // hideConsoleToolStripMenuItem
+            // 
+            this.hideConsoleToolStripMenuItem.Name = "hideConsoleToolStripMenuItem";
+            this.hideConsoleToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.hideConsoleToolStripMenuItem.Text = "Hide Console";
+            this.hideConsoleToolStripMenuItem.Click += new System.EventHandler(this.hideConsoleToolStripMenuItem_Click);
             // 
             // helpGuideToolStripMenuItem
             // 
@@ -531,19 +548,12 @@
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
             // 
-            // hideOverlayToolStripMenuItem
+            // overlayColorToolStripMenuItem
             // 
-            this.hideOverlayToolStripMenuItem.Name = "hideOverlayToolStripMenuItem";
-            this.hideOverlayToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.hideOverlayToolStripMenuItem.Text = "Hide Overlay";
-            this.hideOverlayToolStripMenuItem.Click += new System.EventHandler(this.hideOverlayToolStripMenuItem_Click);
-            // 
-            // hideConsoleToolStripMenuItem
-            // 
-            this.hideConsoleToolStripMenuItem.Name = "hideConsoleToolStripMenuItem";
-            this.hideConsoleToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.hideConsoleToolStripMenuItem.Text = "Hide Console";
-            this.hideConsoleToolStripMenuItem.Click += new System.EventHandler(this.hideConsoleToolStripMenuItem_Click);
+            this.overlayColorToolStripMenuItem.Name = "overlayColorToolStripMenuItem";
+            this.overlayColorToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.overlayColorToolStripMenuItem.Text = "Overlay Color";
+            this.overlayColorToolStripMenuItem.Click += new System.EventHandler(this.overlayColorToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -630,6 +640,8 @@
         private System.Windows.Forms.ToolStripMenuItem helpGuideToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hideOverlayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hideConsoleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem overlayColorToolStripMenuItem;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 

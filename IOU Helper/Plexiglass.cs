@@ -5,10 +5,8 @@ using System.Runtime.InteropServices;
 
 public partial class Plexiglass : Form
 {
+    private Color gColor = Color.White;
     //Make it click through
-    /// <summary>
-    /// 0: the window is completely transparent ... 255: the window is opaque
-    /// </summary>
     private byte _alpha;
 
     private enum GetWindowLong
@@ -408,10 +406,18 @@ public partial class Plexiglass : Form
                                                           panelConsole.ClientSize.Height - thickness));
             }
         }
+        
     }
 
     public Panel getConsole()
     {
         return panelConsole;
+    }
+
+    public void setColor (Color color) 
+    {
+        gColor = color;
+        panel1.BackColor = color;
+        panelConsole.BackColor = color;
     }
 }
