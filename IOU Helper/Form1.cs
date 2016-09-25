@@ -29,7 +29,6 @@ namespace IOU_Helper
 
         //Single Overlay
         Plexiglass overlay;
-        //Example3.BasicCap gConsole;
 
         // constants for the mouse_input() API function
         private const int MOUSEEVENTF_MOVE = 0x0001;
@@ -1502,17 +1501,20 @@ namespace IOU_Helper
         {
             if (startToolStripMenuItem.Text == "Start")
             {
-                //Example3.BasicCap console = new Example3.BasicCap();
-                //gConsole = console;
                 Image orange = Image.FromFile("imgs/orange.jpg");
                 startToolStripMenuItem.Image = orange;
                 startToolStripMenuItem.Text = "Stop";
+
+                FormDevices deviceForm = new FormDevices(overlay.getConsole());
+                deviceForm.Show();
             }
             else if (startToolStripMenuItem.Text == "Stop")
             {
                 Image red = Image.FromFile("imgs/red.jpg");
                 startToolStripMenuItem.Image = red;
                 startToolStripMenuItem.Text = "Start";
+
+                overlay.getConsole().StopListening();
             }
         }
 
@@ -1521,11 +1523,13 @@ namespace IOU_Helper
             if (hideOverlayToolStripMenuItem.Text == "Hide Overlay")
             {
                 overlay.Hide();
+                overlay.getConsole().Write("Overlay hidden.");
                 hideOverlayToolStripMenuItem.Text = "Show Overlay";
             }
             else if (hideOverlayToolStripMenuItem.Text == "Show Overlay")
             {
                 overlay.Show();
+                overlay.getConsole().Write("Overlay shown.");
                 hideOverlayToolStripMenuItem.Text = "Hide Overlay";
             }
         }
@@ -1534,12 +1538,14 @@ namespace IOU_Helper
         {
             if (hideConsoleToolStripMenuItem.Text == "Hide Console")
             {
-                overlay.getConsole().Hide();
+                overlay.getPanelConsole().Hide();
+                overlay.getConsole().Write("Console hidden.");
                 hideConsoleToolStripMenuItem.Text = "Show Console";
             }
             else if (hideConsoleToolStripMenuItem.Text == "Show Console")
             {
-                overlay.getConsole().Show();
+                overlay.getPanelConsole().Show();
+                overlay.getConsole().Write("Console shown.");
                 hideConsoleToolStripMenuItem.Text = "Hide Console";
             }
         }

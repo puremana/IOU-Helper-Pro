@@ -110,9 +110,10 @@ public partial class Plexiglass : Form
         panel1.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight);
 
         //Console Panel
-        int p2LocationHeight = Convert.ToInt32(clientHeight * 0.39);
+        int p2LocationHeight = Convert.ToInt32(clientHeight * 0.33);
+        int p2SizeHeight = Convert.ToInt32(clientHeight * 0.25);
         panelConsole.Location = new System.Drawing.Point(p1LocationWidth, p2LocationHeight);
-        panelConsole.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight);
+        panelConsole.Size = new System.Drawing.Size(p1SizeWidth, p2SizeHeight);
         //textConsole.Location = new System.Drawing.Point(0, 20);
         //textConsole.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight - 100);
 
@@ -344,6 +345,7 @@ public partial class Plexiglass : Form
             this.textConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textConsole.Font = new System.Drawing.Font("Segoe UI", 6.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textConsole.Location = new System.Drawing.Point(3, 20);
             this.textConsole.Multiline = true;
             this.textConsole.Name = "textConsole";
@@ -410,9 +412,14 @@ public partial class Plexiglass : Form
         
     }
 
-    public Panel getConsole()
+    public Panel getPanelConsole()
     {
         return panelConsole;
+    }
+
+    public IOU_Helper.TextConsole getConsole()
+    {
+        return textConsole;
     }
 
     public void setColor (Color color) 
@@ -424,6 +431,6 @@ public partial class Plexiglass : Form
 
     private void Plexiglass_Load(object sender, EventArgs e)
     {
-        textConsole.start(textConsole);
+        textConsole.Start(textConsole);
     }
 }
