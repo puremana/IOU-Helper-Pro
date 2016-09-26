@@ -76,11 +76,12 @@ namespace IOU_Helper
             var len = e.Packet.Data.Length;
             //string line = ("{0}:{1}:{2},{3} Len={4}" +
             //    time.Hour + time.Minute + time.Second + time.Millisecond + len);
-            //string line = "hi";
-            //Console.WriteLine(line);
-            //Console.WriteLine("{0}:{1}:{2},{3} Len={4}",
-            //    time.Hour, time.Minute, time.Second, time.Millisecond, len);
-            //Console.WriteLine(e.Packet.ToString());
+
+            Console.WriteLine("{0}:{1}:{2},{3} Len={4}" +
+                time.Hour + time.Minute + time.Second + time.Millisecond + len);
+            Console.WriteLine("{0}:{1}:{2},{3} Len={4}",
+                time.Hour, time.Minute, time.Second, time.Millisecond, len);
+            Console.WriteLine(e.Packet.ToString());
         }
 
         public void Write(string message)
@@ -92,11 +93,18 @@ namespace IOU_Helper
         {
             if (_device != null)
             {
-                _device.StopCapture();
-                Console.WriteLine("Stopped listening.");
-                Console.WriteLine(_device.Statistics.ToString());
+                try
+                {
+                    _device.StopCapture();
+                    Console.WriteLine("Stopped listening.");
+                    Console.WriteLine(_device.Statistics.ToString());
 
-                _device.Close();
+                    _device.Close();
+                }
+                catch (Exception ex)
+                {
+                    
+                }
             }         
         }
     }

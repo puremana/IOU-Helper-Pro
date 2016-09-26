@@ -16,8 +16,10 @@ namespace ConsoleRedirection
 
         public override void Write(char value)
         {
-            base.Write(value);
-            _output.AppendText(value.ToString()); // When character data is written, append it to the text box.
+            //_output.Invoke(new Action(() => _output.Text = _output.Text + value));
+            _output.Invoke(new Action(() => _output.AppendText(value.ToString())));
+            //base.Write(value);
+            //_output.AppendText(value.ToString()); // When character data is written, append it to the text box.
         }
 
         public override Encoding Encoding
