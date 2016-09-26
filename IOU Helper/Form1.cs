@@ -1501,21 +1501,23 @@ namespace IOU_Helper
         {
             if (startToolStripMenuItem.Text == "Start")
             {
-                Image orange = Image.FromFile("imgs/orange.jpg");
-                startToolStripMenuItem.Image = orange;
-                startToolStripMenuItem.Text = "Stop";
-
-                FormDevices deviceForm = new FormDevices(overlay.getConsole());
+                FormDevices deviceForm = new FormDevices(overlay.getConsole(), this);
                 deviceForm.Show();
             }
             else if (startToolStripMenuItem.Text == "Stop")
             {
-                Image red = Image.FromFile("imgs/red.jpg");
-                startToolStripMenuItem.Image = red;
+                Image green = Image.FromFile("imgs/green.jpg");
+                startToolStripMenuItem.Image = green;
                 startToolStripMenuItem.Text = "Start";
-
                 overlay.getConsole().StopListening();
             }
+        }
+
+        public void started()
+        {
+            Image red = Image.FromFile("imgs/red.jpg");
+            startToolStripMenuItem.Image = red;
+            startToolStripMenuItem.Text = "Stop";
         }
 
         private void hideOverlayToolStripMenuItem_Click(object sender, EventArgs e)

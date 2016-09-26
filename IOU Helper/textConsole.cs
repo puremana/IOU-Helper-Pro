@@ -7,6 +7,7 @@ using SharpPcap;
 using SharpPcap.LibPcap;
 using SharpPcap.AirPcap;
 using SharpPcap.WinPcap;
+using System.Text.RegularExpressions;
 
 namespace IOU_Helper
 {
@@ -46,6 +47,8 @@ namespace IOU_Helper
                 throw new System.InvalidOperationException("unknown device type of " + device.GetType().ToString());
             }
 
+            device.Filter = "src port 9000";
+
             // Start the capturing process
             device.StartCapture();
         }
@@ -70,18 +73,118 @@ namespace IOU_Helper
         /// <summary>
         /// Prints the time and length of each received packet
         /// </summary>
-        private static void device_OnPacketArrival(object sender, CaptureEventArgs e)
+        private void device_OnPacketArrival(object sender, CaptureEventArgs e)
         {
-            var time = e.Packet.Timeval.Date;
-            var len = e.Packet.Data.Length;
+            this.Process(e.Packet.Data);
+            //var time = e.Packet.Timeval.Date;
+            //var len = e.Packet.Data.Length;
             //string line = ("{0}:{1}:{2},{3} Len={4}" +
             //    time.Hour + time.Minute + time.Second + time.Millisecond + len);
 
-            Console.WriteLine("{0}:{1}:{2},{3} Len={4}" +
-                time.Hour + time.Minute + time.Second + time.Millisecond + len);
-            Console.WriteLine("{0}:{1}:{2},{3} Len={4}",
-                time.Hour, time.Minute, time.Second, time.Millisecond, len);
-            Console.WriteLine(e.Packet.ToString());
+            //Console.WriteLine("{0}:{1}:{2},{3} Len={4}" +
+            //    time.Hour + time.Minute + time.Second + time.Millisecond + len);
+            //Console.WriteLine("{0}:{1}:{2},{3} Len={4}",
+            //    time.Hour, time.Minute, time.Second, time.Millisecond, len);
+            //Console.WriteLine(e.Packet.ToString());
+        }
+
+        private byte[] find = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
+        private Regex regex = new Regex(@"^(\d+)(,\d+)*$");
+
+        private void Process(byte[] data)
+        {
+            try
+            {
+                bool ok = false;
+                var sb = new StringBuilder();
+
+                for (int i = 0; i < data.Length; ++i)
+                {
+
+                    if (data[i] == find[0] && (i + find.Length) < data.Length)
+                    {
+                        ok = true;
+                        for (int j = 0; j < find.Length; ++j)
+                        {
+                            if (data[i + j] != find[j])
+                            {
+                                ok = false;
+                                i += j;
+                                break;
+                            }
+                        }
+
+                        if (ok)
+                        {
+                            i += find.Length;
+                            var toRead = data[i++] - 1;
+
+                            while (toRead-- > 0)
+                            {
+                                sb.Append((char)data[i++]);
+
+                            }
+                            logNewLine(sb.ToString());
+
+                            sb.Length = 0;
+
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void logNewLine(string data)
+        {
+            if (!regex.IsMatch(data))
+            {
+                Console.WriteLine("INVALID STRING: " + data);
+                return;
+            }
+
+            //var lookingMust = frm.lookingMust;
+            //var lookingFor = frm.lookingFor;
+            //var lookingForOne = frm.lookingOneOnly;
+
+            //var lookingAll = lookingFor.Concat(lookingMust).Concat(lookingForOne).Distinct();
+
+            //var fish = data.Split(',');
+            //double howMany = fish.Count();
+
+            //var one = from f in fish join o in lookingForOne on f equals o select f;
+
+            //var must = from f in fish join m in lookingMust on f equals m select f;
+
+            //var forbid = fish.Except(lookingAll);
+
+            //if (!forbid.Any() && //pool only have fish in "only one" look and must
+            //    must.Any() &&  //pool must have one or more from must
+            //    one.Count() <= 1 //pool should have at max one fish from "only one", zero is ok too
+            //    )
+            //{
+            //    data = "CATCH ---- " + data;
+            //    frm.CatchMe();
+            //}
+            //else if (must.Any() && // must have at least one or more from must
+            //       (must.Count() / howMany) >= 0.60 //  must be 2/3 or 3/4 from must
+            //       )
+            //{
+            //    if (forbid.Select(x => int.Parse(x)).Min() >= frm.MinMust) //last fish must be equal or above level
+            //    {
+            //        data = "CATCH -##- " + data;
+            //        frm.CatchMe();
+            //    }
+            //    else
+            //    {
+            //        data = "CATCH -##- " + data + " under minimum level";
+            //    }
+            //}
+            Console.WriteLine("Fish rarity " + data);
         }
 
         public void Write(string message)

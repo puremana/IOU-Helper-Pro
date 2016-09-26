@@ -17,12 +17,14 @@ namespace IOU_Helper
     public partial class FormDevices : Form
     {
         private readonly TextConsole _console;
+        private readonly Form1 _form1;
         private CaptureDeviceList devices;
 
-        public FormDevices(TextConsole console)
+        public FormDevices(TextConsole console, Form1 form)
         {
             InitializeComponent();
             _console = console;
+            _form1 = form;
         }
 
         private void FormDevices_Load(object sender, EventArgs e)
@@ -51,6 +53,7 @@ namespace IOU_Helper
         private void buttonSelect_Click(object sender, EventArgs e)
         {
             _console.Listen(devices[comboBoxDevices.SelectedIndex]);
+            _form1.started();
             this.Close();
         }
     }
