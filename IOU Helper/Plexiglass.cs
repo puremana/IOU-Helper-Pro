@@ -10,6 +10,8 @@ public partial class Plexiglass : Form
 
     //Make panels dragable
     public const int WM_NCLBUTTONDOWN = 0xA1;
+    private Label labelHeader;
+    private Button buttonClose;
     public const int HT_CAPTION = 0x2;
 
     [DllImportAttribute("user32.dll")]
@@ -58,6 +60,23 @@ public partial class Plexiglass : Form
             uint ex_style = GetWindowLong(this.Handle, GWL.ExStyle);
             SetWindowLong(this.Handle, GWL.ExStyle, ex_style & ~WS_EX_LAYERED & ~WS_EX_TRANSPARENT);
         }
+    }
+
+    [DllImport("user32.dll", EntryPoint = "SetLayeredWindowAttributes")]
+    private static extern bool User32_SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte bAlpha, LayeredWindowAttributes dwFlags);
+
+    private byte _alpha;
+
+    private enum LayeredWindowAttributes
+    {
+        /// <summary>
+        /// Use bAlpha to determine the opacity of the layered window.
+        /// </summary>
+        LWA_COLORKEY = 0x1,
+        /// <summary>
+        /// Use crKey as the transparency color.
+        /// </summary>
+        LWA_ALPHA = 0x20
     }
 
     protected override void OnShown(EventArgs e)
@@ -179,6 +198,8 @@ public partial class Plexiglass : Form
             this.label24 = new System.Windows.Forms.Label();
             this.panelConsole = new System.Windows.Forms.Panel();
             this.labelConsole = new System.Windows.Forms.Label();
+            this.labelHeader = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.textConsole = new IOU_Helper.TextConsole();
             this.panel1.SuspendLayout();
             this.panelConsole.SuspendLayout();
@@ -350,6 +371,28 @@ public partial class Plexiglass : Form
             this.labelConsole.TabIndex = 1;
             this.labelConsole.Text = "Console";
             // 
+            // labelHeader
+            // 
+            this.labelHeader.AutoSize = true;
+            this.labelHeader.Font = new System.Drawing.Font("Segoe UI", 20.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHeader.Location = new System.Drawing.Point(158, 37);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Size = new System.Drawing.Size(734, 91);
+            this.labelHeader.TabIndex = 4;
+            this.labelHeader.Text = "Adjustable Panel Mode";
+            this.labelHeader.Visible = false;
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(681, 775);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(350, 90);
+            this.buttonClose.TabIndex = 5;
+            this.buttonClose.Text = "Close Adjustable Mode";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            this.buttonClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonClose_Click);
+            // 
             // textConsole
             // 
             this.textConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -366,6 +409,8 @@ public partial class Plexiglass : Form
             // Plexiglass
             // 
             this.ClientSize = new System.Drawing.Size(1058, 877);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.panelConsole);
             this.Controls.Add(this.panel1);
             this.Name = "Plexiglass";
@@ -376,6 +421,7 @@ public partial class Plexiglass : Form
             this.panelConsole.ResumeLayout(false);
             this.panelConsole.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
     }
 
@@ -462,6 +508,45 @@ public partial class Plexiglass : Form
             panel1.Top += e.Y - PanelMouseDownLocation.Y;
 
         }
+
+    }
+
+    public void moveOverlay()
+    {
+        int clientWidth = this.Width;
+        int clientHeight = this.Height;
+
+        clickAble(false);
+        labelHeader.Visible = true;
+        buttonClose.Visible = true;
+
+        int labelWL = Convert.ToInt32(clientWidth * 0.30);
+        int labelHL = Convert.ToInt32(clientHeight * 0.05);
+
+        labelHeader.Location = new System.Drawing.Point(labelWL, labelHL);
+
+        int buttonWL = Convert.ToInt32(clientWidth * 0.80);
+        int buttonHL = Convert.ToInt32(clientHeight * 0.80);
+        buttonClose.Location = new System.Drawing.Point(buttonWL, buttonHL);
+    }
+
+    private void buttonClose_Click(object sender, MouseEventArgs e)
+    {
+        clickAble(true);
+
+        this.TransparencyKey = Color.Turquoise;
+        this.BackColor = Color.Turquoise;
+        this.Opacity = 0.9;      // Tweak as desired
+
+        //User32_SetLayeredWindowAttributes(this.Handle, (TransparencyKey.B << 16) + (TransparencyKey.G << 8) + TransparencyKey.R, _alpha, LayeredWindowAttributes.LWA_COLORKEY | LayeredWindowAttributes.LWA_ALPHA);
+        //this.BackColor = Color.Magenta;
+        //this.TransparencyKey = Color.Magenta;
+        labelHeader.Visible = false;
+        buttonClose.Visible = false;
+    }
+
+    private void buttonClose_Click(object sender, EventArgs e)
+    {
 
     }
 }
