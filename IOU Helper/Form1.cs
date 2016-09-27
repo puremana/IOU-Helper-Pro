@@ -1567,6 +1567,11 @@ namespace IOU_Helper
             }
         }
 
+        private void moveOverlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            overlay.clickAble(false);
+        }
+
         //public Plexiglass getOverlay()
         //{
         //    return overlay;

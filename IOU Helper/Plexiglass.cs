@@ -7,56 +7,64 @@ public partial class Plexiglass : Form
 {
     private Color gColor = Color.White;
     private IOU_Helper.TextConsole textConsole;
+
+    //Make panels dragable
+    public const int WM_NCLBUTTONDOWN = 0xA1;
+    public const int HT_CAPTION = 0x2;
+
+    [DllImportAttribute("user32.dll")]
+    public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+    [DllImportAttribute("user32.dll")]
+    public static extern bool ReleaseCapture();
+
     //Make it click through
-    private byte _alpha;
-
-    private enum GetWindowLong
+    public enum GWL
     {
-        /// <summary>
-        /// Sets a new extended window style.
-        /// </summary>
-        GWL_EXSTYLE = -20
+        ExStyle = -20
     }
 
-    private enum ExtendedWindowStyles
+    public enum WS_EX
     {
-        /// <summary>
-        /// Transparent window.
-        /// </summary>
-        WS_EX_TRANSPARENT = 0x20,
-        /// <summary>
-        /// Layered window. http://msdn.microsoft.com/en-us/library/windows/desktop/ms632599%28v=vs.85%29.aspx#layered
-        /// </summary>
-        WS_EX_LAYERED = 0x80000
+        Transparent = 0x20,
+        Layered = 0x80000
     }
 
-    private enum LayeredWindowAttributes
+    public enum LWA
     {
-        /// <summary>
-        /// Use bAlpha to determine the opacity of the layered window.
-        /// </summary>
-        LWA_COLORKEY = 0x1,
-        /// <summary>
-        /// Use crKey as the transparency color.
-        /// </summary>
-        LWA_ALPHA = 0x20
+        ColorKey = 0x1,
+        Alpha = 0x2
     }
 
     [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
-    private static extern int User32_GetWindowLong(IntPtr hWnd, GetWindowLong nIndex);
+    public static extern uint GetWindowLong(IntPtr hWnd, GWL nIndex);
 
     [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-    private static extern int User32_SetWindowLong(IntPtr hWnd, GetWindowLong nIndex, int dwNewLong);
+    public static extern uint SetWindowLong(IntPtr hWnd, GWL nIndex, uint dwNewLong);
 
     [DllImport("user32.dll", EntryPoint = "SetLayeredWindowAttributes")]
-    private static extern bool User32_SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte bAlpha, LayeredWindowAttributes dwFlags);
+    public static extern bool SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte alpha, LWA dwFlags);
+    public const uint WS_EX_LAYERED = 0x00080000;
+    public const uint WS_EX_TRANSPARENT = 0x00000020;
+
+    public void clickAble(bool click)
+    {
+        if (click == true)
+        {
+            uint ex_style = GetWindowLong(this.Handle, GWL.ExStyle);
+            SetWindowLong(this.Handle, GWL.ExStyle, ex_style | WS_EX_LAYERED | WS_EX_TRANSPARENT);
+        }
+        else if (click == false)
+        {
+            uint ex_style = GetWindowLong(this.Handle, GWL.ExStyle);
+            SetWindowLong(this.Handle, GWL.ExStyle, ex_style & ~WS_EX_LAYERED & ~WS_EX_TRANSPARENT);
+        }
+    }
 
     protected override void OnShown(EventArgs e)
     {
         base.OnShown(e);
         //Click through
-        int wl = User32_GetWindowLong(this.Handle, GetWindowLong.GWL_EXSTYLE);
-        User32_SetWindowLong(this.Handle, GetWindowLong.GWL_EXSTYLE, wl | (int)ExtendedWindowStyles.WS_EX_LAYERED | (int)ExtendedWindowStyles.WS_EX_TRANSPARENT);
+        clickAble(true);
         //Change alpha
         User32_SetLayeredWindowAttributes(this.Handle, (TransparencyKey.B << 16) + (TransparencyKey.G << 8) + TransparencyKey.R, _alpha, LayeredWindowAttributes.LWA_COLORKEY | LayeredWindowAttributes.LWA_ALPHA);
     }
@@ -197,6 +205,8 @@ public partial class Plexiglass : Form
             this.panel1.Size = new System.Drawing.Size(451, 325);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // label13
             // 
@@ -432,5 +442,26 @@ public partial class Plexiglass : Form
     private void Plexiglass_Load(object sender, EventArgs e)
     {
         textConsole.Start(textConsole);
+    }
+
+    Point PanelMouseDownLocation;
+
+    private void panel1_MouseDown(object sender, MouseEventArgs e)
+    {
+
+    }
+
+    private void panel1_MouseMove(object sender, MouseEventArgs e)
+    {
+
+        if (e.Button == MouseButtons.Left)
+        {
+
+            panel1.Left += e.X - PanelMouseDownLocation.X;
+
+            panel1.Top += e.Y - PanelMouseDownLocation.Y;
+
+        }
+
     }
 }
