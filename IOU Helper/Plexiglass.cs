@@ -12,6 +12,8 @@ public partial class Plexiglass : Form
     public const int WM_NCLBUTTONDOWN = 0xA1;
     private Label labelHeader;
     private Button buttonClose;
+    private Label label1;
+    private Label label2;
     public const int HT_CAPTION = 0x2;
 
     [DllImportAttribute("user32.dll")]
@@ -131,7 +133,7 @@ public partial class Plexiglass : Form
         int p1LocationWidth = Convert.ToInt32(clientWidth * 0.64);
         int p1LocationHeight = Convert.ToInt32(clientHeight * 0.60); //0.32
         int p1SizeWidth = Convert.ToInt32(clientWidth * 0.24);
-        int p1SizeHeight = Convert.ToInt32(clientHeight * 0.19);
+        int p1SizeHeight = Convert.ToInt32(clientHeight * 0.22);
 
         panel1.Location = new System.Drawing.Point(p1LocationWidth, p1LocationHeight);
         panel1.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight);
@@ -143,6 +145,20 @@ public partial class Plexiglass : Form
         panelConsole.Size = new System.Drawing.Size(p1SizeWidth, p2SizeHeight);
         //textConsole.Location = new System.Drawing.Point(0, 20);
         //textConsole.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight - 100);
+
+        int labelWL = Convert.ToInt32(clientWidth * 0.30);
+        int labelHL = Convert.ToInt32(clientHeight * 0.05);
+
+        labelHeader.Location = new System.Drawing.Point(labelWL, labelHL);
+
+        int buttonWS = Convert.ToInt32(clientWidth * 0.20);
+        int buttonHS = Convert.ToInt32(clientHeight * 0.10);
+
+        int buttonWL = Convert.ToInt32(clientWidth * 0.40);
+        int buttonHL = Convert.ToInt32(clientHeight * 0.80);
+        panelConsole.Size = new System.Drawing.Size(p1SizeWidth, p2SizeHeight);
+        buttonClose.Location = new System.Drawing.Point(buttonWL, buttonHL);
+        buttonClose.Size = new System.Drawing.Size(buttonWS, buttonHS);
 
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
@@ -197,10 +213,12 @@ public partial class Plexiglass : Form
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panelConsole = new System.Windows.Forms.Panel();
+            this.textConsole = new IOU_Helper.TextConsole();
             this.labelConsole = new System.Windows.Forms.Label();
             this.labelHeader = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.textConsole = new IOU_Helper.TextConsole();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelConsole.SuspendLayout();
             this.SuspendLayout();
@@ -209,6 +227,8 @@ public partial class Plexiglass : Form
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label15);
@@ -233,7 +253,7 @@ public partial class Plexiglass : Form
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(100, 92);
+            this.label13.Location = new System.Drawing.Point(100, 114);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(131, 38);
             this.label13.TabIndex = 23;
@@ -243,7 +263,7 @@ public partial class Plexiglass : Form
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(2, 92);
+            this.label14.Location = new System.Drawing.Point(2, 114);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(165, 38);
             this.label14.TabIndex = 22;
@@ -253,7 +273,7 @@ public partial class Plexiglass : Form
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(100, 74);
+            this.label15.Location = new System.Drawing.Point(100, 96);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(131, 38);
             this.label15.TabIndex = 21;
@@ -263,7 +283,7 @@ public partial class Plexiglass : Form
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(2, 74);
+            this.label16.Location = new System.Drawing.Point(2, 96);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(93, 38);
             this.label16.TabIndex = 20;
@@ -273,7 +293,7 @@ public partial class Plexiglass : Form
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(100, 56);
+            this.label17.Location = new System.Drawing.Point(100, 78);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(131, 38);
             this.label17.TabIndex = 19;
@@ -283,7 +303,7 @@ public partial class Plexiglass : Form
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(2, 56);
+            this.label18.Location = new System.Drawing.Point(2, 78);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(195, 38);
             this.label18.TabIndex = 18;
@@ -293,7 +313,7 @@ public partial class Plexiglass : Form
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(100, 38);
+            this.label19.Location = new System.Drawing.Point(100, 60);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(131, 38);
             this.label19.TabIndex = 17;
@@ -303,7 +323,7 @@ public partial class Plexiglass : Form
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(2, 36);
+            this.label20.Location = new System.Drawing.Point(2, 60);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(179, 38);
             this.label20.TabIndex = 16;
@@ -313,9 +333,9 @@ public partial class Plexiglass : Form
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(100, 18);
+            this.label21.Location = new System.Drawing.Point(100, 42);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(131, 38);
+            this.label21.Size = new System.Drawing.Size(131, 30);
             this.label21.TabIndex = 15;
             this.label21.Text = "unknown";
             // 
@@ -323,7 +343,7 @@ public partial class Plexiglass : Form
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(2, 18);
+            this.label22.Location = new System.Drawing.Point(2, 42);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(116, 38);
             this.label22.TabIndex = 14;
@@ -333,7 +353,7 @@ public partial class Plexiglass : Form
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(100, 2);
+            this.label23.Location = new System.Drawing.Point(100, 24);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(131, 38);
             this.label23.TabIndex = 13;
@@ -343,11 +363,32 @@ public partial class Plexiglass : Form
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(2, 2);
+            this.label24.Location = new System.Drawing.Point(2, 24);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(131, 38);
             this.label24.TabIndex = 12;
             this.label24.Text = "XP/min :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(100, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 38);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "unknown";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 38);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Username :";
+            // 
             // 
             // panelConsole
             // 
@@ -360,6 +401,20 @@ public partial class Plexiglass : Form
             this.panelConsole.Size = new System.Drawing.Size(451, 233);
             this.panelConsole.TabIndex = 3;
             this.panelConsole.Paint += new System.Windows.Forms.PaintEventHandler(this.panelConsole_Paint);
+            this.panelConsole.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelConsole_MouseMove);
+            // 
+            // textConsole
+            // 
+            this.textConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textConsole.Font = new System.Drawing.Font("Segoe UI", 6.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textConsole.Location = new System.Drawing.Point(3, 20);
+            this.textConsole.Multiline = true;
+            this.textConsole.Name = "textConsole";
+            this.textConsole.Size = new System.Drawing.Size(443, 208);
+            this.textConsole.TabIndex = 0;
+            this.textConsole.TextChanged += new System.EventHandler(this.Plexiglass_Resize);
             // 
             // labelConsole
             // 
@@ -390,22 +445,8 @@ public partial class Plexiglass : Form
             this.buttonClose.TabIndex = 5;
             this.buttonClose.Text = "Close Adjustable Mode";
             this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            this.buttonClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonClose_Click);
-            // 
-            // textConsole
-            // 
-            this.textConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textConsole.Font = new System.Drawing.Font("Segoe UI", 6.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textConsole.Location = new System.Drawing.Point(3, 20);
-            this.textConsole.Multiline = true;
-            this.textConsole.Name = "textConsole";
-            this.textConsole.Size = new System.Drawing.Size(443, 208);
-            this.textConsole.TabIndex = 0;
-            this.textConsole.TextChanged += new System.EventHandler(this.Plexiglass_Resize);
-            // 
+            this.buttonClose.Visible = false;
+            this.buttonClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonClose_MouseDown);
             // Plexiglass
             // 
             this.ClientSize = new System.Drawing.Size(1058, 877);
@@ -499,35 +540,27 @@ public partial class Plexiglass : Form
 
     private void panel1_MouseMove(object sender, MouseEventArgs e)
     {
-
         if (e.Button == MouseButtons.Left)
         {
-
             panel1.Left += e.X - PanelMouseDownLocation.X;
-
             panel1.Top += e.Y - PanelMouseDownLocation.Y;
-
         }
-
     }
 
     public void moveOverlay()
     {
+        System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#EAF2F8");
+        this.BackColor = col;
+
+        //Image myimage = Image.FromFile("imgs/overlayBackground.png");
+        //this.BackgroundImage = myimage;
+
         int clientWidth = this.Width;
         int clientHeight = this.Height;
 
         clickAble(false);
         labelHeader.Visible = true;
         buttonClose.Visible = true;
-
-        int labelWL = Convert.ToInt32(clientWidth * 0.30);
-        int labelHL = Convert.ToInt32(clientHeight * 0.05);
-
-        labelHeader.Location = new System.Drawing.Point(labelWL, labelHL);
-
-        int buttonWL = Convert.ToInt32(clientWidth * 0.80);
-        int buttonHL = Convert.ToInt32(clientHeight * 0.80);
-        buttonClose.Location = new System.Drawing.Point(buttonWL, buttonHL);
     }
 
     private void buttonClose_Click(object sender, MouseEventArgs e)
@@ -545,8 +578,27 @@ public partial class Plexiglass : Form
         buttonClose.Visible = false;
     }
 
-    private void buttonClose_Click(object sender, EventArgs e)
+    private void panelConsole_MouseMove(object sender, MouseEventArgs e)
     {
+        if (e.Button == MouseButtons.Left)
+        {
+            panelConsole.Left += e.X - PanelMouseDownLocation.X;
+            panelConsole.Top += e.Y - PanelMouseDownLocation.Y;
+        }
+    }
 
+    private void buttonClose_MouseDown(object sender, MouseEventArgs e)
+    {
+        clickAble(true);
+
+        this.TransparencyKey = Color.Turquoise;
+        this.BackColor = Color.Turquoise;
+        this.Opacity = 0.9;      // Tweak as desired
+
+        //User32_SetLayeredWindowAttributes(this.Handle, (TransparencyKey.B << 16) + (TransparencyKey.G << 8) + TransparencyKey.R, _alpha, LayeredWindowAttributes.LWA_COLORKEY | LayeredWindowAttributes.LWA_ALPHA);
+        //this.BackColor = Color.Magenta;
+        //this.TransparencyKey = Color.Magenta;
+        labelHeader.Visible = false;
+        buttonClose.Visible = false;
     }
 }
