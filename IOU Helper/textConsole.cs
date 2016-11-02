@@ -15,6 +15,8 @@ namespace IOU_Helper
     {
         ICaptureDevice _device;
         TextConsole _console;
+        String log;
+
         public void Listen(ICaptureDevice device)
         {
             _device = device;
@@ -76,19 +78,9 @@ namespace IOU_Helper
         private void device_OnPacketArrival(object sender, CaptureEventArgs e)
         {
             this.Process(e.Packet.Data);
-            //var time = e.Packet.Timeval.Date;
-            //var len = e.Packet.Data.Length;
-            //string line = ("{0}:{1}:{2},{3} Len={4}" +
-            //    time.Hour + time.Minute + time.Second + time.Millisecond + len);
-
-            //Console.WriteLine("{0}:{1}:{2},{3} Len={4}" +
-            //    time.Hour + time.Minute + time.Second + time.Millisecond + len);
-            //Console.WriteLine("{0}:{1}:{2},{3} Len={4}",
-            //    time.Hour, time.Minute, time.Second, time.Millisecond, len);
-            //Console.WriteLine(e.Packet.ToString());
         }
 
-        private byte[] find = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
+        private byte[] findFishGroup = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
         private Regex regex = new Regex(@"^(\d+)(,\d+)*$");
 
         private void Process(byte[] data)
@@ -101,12 +93,13 @@ namespace IOU_Helper
                 for (int i = 0; i < data.Length; ++i)
                 {
 
-                    if (data[i] == find[0] && (i + find.Length) < data.Length)
+                    if (data[i] == findFishGroup[0] && (i + findFishGroup.Length) < data.Length)
                     {
+                        log = "fishGroup";
                         ok = true;
-                        for (int j = 0; j < find.Length; ++j)
+                        for (int j = 0; j < findFishGroup.Length; ++j)
                         {
-                            if (data[i + j] != find[j])
+                            if (data[i + j] != findFishGroup[j])
                             {
                                 ok = false;
                                 i += j;
@@ -116,7 +109,7 @@ namespace IOU_Helper
 
                         if (ok)
                         {
-                            i += find.Length;
+                            i += findFishGroup.Length;
                             var toRead = data[i++] - 1;
 
                             while (toRead-- > 0)
@@ -147,44 +140,10 @@ namespace IOU_Helper
                 return;
             }
 
-            //var lookingMust = frm.lookingMust;
-            //var lookingFor = frm.lookingFor;
-            //var lookingForOne = frm.lookingOneOnly;
-
-            //var lookingAll = lookingFor.Concat(lookingMust).Concat(lookingForOne).Distinct();
-
-            //var fish = data.Split(',');
-            //double howMany = fish.Count();
-
-            //var one = from f in fish join o in lookingForOne on f equals o select f;
-
-            //var must = from f in fish join m in lookingMust on f equals m select f;
-
-            //var forbid = fish.Except(lookingAll);
-
-            //if (!forbid.Any() && //pool only have fish in "only one" look and must
-            //    must.Any() &&  //pool must have one or more from must
-            //    one.Count() <= 1 //pool should have at max one fish from "only one", zero is ok too
-            //    )
-            //{
-            //    data = "CATCH ---- " + data;
-            //    frm.CatchMe();
-            //}
-            //else if (must.Any() && // must have at least one or more from must
-            //       (must.Count() / howMany) >= 0.60 //  must be 2/3 or 3/4 from must
-            //       )
-            //{
-            //    if (forbid.Select(x => int.Parse(x)).Min() >= frm.MinMust) //last fish must be equal or above level
-            //    {
-            //        data = "CATCH -##- " + data;
-            //        frm.CatchMe();
-            //    }
-            //    else
-            //    {
-            //        data = "CATCH -##- " + data + " under minimum level";
-            //    }
-            //}
-            Console.WriteLine("Fish rarity " + data);
+            if (log == "fishGroup")
+            {
+                Console.WriteLine("Fish Group : " + data);
+            }
         }
 
         public void Write(string message)
