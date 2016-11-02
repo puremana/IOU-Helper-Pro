@@ -17,6 +17,10 @@ namespace IOU_Helper
         TextConsole _console;
         String log;
 
+        /// <summary>
+        /// Start listening to a device
+        /// </summary>
+        /// <param name="device"></param>
         public void Listen(ICaptureDevice device)
         {
             _device = device;
@@ -54,7 +58,7 @@ namespace IOU_Helper
             // Start the capturing process
             device.StartCapture();
         }
-
+            
         public void Start(TextConsole console)
         {
             _console = console;
@@ -83,31 +87,34 @@ namespace IOU_Helper
         private byte[] findFishGroup = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
         private Regex regex = new Regex(@"^(\d+)(,\d+)*$");
 
+        /// <summary>
+        /// Look at packet data and write/ignore
+        /// </summary>
+        /// <param name="data"></param>
         private void Process(byte[] data)
-        {
+        {   
             try
             {
-                bool ok = false;
+                bool write = false;
                 var sb = new StringBuilder();
 
                 for (int i = 0; i < data.Length; ++i)
                 {
-
                     if (data[i] == findFishGroup[0] && (i + findFishGroup.Length) < data.Length)
                     {
                         log = "fishGroup";
-                        ok = true;
+                        write = true;
                         for (int j = 0; j < findFishGroup.Length; ++j)
                         {
                             if (data[i + j] != findFishGroup[j])
                             {
-                                ok = false;
+                                write = false;
                                 i += j;
                                 break;
                             }
                         }
 
-                        if (ok)
+                        if (write == true)
                         {
                             i += findFishGroup.Length;
                             var toRead = data[i++] - 1;
@@ -115,12 +122,10 @@ namespace IOU_Helper
                             while (toRead-- > 0)
                             {
                                 sb.Append((char)data[i++]);
-
                             }
                             logNewLine(sb.ToString());
 
                             sb.Length = 0;
-
                             break;
                         }
                     }
@@ -132,6 +137,10 @@ namespace IOU_Helper
             }
         }
 
+        /// <summary>
+        /// Write data to console
+        /// </summary>
+        /// <param name="data"></param>
         private void logNewLine(string data)
         {
             if (!regex.IsMatch(data))
@@ -144,13 +153,24 @@ namespace IOU_Helper
             {
                 Console.WriteLine("Fish Group : " + data);
             }
+            else
+            {
+                Console.WriteLine(data);
+            }
         }
 
+        /// <summary>
+        /// Allows to write to console in other forms
+        /// </summary>
+        /// <param name="message"></param>
         public void Write(string message)
         {
             Console.WriteLine(message);
         }
 
+        /// <summary>
+        /// Stop listening to device
+        /// </summary>
         public void StopListening()
         {
             if (_device != null)
@@ -165,7 +185,7 @@ namespace IOU_Helper
                 }
                 catch (Exception ex)
                 {
-                    
+                    Console.WriteLine("Stop listening error: " + ex.Message);
                 }
             }         
         }
