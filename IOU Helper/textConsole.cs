@@ -16,6 +16,9 @@ namespace IOU_Helper
         ICaptureDevice _device;
         TextConsole _console;
         String log;
+        List<Spawn> spawnList = new List<Spawn>();
+        DateTime spawnDifference = new DateTime(2010);
+        DateTime checkDifference = new DateTime(2010);
 
         /// <summary>
         /// Start listening to a device
@@ -82,6 +85,10 @@ namespace IOU_Helper
         private void device_OnPacketArrival(object sender, CaptureEventArgs e)
         {
             this.Process(e.Packet);
+            //var len = e.Packet.Data.Length;
+            //Console.WriteLine("{0}:{1}:{2},{3} Len={4}",
+            //    time.Hour, time.Minute, time.Second, time.Millisecond, len);
+            //Console.WriteLine(e.Packet.ToString());
         }
 
         private byte[] findFishGroup = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
@@ -159,6 +166,17 @@ namespace IOU_Helper
                             {
                                 sb.Append((char)data[i++]);
                             }
+                            if (spawnDifference.Year == checkDifference.Year)
+                            {
+                                spawnDifference = packet.Timeval.Date;
+                            }
+                            else
+                            {
+                                DateTime tempTime = packet.Timeval.Date;
+                                TimeSpan difference = tempTime.Subtract(spawnDifference);
+                                Console.WriteLine(difference.ToString());
+                                spawnDifference = packet.Timeval.Date;
+                            }
                             logNewLine(sb.ToString());
 
                             sb.Length = 0;
@@ -206,6 +224,14 @@ namespace IOU_Helper
         public void Write(string message)
         {
             Console.WriteLine(message);
+        }
+
+        /// <summary>
+        /// Updates spawn information
+        /// </summary>
+        public void updateSpawn()
+        {
+
         }
 
         /// <summary>
