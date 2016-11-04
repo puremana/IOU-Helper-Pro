@@ -81,18 +81,20 @@ namespace IOU_Helper
         /// </summary>
         private void device_OnPacketArrival(object sender, CaptureEventArgs e)
         {
-            this.Process(e.Packet.Data);
+            this.Process(e.Packet);
         }
 
         private byte[] findFishGroup = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
+        private byte[] findSpawnInfo = { 0x00, 0x05, 0x73, 0x70, 0x61, 0x77, 0x6e, 0x00 };
         private Regex regex = new Regex(@"^(\d+)(,\d+)*$");
 
         /// <summary>
         /// Look at packet data and write/ignore
         /// </summary>
         /// <param name="data"></param>
-        private void Process(byte[] data)
-        {   
+        private void Process(RawCapture packet)
+        {
+            byte[] data = packet.Data;
             try
             {
                 bool write = false;
@@ -100,6 +102,7 @@ namespace IOU_Helper
 
                 for (int i = 0; i < data.Length; ++i)
                 {
+                    //Fish Group
                     if (data[i] == findFishGroup[0] && (i + findFishGroup.Length) < data.Length)
                     {
                         log = "fishGroup";
@@ -130,6 +133,39 @@ namespace IOU_Helper
                         }
                     }
                 }
+                for (int i = 0; i < data.Length; ++i)
+                {
+                    //Spawn Information
+                    if (data[i] == findSpawnInfo[0] && (i + findSpawnInfo.Length) < data.Length)
+                    {
+                        log = "spawnGroup";
+                        write = true;
+                        for (int j = 0; j < findSpawnInfo.Length; ++j)
+                        {
+                            if (data[i + j] != findSpawnInfo[j])
+                            {
+                                write = false;
+                                i += j;
+                                break;
+                            }
+                        }
+
+                        if (write == true)
+                        {
+                            i += findSpawnInfo.Length;
+                            var toRead = data[i++] - 1;
+
+                            while (toRead-- > 0)
+                            {
+                                sb.Append((char)data[i++]);
+                            }
+                            logNewLine(sb.ToString());
+
+                            sb.Length = 0;
+                            break;
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -143,15 +179,19 @@ namespace IOU_Helper
         /// <param name="data"></param>
         private void logNewLine(string data)
         {
-            if (!regex.IsMatch(data))
-            {
-                Console.WriteLine("INVALID STRING: " + data);
-                return;
-            }
+            //if (!regex.IsMatch(data))
+            //{
+            //    Console.WriteLine("" + data);
+            //    return;
+            //}
 
             if (log == "fishGroup")
             {
                 Console.WriteLine("Fish Group : " + data);
+            }
+            else if (log == "spawnGroup")
+            {
+                Console.WriteLine("Spawn Info : " + data);
             }
             else
             {
