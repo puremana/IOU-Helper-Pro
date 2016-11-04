@@ -213,7 +213,7 @@ public partial class Plexiglass : Form
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panelConsole = new System.Windows.Forms.Panel();
-            this.textConsole = new IOU_Helper.TextConsole();
+            this.textConsole = new IOU_Helper.TextConsole(this);
             this.labelConsole = new System.Windows.Forms.Label();
             this.labelHeader = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -267,7 +267,7 @@ public partial class Plexiglass : Form
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(165, 38);
             this.label14.TabIndex = 22;
-            this.label14.Text = "Best cards :";
+            this.label14.Text = "Total Time :";
             // 
             // label15
             // 
@@ -287,7 +287,7 @@ public partial class Plexiglass : Form
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(93, 38);
             this.label16.TabIndex = 20;
-            this.label16.Text = "Nets :";
+            this.label16.Text = "Total Kills :";
             // 
             // label17
             // 
@@ -307,7 +307,7 @@ public partial class Plexiglass : Form
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(195, 38);
             this.label18.TabIndex = 18;
-            this.label18.Text = "Mining NRG :";
+            this.label18.Text = "Aver kill + spawn time :";
             // 
             // label19
             // 
@@ -327,7 +327,7 @@ public partial class Plexiglass : Form
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(179, 38);
             this.label20.TabIndex = 16;
-            this.label20.Text = "Wood NRG :";
+            this.label20.Text = "Party dmg/min:";
             // 
             // label21
             // 
@@ -492,6 +492,17 @@ public partial class Plexiglass : Form
 
     }
 
+    public void updateLabels(string username, string xp, string gold, string partyDamage, string averageKillTime, string totalKills, string totalTime) 
+    {
+        this.label1.Text = username;
+        this.label23.Text = xp;
+        this.label21.Text = gold;
+        this.label19.Text = partyDamage;
+        this.label17.Text = averageKillTime;
+        this.label15.Text = totalKills;
+        this.label13.Text = totalTime;
+    }
+
     private void panelConsole_Paint(object sender, PaintEventArgs e)
     {
         if (panelConsole.BorderStyle == BorderStyle.FixedSingle)
@@ -600,5 +611,10 @@ public partial class Plexiglass : Form
         //this.TransparencyKey = Color.Magenta;
         labelHeader.Visible = false;
         buttonClose.Visible = false;
+    }
+
+    public void updateStats()
+    {
+        textConsole.updateSpawn();
     }
 }

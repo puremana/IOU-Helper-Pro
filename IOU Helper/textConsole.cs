@@ -13,12 +13,24 @@ namespace IOU_Helper
 {
     public class TextConsole : System.Windows.Forms.TextBox
     {
+
         ICaptureDevice _device;
         TextConsole _console;
         String log;
         List<Spawn> spawnList = new List<Spawn>();
         DateTime spawnDifference = new DateTime(2010);
         DateTime checkDifference = new DateTime(2010);
+
+        //Statistic variables
+        double totalTime;
+        string min_hour = "minute";
+
+        private readonly Plexiglass _plexiglass;
+
+        public TextConsole(Plexiglass plexiglass)
+        {
+            _plexiglass = plexiglass;
+        }
 
         /// <summary>
         /// Start listening to a device
@@ -174,7 +186,9 @@ namespace IOU_Helper
                             {
                                 DateTime tempTime = packet.Timeval.Date;
                                 TimeSpan difference = tempTime.Subtract(spawnDifference);
-                                Console.WriteLine(difference.ToString());
+                                double ddif = difference.TotalSeconds;
+                                Console.WriteLine("Kill + Spawn time : " + ddif.ToString() + " seconds");
+                                totalTime = totalTime + ddif;
                                 spawnDifference = packet.Timeval.Date;
                             }
                             logNewLine(sb.ToString());
@@ -231,7 +245,16 @@ namespace IOU_Helper
         /// </summary>
         public void updateSpawn()
         {
+            if (min_hour == "minute")
+            {
 
+            }
+            else if (min_hour == "hour")
+            {
+
+            }
+
+            _plexiglass.updateLabels("username", "xp", "gold", "partymasd", "averageTime", "totalkills", totalTime.ToString());
         }
 
         /// <summary>

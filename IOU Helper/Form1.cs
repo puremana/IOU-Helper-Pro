@@ -1572,6 +1572,14 @@ namespace IOU_Helper
             overlay.moveOverlay();         
         }
 
+        private void refreshStatsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (startToolStripMenuItem.Text == "Stop")
+            {
+                overlay.updateStats();
+            }
+        }
+
         //public Plexiglass getOverlay()
         //{
         //    return overlay;
