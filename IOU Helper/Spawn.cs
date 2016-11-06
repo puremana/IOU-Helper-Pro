@@ -8,17 +8,27 @@ namespace IOU_Helper
 {
     class Spawn
     {
-        private DateTime _time;
-        private int _hp;
-        private int _xp;
-        private int _gold;
+        private double _time;
+        private uint _hp;
+        private ulong _xp;
+        private ulong _gold;
 
-        public Spawn(DateTime time, int hp, int xp, int gold)
+        public Spawn(double time, uint hp, ulong xp, ulong gold)
         {
             _time = time;
             _hp = hp;
             _xp = xp;
             _gold = gold;
+        }
+
+        public double getTime()
+        {
+            return _time;
+        }
+
+        public uint getHp()
+        {
+            return _hp;
         }
     }
 }

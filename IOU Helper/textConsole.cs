@@ -104,8 +104,15 @@ namespace IOU_Helper
         }
 
         private byte[] findFishGroup = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
+        // another failed private byte[] findSpawnInfo = { 0x00, 0x04, 0x32, 0x35, 0x39, 0x30, 0x00 };
+        // failed xp private byte[] findSpawnInfo = { 0x00, 0x05, 0x31, 0x37, 0x38, 0x34, 0x31 };
         private byte[] findSpawnInfo = { 0x00, 0x05, 0x73, 0x70, 0x61, 0x77, 0x6e, 0x00 };
         private Regex regex = new Regex(@"^(\d+)(,\d+)*$");
+        //variables for spawn
+        double time;
+        uint hp = 0;
+        ulong xp = 0;
+        ulong gold = 0;
 
         /// <summary>
         /// Look at packet data and write/ignore
@@ -189,6 +196,7 @@ namespace IOU_Helper
                                 double ddif = difference.TotalSeconds;
                                 Console.WriteLine("Kill + Spawn time : " + ddif.ToString() + " seconds");
                                 totalTime = totalTime + ddif;
+                                time = ddif;
                                 spawnDifference = packet.Timeval.Date;
                             }
                             logNewLine(sb.ToString());
@@ -224,6 +232,10 @@ namespace IOU_Helper
             else if (log == "spawnGroup")
             {
                 Console.WriteLine("Spawn Info : " + data);
+                string[] values = data.Split(',');
+                hp = uint.Parse(values[4]);
+                Spawn newSpawn = new Spawn(time, hp, xp, gold);
+                spawnList.Add(newSpawn);
             }
             else
             {
@@ -245,16 +257,29 @@ namespace IOU_Helper
         /// </summary>
         public void updateSpawn()
         {
+            ulong pDamagePerMinute = 0;
+            double ptotalTime = 0;
+            double averageTime = 0;
             if (min_hour == "minute")
             {
 
+                ulong totalHP = 0;
+                foreach (Spawn s in spawnList)
+                {
+                    ptotalTime = totalTime + s.getTime();
+                    totalHP = totalHP + s.getHp();
+                }
+                ulong pDamagePerSecond;
+                averageTime = ptotalTime / spawnList.Count;
+                pDamagePerSecond = ((ulong)totalHP / (ulong)spawnList.Count) / ((ulong)averageTime);
+                pDamagePerMinute = pDamagePerSecond * 60;
             }
             else if (min_hour == "hour")
             {
 
             }
 
-            _plexiglass.updateLabels("username", "xp", "gold", "partymasd", "averageTime", "totalkills", totalTime.ToString());
+            _plexiglass.updateLabels("username", "xp", "gold", pDamagePerMinute.ToString(), averageTime.ToString(), spawnList.Count.ToString(), totalTime.ToString());
         }
 
         /// <summary>
