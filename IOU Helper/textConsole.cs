@@ -110,7 +110,7 @@ namespace IOU_Helper
         private Regex regex = new Regex(@"^(\d+)(,\d+)*$");
         //variables for spawn
         double time;
-        uint hp = 0;
+        ulong hp = 0;
         ulong xp = 0;
         ulong gold = 0;
 
@@ -233,7 +233,7 @@ namespace IOU_Helper
             {
                 Console.WriteLine("Spawn Info : " + data);
                 string[] values = data.Split(',');
-                hp = uint.Parse(values[4]);
+                hp = ulong.Parse(values[4]);
                 Spawn newSpawn = new Spawn(time, hp, xp, gold);
                 spawnList.Add(newSpawn);
             }

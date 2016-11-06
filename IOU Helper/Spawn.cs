@@ -9,11 +9,11 @@ namespace IOU_Helper
     class Spawn
     {
         private double _time;
-        private uint _hp;
+        private ulong _hp;
         private ulong _xp;
         private ulong _gold;
 
-        public Spawn(double time, uint hp, ulong xp, ulong gold)
+        public Spawn(double time, ulong hp, ulong xp, ulong gold)
         {
             _time = time;
             _hp = hp;
@@ -26,7 +26,7 @@ namespace IOU_Helper
             return _time;
         }
 
-        public uint getHp()
+        public ulong getHp()
         {
             return _hp;
         }
