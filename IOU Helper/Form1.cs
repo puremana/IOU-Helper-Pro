@@ -1580,6 +1580,21 @@ namespace IOU_Helper
             }
         }
 
+        private void resetStatsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (startToolStripMenuItem.Text == "Stop")
+            {
+                DialogResult result1 = MessageBox.Show("Are you sure you want to reset statistics?",
+                "Reset Statistics",
+                MessageBoxButtons.YesNo);
+                if (result1 == DialogResult.Yes)
+                {
+                    overlay.resetStats();
+                }
+            }
+        }
+
         //public Plexiglass getOverlay()
         //{
         //    return overlay;

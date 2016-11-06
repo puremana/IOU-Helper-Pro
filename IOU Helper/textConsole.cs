@@ -303,5 +303,10 @@ namespace IOU_Helper
                 }
             }         
         }
+
+        public void resetStats()
+        {
+            spawnList.Clear();
+        }
     }
 }

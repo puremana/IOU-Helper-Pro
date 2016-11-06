@@ -617,4 +617,9 @@ public partial class Plexiglass : Form
     {
         textConsole.updateSpawn();
     }
+
+    public void resetStats()
+    {
+        textConsole.resetStats();
+    }
 }

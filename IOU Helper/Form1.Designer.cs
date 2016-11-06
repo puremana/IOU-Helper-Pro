@@ -66,6 +66,7 @@
             this.moveOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overlayColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxKongUser = new System.Windows.Forms.TextBox();
             this.groupBoxAccount = new System.Windows.Forms.GroupBox();
             this.textBoxKongToken = new System.Windows.Forms.TextBox();
@@ -87,7 +88,7 @@
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.refreshStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -339,7 +340,8 @@
             this.moveOverlayToolStripMenuItem,
             this.overlayColorToolStripMenuItem,
             this.helpGuideToolStripMenuItem,
-            this.refreshStatsToolStripMenuItem});
+            this.refreshStatsToolStripMenuItem,
+            this.resetStatsToolStripMenuItem});
             this.proToolStripMenuItem.Name = "proToolStripMenuItem";
             this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 48);
             this.proToolStripMenuItem.Text = "Pro Features";
@@ -386,6 +388,13 @@
             this.helpGuideToolStripMenuItem.Name = "helpGuideToolStripMenuItem";
             this.helpGuideToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.helpGuideToolStripMenuItem.Text = "Help Guide";
+            // 
+            // refreshStatsToolStripMenuItem
+            // 
+            this.refreshStatsToolStripMenuItem.Name = "refreshStatsToolStripMenuItem";
+            this.refreshStatsToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.refreshStatsToolStripMenuItem.Text = "Refresh Stats";
+            this.refreshStatsToolStripMenuItem.Click += new System.EventHandler(this.refreshStatsToolStripMenuItem_Click);
             // 
             // textBoxKongUser
             // 
@@ -566,12 +575,12 @@
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
             // 
-            // refreshStatsToolStripMenuItem
+            // resetStatsToolStripMenuItem
             // 
-            this.refreshStatsToolStripMenuItem.Name = "refreshStatsToolStripMenuItem";
-            this.refreshStatsToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.refreshStatsToolStripMenuItem.Text = "Refresh Stats";
-            this.refreshStatsToolStripMenuItem.Click += new System.EventHandler(this.refreshStatsToolStripMenuItem_Click);
+            this.resetStatsToolStripMenuItem.Name = "resetStatsToolStripMenuItem";
+            this.resetStatsToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.resetStatsToolStripMenuItem.Text = "Reset Stats";
+            this.resetStatsToolStripMenuItem.Click += new System.EventHandler(this.resetStatsToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -662,6 +671,7 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.ToolStripMenuItem moveOverlayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshStatsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetStatsToolStripMenuItem;
     }
 }
 
