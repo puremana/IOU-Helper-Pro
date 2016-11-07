@@ -1353,6 +1353,11 @@ namespace IOU_Helper
             {
                 saveDetails(false);
             }
+
+            if (startToolStripMenuItem.Text == "Stop")
+            {
+                overlay.getConsole().StopListening();
+            }
         }
 
         private void newIourpgToolStripMenuItem_Click(object sender, EventArgs e)
