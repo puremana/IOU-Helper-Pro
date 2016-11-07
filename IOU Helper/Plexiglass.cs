@@ -622,4 +622,12 @@ public partial class Plexiglass : Form
     {
         textConsole.resetStats();
     }
+
+    public void copyStats()
+    {
+        //Copy username, xp, gold, party damage, average kill time, estimate cards, total kill time
+        string stats = this.label2.Text + this.label1.Text + "," + this.label24.Text + this.label23.Text + "," + this.label22.Text + this.label21.Text + "," + this.label20.Text + this.label19.Text + "," + this.label18.Text + this.label17.Text + "," + this.label16.Text + this.label15.Text + "," + this.label14.Text + this.label13.Text;
+        Clipboard.SetText(stats);
+        MessageBox.Show("Panel Statistics have been copied to your clipboard.");
+    }
 }

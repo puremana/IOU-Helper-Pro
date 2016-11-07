@@ -1595,6 +1595,11 @@ namespace IOU_Helper
             }
         }
 
+        private void copyStatsToClipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            overlay.copyStats();
+        }
+
         //public Plexiglass getOverlay()
         //{
         //    return overlay;
