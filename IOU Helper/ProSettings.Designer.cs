@@ -66,7 +66,7 @@
             this.groupBox1.Controls.Add(this.comboBoxUnitXpGold);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(41, 45);
+            this.groupBox1.Location = new System.Drawing.Point(41, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(848, 191);
             this.groupBox1.TabIndex = 0;
@@ -79,7 +79,7 @@
             this.groupBox2.Controls.Add(this.textBoxRefreshTimer);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(41, 263);
+            this.groupBox2.Location = new System.Drawing.Point(41, 246);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(863, 220);
             this.groupBox2.TabIndex = 1;
@@ -94,7 +94,7 @@
             this.groupBox3.Controls.Add(this.labelColor);
             this.groupBox3.Controls.Add(this.buttonOverlayColor);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(41, 502);
+            this.groupBox3.Location = new System.Drawing.Point(41, 485);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(848, 369);
             this.groupBox3.TabIndex = 2;
@@ -160,7 +160,7 @@
             // 
             this.labelColor.AutoSize = true;
             this.labelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelColor.Location = new System.Drawing.Point(543, 285);
+            this.labelColor.Location = new System.Drawing.Point(340, 285);
             this.labelColor.Name = "labelColor";
             this.labelColor.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.labelColor.Size = new System.Drawing.Size(125, 54);
@@ -270,7 +270,7 @@
             // 
             // buttonRestore
             // 
-            this.buttonRestore.Location = new System.Drawing.Point(49, 887);
+            this.buttonRestore.Location = new System.Drawing.Point(49, 870);
             this.buttonRestore.Name = "buttonRestore";
             this.buttonRestore.Size = new System.Drawing.Size(252, 65);
             this.buttonRestore.TabIndex = 3;
@@ -279,16 +279,17 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(331, 887);
+            this.buttonCancel.Location = new System.Drawing.Point(331, 870);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(252, 65);
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonApply
             // 
-            this.buttonApply.Location = new System.Drawing.Point(622, 887);
+            this.buttonApply.Location = new System.Drawing.Point(622, 870);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(252, 65);
             this.buttonApply.TabIndex = 5;
@@ -321,7 +322,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 975);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(962, 961);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonRestore);

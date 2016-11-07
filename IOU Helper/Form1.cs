@@ -1559,17 +1559,12 @@ namespace IOU_Helper
 
         private void overlayColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDlg = new ColorDialog();
-            colorDlg.AllowFullOpen = true;
-            colorDlg.AnyColor = true;
-            colorDlg.SolidColorOnly = false;
-            colorDlg.Color = Color.Red;
 
-            if (colorDlg.ShowDialog() == DialogResult.OK)
-            {
-                Color color = colorDlg.Color;
-                overlay.setColor(color);
-            }
+        }
+
+        public void setOverlayColor(Color color)
+        {
+            overlay.setColor(color);
         }
 
         private void moveOverlayToolStripMenuItem_Click(object sender, EventArgs e)

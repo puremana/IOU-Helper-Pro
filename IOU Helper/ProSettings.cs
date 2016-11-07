@@ -21,7 +21,20 @@ namespace IOU_Helper
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.AllowFullOpen = true;
+            colorDlg.AnyColor = true;
+            colorDlg.SolidColorOnly = false;
+            colorDlg.Color = Color.Red;
 
+            if (colorDlg.ShowDialog() == DialogResult.OK)
+            {
+                Color color = colorDlg.Color;
+                //_form1.setOverlayColor(color);
+
+                labelColor.Text = color.ToString();
+                labelColor.BackColor = color;
+            }
         }
 
         private void ProSettings_Load(object sender, EventArgs e)
@@ -52,6 +65,11 @@ namespace IOU_Helper
 
             labelColor.BackColor = Properties.Settings.Default.overlayColor;
             labelColor.Text = Properties.Settings.Default.overlayColor.ToString();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
