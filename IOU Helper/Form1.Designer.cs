@@ -91,6 +91,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.copyStatsToClipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerProStats = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -109,7 +110,7 @@
             this.proToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 52);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 49);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -125,7 +126,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 48);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(75, 45);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newTabToolStripMenuItem
@@ -185,7 +186,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(137, 48);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(137, 45);
             this.optionsToolStripMenuItem.Text = "Settings";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -201,7 +202,7 @@
             this.petAnalyzerFerretToolStripMenuItem,
             this.versionCheckToolStripMenuItem});
             this.linksToolStripMenuItem.Name = "linksToolStripMenuItem";
-            this.linksToolStripMenuItem.Size = new System.Drawing.Size(96, 48);
+            this.linksToolStripMenuItem.Size = new System.Drawing.Size(96, 45);
             this.linksToolStripMenuItem.Text = "Links";
             // 
             // iOUHelperToolStripMenuItem
@@ -274,7 +275,7 @@
             this.screenshotToolStripMenuItem,
             this.closeTabToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 48);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(102, 45);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // startAutoClickerToolStripMenuItem1
@@ -347,7 +348,7 @@
             this.resetStatsToolStripMenuItem,
             this.copyStatsToClipToolStripMenuItem});
             this.proToolStripMenuItem.Name = "proToolStripMenuItem";
-            this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 48);
+            this.proToolStripMenuItem.Size = new System.Drawing.Size(195, 45);
             this.proToolStripMenuItem.Text = "Pro Features";
             // 
             // startToolStripMenuItem
@@ -600,6 +601,11 @@
             this.proSettingsToolStripMenuItem.Text = "Pro Settings";
             this.proSettingsToolStripMenuItem.Click += new System.EventHandler(this.proSettingsToolStripMenuItem_Click);
             // 
+            // timerProStats
+            // 
+            this.timerProStats.Interval = 30000;
+            this.timerProStats.Tick += new System.EventHandler(this.timerProStats_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -692,6 +698,7 @@
         private System.Windows.Forms.ToolStripMenuItem resetStatsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyStatsToClipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proSettingsToolStripMenuItem;
+        private System.Windows.Forms.Timer timerProStats;
     }
 }
 

@@ -1515,6 +1515,7 @@ namespace IOU_Helper
                 startToolStripMenuItem.Image = green;
                 startToolStripMenuItem.Text = "Start";
                 overlay.getConsole().StopListening();
+                timerProStats.Enabled = false;
             }
         }
 
@@ -1523,6 +1524,8 @@ namespace IOU_Helper
             Image red = Image.FromFile("imgs/red.jpg");
             startToolStripMenuItem.Image = red;
             startToolStripMenuItem.Text = "Stop";
+            timerProStats.Interval = (Properties.Settings.Default.refreshTimer * 1000);
+            timerProStats.Enabled = true;
         }
 
         private void hideOverlayToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1604,6 +1607,19 @@ namespace IOU_Helper
         {
             ProSettings proSettings = new ProSettings(this);
             proSettings.Show();
+        }
+
+        private void timerProStats_Tick(object sender, EventArgs e)
+        {
+            if (startToolStripMenuItem.Text == "Stop")
+            {
+                overlay.updateStats();
+            }
+        }
+
+        public void applyProSettings(int time)
+        {
+            timerProStats.Interval = (time * 1000);
         }
 
         //public Plexiglass getOverlay()

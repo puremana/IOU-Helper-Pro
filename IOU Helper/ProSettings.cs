@@ -30,7 +30,6 @@ namespace IOU_Helper
             if (colorDlg.ShowDialog() == DialogResult.OK)
             {
                 Color color = colorDlg.Color;
-                //_form1.setOverlayColor(color);
 
                 labelColor.Text = color.ToString();
                 labelColor.BackColor = color;
@@ -69,6 +68,67 @@ namespace IOU_Helper
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void buttonRestore_Click(object sender, EventArgs e)
+        {
+            comboBoxUnitXpGold.SelectedIndex = comboBoxUnitXpGold.FindString("Minute");
+            comboBoxCardDrop.SelectedIndex = comboBoxCardDrop.FindString("Day");
+            textBoxRefreshTimer.Text = "30";
+            comboBoxSigFig.SelectedIndex = comboBoxSigFig.FindString("10");
+            if (radioButtonDCNo.Checked != true)
+            {
+                radioButtonDCNo.Checked = true;
+            }
+
+            comboBoxAscTier.SelectedIndex = comboBoxAscTier.FindString("AT3");
+
+            if (radioButtonMOYes.Checked != true)
+            {
+                radioButtonMOYes.Checked = true;
+            }
+
+            labelColor.BackColor = Color.White;
+            labelColor.Text = Color.White.ToString();
+        }
+
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            int time = int.Parse(textBoxRefreshTimer.Text);
+
+            //Apply Properties
+            Properties.Settings.Default.unitXpGold = comboBoxUnitXpGold.SelectedItem.ToString();
+
+            Properties.Settings.Default.cardDropTime = comboBoxCardDrop.SelectedItem.ToString();
+            Properties.Settings.Default.refreshTimer = int.Parse(textBoxRefreshTimer.Text);
+            Properties.Settings.Default.sigFigures = int.Parse(comboBoxSigFig.SelectedItem.ToString());
+            if (radioButtonDCYes.Checked == true)
+            {
+                Properties.Settings.Default.doubleCards = true;
+            }
+            else
+            {
+                Properties.Settings.Default.doubleCards = false;
+            }
+
+            Properties.Settings.Default.ascTier = comboBoxAscTier.SelectedItem.ToString();
+
+            if (radioButtonMOYes.Checked == true)
+            {
+                Properties.Settings.Default.moveOverlay = true;
+            }
+            else
+            {
+                Properties.Settings.Default.moveOverlay = false;
+            }
+
+            Properties.Settings.Default.overlayColor = labelColor.BackColor;
+
+            _form1.setOverlayColor(labelColor.BackColor);
+            _form1.applyProSettings(time);
+            Properties.Settings.Default.Save();
+            MessageBox.Show("IOU Helper Pro settings have been applied.");
             this.Close();
         }
     }

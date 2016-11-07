@@ -276,6 +276,7 @@
             this.buttonRestore.TabIndex = 3;
             this.buttonRestore.Text = "Restore Default";
             this.buttonRestore.UseVisualStyleBackColor = true;
+            this.buttonRestore.Click += new System.EventHandler(this.buttonRestore_Click);
             // 
             // buttonCancel
             // 
@@ -295,6 +296,7 @@
             this.buttonApply.TabIndex = 5;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // groupBox4
             // 
