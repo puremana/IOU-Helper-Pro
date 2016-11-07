@@ -267,7 +267,7 @@ public partial class Plexiglass : Form
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(165, 38);
             this.label14.TabIndex = 22;
-            this.label14.Text = "Total Time :";
+            this.label14.Text = "Total kills, time :";
             // 
             // label15
             // 
@@ -287,7 +287,7 @@ public partial class Plexiglass : Form
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(93, 38);
             this.label16.TabIndex = 20;
-            this.label16.Text = "Total Kills :";
+            this.label16.Text = "Est cards/hour :";
             // 
             // label17
             // 

@@ -113,6 +113,7 @@ namespace IOU_Helper
         ulong hp = 0;
         ulong xp = 0;
         ulong gold = 0;
+        double infernoLevel = 0;
 
         /// <summary>
         /// Look at packet data and write/ignore
@@ -234,6 +235,11 @@ namespace IOU_Helper
                 Console.WriteLine("Spawn Info : " + data);
                 string[] values = data.Split(',');
                 hp = ulong.Parse(values[4]);
+                uint mobLevel = uint.Parse(values[2]);
+                if (mobLevel > 250)
+                {
+                    infernoLevel = Math.Floor((((double)mobLevel - 100) / 150));
+                }
                 Spawn newSpawn = new Spawn(time, hp, xp, gold);
                 spawnList.Add(newSpawn);
             }
@@ -276,10 +282,15 @@ namespace IOU_Helper
             }
             else if (min_hour == "hour")
             {
-
+                    
             }
 
-            _plexiglass.updateLabels("username", "xp", "gold", pDamagePerMinute.ToString(), averageTime.ToString(), spawnList.Count.ToString(), totalTime.ToString());
+            double kPerMin = (60 / averageTime);
+            //Estimated cards per hour
+            double estCards = ((1 + (infernoLevel / 2)) * kPerMin) * 60;
+            string totalStats = spawnList.Count.ToString() + ", " + totalTime.ToString();
+
+            _plexiglass.updateLabels("username", "xp", "gold", pDamagePerMinute.ToString(), averageTime.ToString(), estCards.ToString(), totalStats);
         }
 
         /// <summary>
