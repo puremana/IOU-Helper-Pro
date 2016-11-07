@@ -1605,6 +1605,12 @@ namespace IOU_Helper
             overlay.copyStats();
         }
 
+        private void proSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProSettings proSettings = new ProSettings(this);
+            proSettings.Show();
+        }
+
         //public Plexiglass getOverlay()
         //{
         //    return overlay;

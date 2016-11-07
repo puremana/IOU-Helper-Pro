@@ -49,3 +49,4 @@ C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\Interop.ShockwaveF
 C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\bin\Release\AxInterop.ShockwaveFlashObjects.dll
 C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\Plexiglass.resources
 C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU_Helper.FormDevices.resources
+C:\Users\Jeremy\Desktop\IOU-Helper-Pro\IOU Helper\obj\Release\IOU_Helper.ProSettings.resources
