@@ -1622,6 +1622,48 @@ namespace IOU_Helper
             timerProStats.Interval = (time * 1000);
         }
 
+        //Property Getter Methods
+
+        public string getUnitXPGold()
+        {
+            return Properties.Settings.Default.unitXpGold;
+        }
+
+        public string getCardDropTime()
+        {
+            return Properties.Settings.Default.cardDropTime;
+        }
+
+        public int getRefreshTimer()
+        {
+            return Properties.Settings.Default.refreshTimer;
+        }
+
+        public int getSigFigures()
+        {
+            return Properties.Settings.Default.sigFigures;
+        }
+
+        public bool getDoubleCards()
+        {
+            return Properties.Settings.Default.doubleCards;
+        }
+
+        public string getAscTier()
+        {
+            return Properties.Settings.Default.ascTier;
+        }
+
+        public bool getMoveOverlay()
+        {
+            return Properties.Settings.Default.moveOverlay;
+        }
+
+        public System.Drawing.Color getOverlayColor()
+        {
+            return Properties.Settings.Default.overlayColor;
+        }
+
         //public Plexiglass getOverlay()
         //{
         //    return overlay;

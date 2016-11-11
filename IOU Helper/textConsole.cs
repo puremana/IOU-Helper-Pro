@@ -16,7 +16,7 @@ namespace IOU_Helper
 
         ICaptureDevice _device;
         TextConsole _console;
-        String log;
+        string log;
         List<Spawn> spawnList = new List<Spawn>();
         DateTime spawnDifference = new DateTime(2010);
         DateTime checkDifference = new DateTime(2010);

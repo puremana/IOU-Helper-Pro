@@ -7,6 +7,7 @@ public partial class Plexiglass : Form
 {
     private Color gColor = Color.White;
     private IOU_Helper.TextConsole textConsole;
+    private readonly IOU_Helper.Form1 _form1;
 
     //Make panels dragable
     public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -90,8 +91,9 @@ public partial class Plexiglass : Form
         User32_SetLayeredWindowAttributes(this.Handle, (TransparencyKey.B << 16) + (TransparencyKey.G << 8) + TransparencyKey.R, _alpha, LayeredWindowAttributes.LWA_COLORKEY | LayeredWindowAttributes.LWA_ALPHA);
     }
 
-    public Plexiglass(Form tocover)
+    public Plexiglass(IOU_Helper.Form1 tocover)
     {
+        _form1 = tocover;
         InitializeComponent();
 
         //this.DoubleBuffered = true;
@@ -287,6 +289,10 @@ public partial class Plexiglass : Form
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(93, 38);
             this.label16.TabIndex = 20;
+            if (_form1.getUnitXPGold() == "hi")
+            {
+
+            }
             this.label16.Text = "Est cards/hour :";
             // 
             // label17
@@ -464,6 +470,11 @@ public partial class Plexiglass : Form
             this.ResumeLayout(false);
             this.PerformLayout();
 
+    }
+
+    public void setLabels(string set)
+    {
+       
     }
 
     private void Plexiglass_Resize(object sender, EventArgs e)
