@@ -289,11 +289,18 @@ public partial class Plexiglass : Form
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(93, 38);
             this.label16.TabIndex = 20;
-            if (_form1.getUnitXPGold() == "hi")
+            if (_form1.getCardDropTime() == "minute")
             {
-
+                this.label16.Text = "Est cards/min :";
             }
-            this.label16.Text = "Est cards/hour :";
+            else if (_form1.getCardDropTime() == "hour")
+            {
+                this.label16.Text = "Est cards/hour :";
+            }
+            else if (_form1.getCardDropTime() == "day")
+            {
+                this.label16.Text = "Est cards/day :";
+            }  
             // 
             // label17
             // 
@@ -325,7 +332,7 @@ public partial class Plexiglass : Form
             this.label19.TabIndex = 17;
             this.label19.Text = "unknown";
             // 
-            // label20
+            // label20 - Party damage
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -333,7 +340,19 @@ public partial class Plexiglass : Form
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(179, 38);
             this.label20.TabIndex = 16;
-            this.label20.Text = "Party dmg/min:";
+            if (_form1.getUnitXPGold() == "minute")
+            {
+                this.label20.Text = "Party dmg/min :";
+                this.label22.Text = "G/min :";
+                this.label24.Text = "XP/min :";
+            }
+            else if (_form1.getUnitXPGold() == "hour")
+            {
+                this.label20.Text = "Party dmg/hour :";
+                this.label22.Text = "G/hour :";
+                this.label24.Text = "XP/hour :";
+            } 
+            
             // 
             // label21
             // 
@@ -345,15 +364,14 @@ public partial class Plexiglass : Form
             this.label21.TabIndex = 15;
             this.label21.Text = "unknown";
             // 
-            // label22
+            // label22 - Gold
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(2, 42);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(116, 38);
-            this.label22.TabIndex = 14;
-            this.label22.Text = "G/min :";
+            this.label22.TabIndex = 14;          
             // 
             // label23
             // 
@@ -365,7 +383,7 @@ public partial class Plexiglass : Form
             this.label23.TabIndex = 13;
             this.label23.Text = "unknown";
             // 
-            // label24
+            // label24 - XP
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -373,7 +391,6 @@ public partial class Plexiglass : Form
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(131, 38);
             this.label24.TabIndex = 12;
-            this.label24.Text = "XP/min :";
             // 
             // label1
             // 
