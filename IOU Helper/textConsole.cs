@@ -26,10 +26,12 @@ namespace IOU_Helper
         string min_hour = "minute";
 
         private readonly Plexiglass _plexiglass;
+        private readonly Form1 _form1;
 
-        public TextConsole(Plexiglass plexiglass)
+        public TextConsole(Plexiglass plexiglass, Form1 form1)
         {
             _plexiglass = plexiglass;
+            _form1 = form1;
         }
 
         /// <summary>
@@ -266,31 +268,57 @@ namespace IOU_Helper
             ulong pDamagePerMinute = 0;
             double ptotalTime = 0;
             double averageTime = 0;
-            if (min_hour == "minute")
-            {
+            ulong totalHP = 0;
+            ulong pDamagePerSecond;
+            int sigFig = _form1.getSigFigures();
 
-                ulong totalHP = 0;
-                foreach (Spawn s in spawnList)
-                {
-                    ptotalTime = totalTime + s.getTime();
-                    totalHP = totalHP + s.getHp();
-                }
-                ulong pDamagePerSecond;
-                averageTime = ptotalTime / spawnList.Count;
+            foreach (Spawn s in spawnList)
+            {
+                ptotalTime = totalTime + s.getTime();
+                totalHP = totalHP + s.getHp();
+            }
+
+            averageTime = ptotalTime / spawnList.Count;
+            try
+            {
                 pDamagePerSecond = ((ulong)totalHP / (ulong)spawnList.Count) / ((ulong)averageTime);
-                pDamagePerMinute = pDamagePerSecond * 60;
+
+                if (_form1.getUnitXPGold() == "Minute")
+                {
+                    pDamagePerMinute = pDamagePerSecond * 60;
+                }
+                else if (_form1.getUnitXPGold() == "Hour")
+                {
+                    pDamagePerMinute = pDamagePerSecond * 3600;
+                }
+
+                //Convert to Million
+                double pDamage = pDamagePerMinute;
+                pDamage = pDamage / 1000000;
+
+                //Kills per minute
+                double kPerMin = (60 / averageTime);
+                //Estimated cards per hour
+                double estCards = ((1 + (infernoLevel / 2)) * kPerMin) * 60;
+                
+
+                //Round down to whatever significant figures
+                //Math.Round(pDamage, sigFig);
+                averageTime = Math.Round(averageTime, sigFig);
+                estCards = Math.Round(estCards, sigFig);
+                pDamage = Math.Round(pDamage, sigFig);
+                totalTime = Math.Round(totalTime, sigFig);
+
+                string pDamageString = pDamage.ToString() + "M";
+                string totalStats = spawnList.Count.ToString() + ", " + totalTime.ToString();
+
+                _plexiglass.updateLabels("username", "xp", "gold", pDamageString, averageTime.ToString(), estCards.ToString(), totalStats);
+        
             }
-            else if (min_hour == "hour")
+            catch
             {
-                    
+
             }
-
-            double kPerMin = (60 / averageTime);
-            //Estimated cards per hour
-            double estCards = ((1 + (infernoLevel / 2)) * kPerMin) * 60;
-            string totalStats = spawnList.Count.ToString() + ", " + totalTime.ToString();
-
-            _plexiglass.updateLabels("username", "xp", "gold", pDamagePerMinute.ToString(), averageTime.ToString(), estCards.ToString(), totalStats);
         }
 
         /// <summary>

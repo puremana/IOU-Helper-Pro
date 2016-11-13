@@ -344,6 +344,7 @@ namespace IOU_Helper
             tabControl.Height = this.Height;
 
             overlay = new Plexiglass(this);
+            timerProStats.Interval = Properties.Settings.Default.refreshTimer;
 
             string[] lineRead = null;
             string lineReadFull = "";

@@ -30,34 +30,34 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProSettings));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.buttonOverlayColor = new System.Windows.Forms.Button();
-            this.labelColor = new System.Windows.Forms.Label();
-            this.comboBoxUnitXpGold = new System.Windows.Forms.ComboBox();
             this.comboBoxCardDrop = new System.Windows.Forms.ComboBox();
-            this.textBoxRefreshTimer = new System.Windows.Forms.TextBox();
+            this.comboBoxUnitXpGold = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxSigFig = new System.Windows.Forms.ComboBox();
+            this.textBoxRefreshTimer = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.radioButtonMOYes = new System.Windows.Forms.RadioButton();
+            this.radioButtonMONo = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButtonDCYes = new System.Windows.Forms.RadioButton();
             this.radioButtonDCNo = new System.Windows.Forms.RadioButton();
             this.comboBoxAscTier = new System.Windows.Forms.ComboBox();
-            this.radioButtonMOYes = new System.Windows.Forms.RadioButton();
-            this.radioButtonMONo = new System.Windows.Forms.RadioButton();
+            this.labelColor = new System.Windows.Forms.Label();
+            this.buttonOverlayColor = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.buttonRestore = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -73,6 +73,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Unit Times";
             // 
+            // comboBoxCardDrop
+            // 
+            this.comboBoxCardDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCardDrop.FormattingEnabled = true;
+            this.comboBoxCardDrop.Items.AddRange(new object[] {
+            "Minute",
+            "Hour",
+            "Day"});
+            this.comboBoxCardDrop.Location = new System.Drawing.Point(488, 112);
+            this.comboBoxCardDrop.Name = "comboBoxCardDrop";
+            this.comboBoxCardDrop.Size = new System.Drawing.Size(287, 39);
+            this.comboBoxCardDrop.TabIndex = 3;
+            // 
+            // comboBoxUnitXpGold
+            // 
+            this.comboBoxUnitXpGold.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxUnitXpGold.FormattingEnabled = true;
+            this.comboBoxUnitXpGold.Items.AddRange(new object[] {
+            "Minute",
+            "Hour"});
+            this.comboBoxUnitXpGold.Location = new System.Drawing.Point(488, 46);
+            this.comboBoxUnitXpGold.Name = "comboBoxUnitXpGold";
+            this.comboBoxUnitXpGold.Size = new System.Drawing.Size(287, 39);
+            this.comboBoxUnitXpGold.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(214, 32);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Card Drop Time";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(379, 32);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Xp, Gold, Party Damage Unit";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.comboBoxSigFig);
@@ -85,6 +128,52 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Display Settings";
+            // 
+            // comboBoxSigFig
+            // 
+            this.comboBoxSigFig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSigFig.FormattingEnabled = true;
+            this.comboBoxSigFig.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.comboBoxSigFig.Location = new System.Drawing.Point(488, 129);
+            this.comboBoxSigFig.Name = "comboBoxSigFig";
+            this.comboBoxSigFig.Size = new System.Drawing.Size(287, 39);
+            this.comboBoxSigFig.TabIndex = 3;
+            // 
+            // textBoxRefreshTimer
+            // 
+            this.textBoxRefreshTimer.Location = new System.Drawing.Point(488, 60);
+            this.textBoxRefreshTimer.Name = "textBoxRefreshTimer";
+            this.textBoxRefreshTimer.Size = new System.Drawing.Size(287, 38);
+            this.textBoxRefreshTimer.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 129);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(277, 32);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Round to # Decimals";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(26, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(324, 32);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Refresh Timer (seconds)";
             // 
             // groupBox3
             // 
@@ -101,114 +190,49 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Other";
             // 
-            // label1
+            // groupBox5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(379, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Xp, Gold, Party Damage Unit";
+            this.groupBox5.Controls.Add(this.radioButtonMOYes);
+            this.groupBox5.Controls.Add(this.radioButtonMONo);
+            this.groupBox5.Location = new System.Drawing.Point(8, 194);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(767, 74);
+            this.groupBox5.TabIndex = 11;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Move Overlay on Resize";
             // 
-            // label2
+            // radioButtonMOYes
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 112);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(214, 32);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Card Drop Time";
+            this.radioButtonMOYes.AutoSize = true;
+            this.radioButtonMOYes.Location = new System.Drawing.Point(478, 26);
+            this.radioButtonMOYes.Name = "radioButtonMOYes";
+            this.radioButtonMOYes.Size = new System.Drawing.Size(101, 36);
+            this.radioButtonMOYes.TabIndex = 8;
+            this.radioButtonMOYes.TabStop = true;
+            this.radioButtonMOYes.Text = "Yes";
+            this.radioButtonMOYes.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // radioButtonMONo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(324, 32);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Refresh Timer (seconds)";
+            this.radioButtonMONo.AutoSize = true;
+            this.radioButtonMONo.Location = new System.Drawing.Point(642, 27);
+            this.radioButtonMONo.Name = "radioButtonMONo";
+            this.radioButtonMONo.Size = new System.Drawing.Size(88, 36);
+            this.radioButtonMONo.TabIndex = 9;
+            this.radioButtonMONo.TabStop = true;
+            this.radioButtonMONo.Text = "No";
+            this.radioButtonMONo.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // groupBox4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 129);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(251, 32);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Significant Figures";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 130);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(203, 32);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Ascension Tier";
-            // 
-            // buttonOverlayColor
-            // 
-            this.buttonOverlayColor.Location = new System.Drawing.Point(32, 283);
-            this.buttonOverlayColor.Name = "buttonOverlayColor";
-            this.buttonOverlayColor.Size = new System.Drawing.Size(249, 57);
-            this.buttonOverlayColor.TabIndex = 3;
-            this.buttonOverlayColor.Text = "Overlay Color";
-            this.buttonOverlayColor.UseVisualStyleBackColor = true;
-            this.buttonOverlayColor.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // labelColor
-            // 
-            this.labelColor.AutoSize = true;
-            this.labelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelColor.Location = new System.Drawing.Point(340, 285);
-            this.labelColor.Name = "labelColor";
-            this.labelColor.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
-            this.labelColor.Size = new System.Drawing.Size(125, 54);
-            this.labelColor.TabIndex = 4;
-            this.labelColor.Text = "label8";
-            // 
-            // comboBoxUnitXpGold
-            // 
-            this.comboBoxUnitXpGold.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxUnitXpGold.FormattingEnabled = true;
-            this.comboBoxUnitXpGold.Items.AddRange(new object[] {
-            "Minute",
-            "Hour"});
-            this.comboBoxUnitXpGold.Location = new System.Drawing.Point(488, 46);
-            this.comboBoxUnitXpGold.Name = "comboBoxUnitXpGold";
-            this.comboBoxUnitXpGold.Size = new System.Drawing.Size(287, 39);
-            this.comboBoxUnitXpGold.TabIndex = 2;
-            // 
-            // comboBoxCardDrop
-            // 
-            this.comboBoxCardDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCardDrop.FormattingEnabled = true;
-            this.comboBoxCardDrop.Items.AddRange(new object[] {
-            "Minute",
-            "Hour",
-            "Day"});
-            this.comboBoxCardDrop.Location = new System.Drawing.Point(488, 112);
-            this.comboBoxCardDrop.Name = "comboBoxCardDrop";
-            this.comboBoxCardDrop.Size = new System.Drawing.Size(287, 39);
-            this.comboBoxCardDrop.TabIndex = 3;
-            // 
-            // textBoxRefreshTimer
-            // 
-            this.textBoxRefreshTimer.Location = new System.Drawing.Point(488, 60);
-            this.textBoxRefreshTimer.Name = "textBoxRefreshTimer";
-            this.textBoxRefreshTimer.Size = new System.Drawing.Size(287, 38);
-            this.textBoxRefreshTimer.TabIndex = 2;
-            // 
-            // comboBoxSigFig
-            // 
-            this.comboBoxSigFig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSigFig.FormattingEnabled = true;
-            this.comboBoxSigFig.Items.AddRange(new object[] {
-            "10"});
-            this.comboBoxSigFig.Location = new System.Drawing.Point(488, 129);
-            this.comboBoxSigFig.Name = "comboBoxSigFig";
-            this.comboBoxSigFig.Size = new System.Drawing.Size(287, 39);
-            this.comboBoxSigFig.TabIndex = 3;
+            this.groupBox4.Controls.Add(this.radioButtonDCYes);
+            this.groupBox4.Controls.Add(this.radioButtonDCNo);
+            this.groupBox4.Location = new System.Drawing.Point(8, 37);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(767, 80);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Double Cards";
             // 
             // radioButtonDCYes
             // 
@@ -246,27 +270,35 @@
             this.comboBoxAscTier.Size = new System.Drawing.Size(287, 39);
             this.comboBoxAscTier.TabIndex = 7;
             // 
-            // radioButtonMOYes
+            // labelColor
             // 
-            this.radioButtonMOYes.AutoSize = true;
-            this.radioButtonMOYes.Location = new System.Drawing.Point(478, 26);
-            this.radioButtonMOYes.Name = "radioButtonMOYes";
-            this.radioButtonMOYes.Size = new System.Drawing.Size(101, 36);
-            this.radioButtonMOYes.TabIndex = 8;
-            this.radioButtonMOYes.TabStop = true;
-            this.radioButtonMOYes.Text = "Yes";
-            this.radioButtonMOYes.UseVisualStyleBackColor = true;
+            this.labelColor.AutoSize = true;
+            this.labelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelColor.Location = new System.Drawing.Point(340, 285);
+            this.labelColor.Name = "labelColor";
+            this.labelColor.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.labelColor.Size = new System.Drawing.Size(125, 54);
+            this.labelColor.TabIndex = 4;
+            this.labelColor.Text = "label8";
             // 
-            // radioButtonMONo
+            // buttonOverlayColor
             // 
-            this.radioButtonMONo.AutoSize = true;
-            this.radioButtonMONo.Location = new System.Drawing.Point(642, 27);
-            this.radioButtonMONo.Name = "radioButtonMONo";
-            this.radioButtonMONo.Size = new System.Drawing.Size(88, 36);
-            this.radioButtonMONo.TabIndex = 9;
-            this.radioButtonMONo.TabStop = true;
-            this.radioButtonMONo.Text = "No";
-            this.radioButtonMONo.UseVisualStyleBackColor = true;
+            this.buttonOverlayColor.Location = new System.Drawing.Point(32, 283);
+            this.buttonOverlayColor.Name = "buttonOverlayColor";
+            this.buttonOverlayColor.Size = new System.Drawing.Size(249, 57);
+            this.buttonOverlayColor.TabIndex = 3;
+            this.buttonOverlayColor.Text = "Overlay Color";
+            this.buttonOverlayColor.UseVisualStyleBackColor = true;
+            this.buttonOverlayColor.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(26, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(203, 32);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Ascension Tier";
             // 
             // buttonRestore
             // 
@@ -298,28 +330,6 @@
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.radioButtonDCYes);
-            this.groupBox4.Controls.Add(this.radioButtonDCNo);
-            this.groupBox4.Location = new System.Drawing.Point(8, 37);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(767, 80);
-            this.groupBox4.TabIndex = 10;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Double Cards";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.radioButtonMOYes);
-            this.groupBox5.Controls.Add(this.radioButtonMONo);
-            this.groupBox5.Location = new System.Drawing.Point(8, 194);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(767, 74);
-            this.groupBox5.TabIndex = 11;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Move Overlay on Resize";
-            // 
             // ProSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -343,10 +353,10 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }

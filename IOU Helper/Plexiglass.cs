@@ -16,6 +16,7 @@ public partial class Plexiglass : Form
     private Label label1;
     private Label label2;
     public const int HT_CAPTION = 0x2;
+    private bool moveOnResize = true;
 
     [DllImportAttribute("user32.dll")]
     public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -201,6 +202,8 @@ public partial class Plexiglass : Form
 
     private void InitializeComponent()
     {
+            moveOnResize = _form1.getMoveOverlay();
+
             this.panel1 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -215,7 +218,7 @@ public partial class Plexiglass : Form
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panelConsole = new System.Windows.Forms.Panel();
-            this.textConsole = new IOU_Helper.TextConsole(this);
+            this.textConsole = new IOU_Helper.TextConsole(this, _form1);
             this.labelConsole = new System.Windows.Forms.Label();
             this.labelHeader = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -227,7 +230,7 @@ public partial class Plexiglass : Form
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = _form1.getOverlayColor();
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
@@ -289,15 +292,15 @@ public partial class Plexiglass : Form
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(93, 38);
             this.label16.TabIndex = 20;
-            if (_form1.getCardDropTime() == "minute")
+            if (_form1.getCardDropTime() == "Minute")
             {
                 this.label16.Text = "Est cards/min :";
             }
-            else if (_form1.getCardDropTime() == "hour")
+            else if (_form1.getCardDropTime() == "Hour")
             {
                 this.label16.Text = "Est cards/hour :";
             }
-            else if (_form1.getCardDropTime() == "day")
+            else if (_form1.getCardDropTime() == "Day")
             {
                 this.label16.Text = "Est cards/day :";
             }  
@@ -320,7 +323,7 @@ public partial class Plexiglass : Form
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(195, 38);
             this.label18.TabIndex = 18;
-            this.label18.Text = "Aver kill + spawn time :";
+            this.label18.Text = "Aver kill/spawn :";
             // 
             // label19
             // 
@@ -340,13 +343,13 @@ public partial class Plexiglass : Form
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(179, 38);
             this.label20.TabIndex = 16;
-            if (_form1.getUnitXPGold() == "minute")
+            if (_form1.getUnitXPGold() == "Minute")
             {
                 this.label20.Text = "Party dmg/min :";
                 this.label22.Text = "G/min :";
                 this.label24.Text = "XP/min :";
             }
-            else if (_form1.getUnitXPGold() == "hour")
+            else if (_form1.getUnitXPGold() == "Hour")
             {
                 this.label20.Text = "Party dmg/hour :";
                 this.label22.Text = "G/hour :";
@@ -415,7 +418,7 @@ public partial class Plexiglass : Form
             // 
             // panelConsole
             // 
-            this.panelConsole.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelConsole.BackColor = _form1.getOverlayColor();
             this.panelConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelConsole.Controls.Add(this.textConsole);
             this.panelConsole.Controls.Add(this.labelConsole);
