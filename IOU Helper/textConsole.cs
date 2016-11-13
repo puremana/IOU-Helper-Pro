@@ -300,7 +300,11 @@ namespace IOU_Helper
                 double kPerMin = (60 / averageTime);
                 //Estimated cards per hour
                 double estCards = ((1 + (infernoLevel / 2)) * kPerMin) * 60;
-                
+
+                if (_form1.getDoubleCards() == true)
+                {
+                    estCards = estCards * 2;
+                }
 
                 //Round down to whatever significant figures
                 //Math.Round(pDamage, sigFig);

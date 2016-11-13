@@ -1621,6 +1621,7 @@ namespace IOU_Helper
         public void applyProSettings(int time)
         {
             timerProStats.Interval = (time * 1000);
+            overlay.refreshLabels();
         }
 
         //Property Getter Methods

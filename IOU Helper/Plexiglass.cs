@@ -661,4 +661,36 @@ public partial class Plexiglass : Form
         Clipboard.SetText(stats);
         MessageBox.Show("Panel Statistics have been copied to your clipboard.");
     }
+
+    public void refreshLabels()
+    {
+        if (_form1.getCardDropTime() == "Minute")
+        {
+            this.label16.Text = "Est cards/min :";
+        }
+        else if (_form1.getCardDropTime() == "Hour")
+        {
+            this.label16.Text = "Est cards/hour :";
+        }
+        else if (_form1.getCardDropTime() == "Day")
+        {
+            this.label16.Text = "Est cards/day :";
+        }
+
+        if (_form1.getUnitXPGold() == "Minute")
+        {
+            this.label20.Text = "Party dmg/min :";
+            this.label22.Text = "G/min :";
+            this.label24.Text = "XP/min :";
+        }
+        else if (_form1.getUnitXPGold() == "Hour")
+        {
+            this.label20.Text = "Party dmg/hour :";
+            this.label22.Text = "G/hour :";
+            this.label24.Text = "XP/hour :";
+        }
+
+        this.panel1.BackColor = _form1.getOverlayColor();
+        this.panelConsole.BackColor = _form1.getOverlayColor();
+    }
 }
