@@ -18,6 +18,7 @@ namespace IOU_Helper
         private WebKit.WebKitBrowser _client;
         private TabPage _tabpage;
         private Boolean _isTest;
+        private int _port;
 
         //Kongregate Tab Creation
         public Tab(string kongUsername, string kongID, string kongToken, WebKit.WebKitBrowser client)
@@ -86,6 +87,7 @@ namespace IOU_Helper
         public System.Uri getTestURL()
         {
             System.Uri uri = new System.Uri("http://iourpg.com/test.swf?" + _gameVersion + "&kongregate_username=" + _kongUsername + "&kongregate_user_id=" + _kongID + "&kongregate_game_auth_token=" + _kongToken + "&kongregate_api_path=http%3A%2F%2Fchat.kongregate.com%2Fflash%2FAPI_AS3_" + _code + ".swf");
+            _port = uri.Port;
             return uri;
         }
 
@@ -102,5 +104,6 @@ namespace IOU_Helper
         {
             return _isTest;
         }
+
     }
 }

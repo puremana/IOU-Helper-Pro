@@ -1666,6 +1666,44 @@ namespace IOU_Helper
             return Properties.Settings.Default.overlayColor;
         }
 
+        public string getUsername()
+        {
+            if (tabControl.SelectedTab.Text == "IOURPG")
+            {
+                return "IOURPG";
+            }
+            else if (tabList.Count > 0 && tabControl.SelectedTab.Text != "Client")
+            {
+                string username = "NOT FOUND";
+                string tabUser = tabControl.SelectedTab.Text;
+
+                try
+                {
+                    foreach (Tab tab in tabList)
+                    {
+                        username = tab.getUsername();
+                        if (username == tabUser)
+                        {
+                            return username;
+                        }
+                    }
+                    foreach (Tab tab in testTabList)
+                    {
+                        username = tab.getUsername() + " test";
+                        if (username == tabUser)
+                        {
+                            return username;
+                        }
+                    }        
+                }
+                catch (Exception ex)
+                {
+                    return "NOT FOUND";
+                }
+            }
+            return "NOT FOUND";
+        }
+
         //public Plexiglass getOverlay()
         //{
         //    return overlay;
