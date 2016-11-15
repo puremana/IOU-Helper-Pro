@@ -64,6 +64,14 @@ namespace IOU_Helper
 
             labelColor.BackColor = Properties.Settings.Default.overlayColor;
             labelColor.Text = Properties.Settings.Default.overlayColor.ToString();
+
+            textBoxGoldAdd.Text = Properties.Settings.Default.goldAdd.ToString();
+            textBoxXpAdd.Text = Properties.Settings.Default.xpAdd.ToString();
+            comboBoxGoldOrb.SelectedIndex = comboBoxGoldOrb.FindString(Properties.Settings.Default.goldOrb.ToString());
+            comboBoxXpOrb.SelectedIndex = comboBoxXpOrb.FindString(Properties.Settings.Default.xpOrb.ToString());
+            decimal partyBoost = Properties.Settings.Default.partyBoost * 10;
+            int pBoost = (int)partyBoost;
+            comboBoxPartyBoost.SelectedIndex = comboBoxPartyBoost.FindString(pBoost.ToString());
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -91,6 +99,12 @@ namespace IOU_Helper
 
             labelColor.BackColor = Color.White;
             labelColor.Text = Color.White.ToString();
+
+            textBoxGoldAdd.Text = "0";
+            textBoxXpAdd.Text = "0";
+            comboBoxGoldOrb.SelectedIndex = comboBoxGoldOrb.FindString("0");
+            comboBoxXpOrb.SelectedIndex = comboBoxXpOrb.FindString("0");
+            comboBoxPartyBoost.SelectedIndex = comboBoxPartyBoost.FindString("5");
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -130,7 +144,9 @@ namespace IOU_Helper
             Properties.Settings.Default.xpAdd = int.Parse(textBoxXpAdd.Text);
             Properties.Settings.Default.goldOrb = int.Parse(comboBoxGoldOrb.SelectedItem.ToString());
             Properties.Settings.Default.xpOrb = int.Parse(comboBoxXpOrb.SelectedItem.ToString());
-
+            decimal partyBoost = decimal.Parse(comboBoxPartyBoost.SelectedItem.ToString());
+            partyBoost = partyBoost / 10;
+            Properties.Settings.Default.partyBoost = partyBoost;
 
             _form1.setOverlayColor(labelColor.BackColor);
             _form1.applyProSettings(time);
