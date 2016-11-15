@@ -346,14 +346,14 @@ public partial class Plexiglass : Form
             if (_form1.getUnitXPGold() == "Minute")
             {
                 this.label20.Text = "Party dmg/min :";
-                this.label22.Text = "G/min :";
-                this.label24.Text = "XP/min :";
+                this.label22.Text = "Est G/min :";
+                this.label24.Text = "Est XP/min :";
             }
             else if (_form1.getUnitXPGold() == "Hour")
             {
                 this.label20.Text = "Party dmg/hour :";
-                this.label22.Text = "G/hour :";
-                this.label24.Text = "XP/hour :";
+                this.label22.Text = "Est G/hour :";
+                this.label24.Text = "Est XP/hour :";
             } 
             
             // 
@@ -680,14 +680,14 @@ public partial class Plexiglass : Form
         if (_form1.getUnitXPGold() == "Minute")
         {
             this.label20.Text = "Party dmg/min :";
-            this.label22.Text = "G/min :";
-            this.label24.Text = "XP/min :";
+            this.label22.Text = "Est G/min :";
+            this.label24.Text = "Est XP/min :";
         }
         else if (_form1.getUnitXPGold() == "Hour")
         {
             this.label20.Text = "Party dmg/hour :";
-            this.label22.Text = "G/hour :";
-            this.label24.Text = "XP/hour :";
+            this.label22.Text = "Est G/hour :";
+            this.label24.Text = "Est XP/hour :";
         }
 
         this.panel1.BackColor = _form1.getOverlayColor();

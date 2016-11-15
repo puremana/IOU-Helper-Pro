@@ -125,11 +125,42 @@ namespace IOU_Helper
 
             Properties.Settings.Default.overlayColor = labelColor.BackColor;
 
+            //Gold and XP Settings
+            Properties.Settings.Default.goldAdd = int.Parse(textBoxGoldAdd.Text);
+            Properties.Settings.Default.xpAdd = int.Parse(textBoxXpAdd.Text);
+            Properties.Settings.Default.goldOrb = int.Parse(comboBoxGoldOrb.SelectedItem.ToString());
+            Properties.Settings.Default.xpOrb = int.Parse(comboBoxXpOrb.SelectedItem.ToString());
+
+
             _form1.setOverlayColor(labelColor.BackColor);
             _form1.applyProSettings(time);
             Properties.Settings.Default.Save();
             MessageBox.Show("IOU Helper Pro settings have been applied.");
             this.Close();
+        }
+
+        private void textBoxGoldAdd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxXpAdd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

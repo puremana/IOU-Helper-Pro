@@ -53,11 +53,25 @@
             this.buttonRestore = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.comboBoxGoldOrb = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBoxPartyBoost = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxGoldAdd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxXpOrb = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxXpAdd = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -183,9 +197,9 @@
             this.groupBox3.Controls.Add(this.labelColor);
             this.groupBox3.Controls.Add(this.buttonOverlayColor);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(41, 485);
+            this.groupBox3.Location = new System.Drawing.Point(41, 775);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(848, 369);
+            this.groupBox3.Size = new System.Drawing.Size(863, 369);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Other";
@@ -302,7 +316,7 @@
             // 
             // buttonRestore
             // 
-            this.buttonRestore.Location = new System.Drawing.Point(49, 870);
+            this.buttonRestore.Location = new System.Drawing.Point(49, 1160);
             this.buttonRestore.Name = "buttonRestore";
             this.buttonRestore.Size = new System.Drawing.Size(252, 65);
             this.buttonRestore.TabIndex = 3;
@@ -312,7 +326,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(331, 870);
+            this.buttonCancel.Location = new System.Drawing.Point(331, 1160);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(252, 65);
             this.buttonCancel.TabIndex = 4;
@@ -322,7 +336,7 @@
             // 
             // buttonApply
             // 
-            this.buttonApply.Location = new System.Drawing.Point(622, 870);
+            this.buttonApply.Location = new System.Drawing.Point(622, 1160);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(252, 65);
             this.buttonApply.TabIndex = 5;
@@ -330,12 +344,166 @@
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.comboBoxXpOrb);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Controls.Add(this.label12);
+            this.groupBox6.Controls.Add(this.textBoxXpAdd);
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.comboBoxGoldOrb);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Controls.Add(this.comboBoxPartyBoost);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.label7);
+            this.groupBox6.Controls.Add(this.textBoxGoldAdd);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Location = new System.Drawing.Point(41, 473);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(863, 283);
+            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Gold and Xp Settings";
+            // 
+            // comboBoxGoldOrb
+            // 
+            this.comboBoxGoldOrb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGoldOrb.FormattingEnabled = true;
+            this.comboBoxGoldOrb.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.comboBoxGoldOrb.Location = new System.Drawing.Point(423, 97);
+            this.comboBoxGoldOrb.Name = "comboBoxGoldOrb";
+            this.comboBoxGoldOrb.Size = new System.Drawing.Size(180, 39);
+            this.comboBoxGoldOrb.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(417, 53);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(186, 32);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Gold Orb Tier";
+            // 
+            // comboBoxPartyBoost
+            // 
+            this.comboBoxPartyBoost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPartyBoost.FormattingEnabled = true;
+            this.comboBoxPartyBoost.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxPartyBoost.Location = new System.Drawing.Point(668, 98);
+            this.comboBoxPartyBoost.Name = "comboBoxPartyBoost";
+            this.comboBoxPartyBoost.Size = new System.Drawing.Size(155, 39);
+            this.comboBoxPartyBoost.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(662, 56);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(161, 32);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Party Boost";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(259, 100);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 32);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "%";
+            // 
+            // textBoxGoldAdd
+            // 
+            this.textBoxGoldAdd.Location = new System.Drawing.Point(44, 98);
+            this.textBoxGoldAdd.Name = "textBoxGoldAdd";
+            this.textBoxGoldAdd.Size = new System.Drawing.Size(208, 38);
+            this.textBoxGoldAdd.TabIndex = 1;
+            this.textBoxGoldAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGoldAdd_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(345, 32);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Total Gold Additive Bonus";
+            // 
+            // comboBoxXpOrb
+            // 
+            this.comboBoxXpOrb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxXpOrb.FormattingEnabled = true;
+            this.comboBoxXpOrb.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.comboBoxXpOrb.Location = new System.Drawing.Point(423, 205);
+            this.comboBoxXpOrb.Name = "comboBoxXpOrb";
+            this.comboBoxXpOrb.Size = new System.Drawing.Size(180, 39);
+            this.comboBoxXpOrb.TabIndex = 13;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(439, 161);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(160, 32);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Xp Orb Tier";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(259, 208);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(40, 32);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "%";
+            // 
+            // textBoxXpAdd
+            // 
+            this.textBoxXpAdd.Location = new System.Drawing.Point(44, 206);
+            this.textBoxXpAdd.Name = "textBoxXpAdd";
+            this.textBoxXpAdd.Size = new System.Drawing.Size(208, 38);
+            this.textBoxXpAdd.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(26, 161);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(319, 32);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Total Xp Additive Bonus";
+            // 
             // ProSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(962, 961);
+            this.ClientSize = new System.Drawing.Size(962, 1270);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonRestore);
@@ -357,6 +525,8 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -387,5 +557,18 @@
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ComboBox comboBoxGoldOrb;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBoxPartyBoost;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxGoldAdd;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBoxXpOrb;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxXpAdd;
+        private System.Windows.Forms.Label label13;
     }
 }

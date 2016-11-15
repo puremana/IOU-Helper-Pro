@@ -118,5 +118,65 @@ namespace IOU_Helper.Properties {
                 this["overlayColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int goldAdd {
+            get {
+                return ((int)(this["goldAdd"]));
+            }
+            set {
+                this["goldAdd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int xpAdd {
+            get {
+                return ((int)(this["xpAdd"]));
+            }
+            set {
+                this["xpAdd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int goldOrb {
+            get {
+                return ((int)(this["goldOrb"]));
+            }
+            set {
+                this["goldOrb"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int xpOrb {
+            get {
+                return ((int)(this["xpOrb"]));
+            }
+            set {
+                this["xpOrb"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal partyBoost {
+            get {
+                return ((decimal)(this["partyBoost"]));
+            }
+            set {
+                this["partyBoost"] = value;
+            }
+        }
     }
 }

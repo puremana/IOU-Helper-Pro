@@ -1666,6 +1666,31 @@ namespace IOU_Helper
             return Properties.Settings.Default.overlayColor;
         }
 
+        public int getGoldAdd()
+        {
+            return Properties.Settings.Default.goldAdd;
+        }
+
+        public int getXpAdd()
+        {
+            return Properties.Settings.Default.xpAdd;
+        }
+
+        public int getGoldOrb()
+        {
+            return Properties.Settings.Default.goldOrb;
+        }
+
+        public int getXpOrb()
+        {
+            return Properties.Settings.Default.xpOrb;
+        }
+
+        public decimal getPartyBoost()
+        {
+            return Properties.Settings.Default.partyBoost;
+        }
+
         public string getUsername()
         {
             if (tabControl.SelectedTab.Text == "IOURPG")

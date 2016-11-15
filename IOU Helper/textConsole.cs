@@ -109,7 +109,7 @@ namespace IOU_Helper
         // another failed private byte[] findSpawnInfo = { 0x00, 0x04, 0x32, 0x35, 0x39, 0x30, 0x00 };
         // failed xp private byte[] findSpawnInfo = { 0x00, 0x05, 0x31, 0x37, 0x38, 0x34, 0x31 };
         private byte[] findSpawnInfo = { 0x00, 0x05, 0x73, 0x70, 0x61, 0x77, 0x6e, 0x00 };
-        private byte[] goldXpInfo = { 0x00, 0x02, 0x64, 0x72, 0x00 };
+        //private byte[] goldXpInfo = { 0x00, 0x02, 0x64, 0x72, 0x00 };
         private Regex regex = new Regex(@"^(\d+)(,\d+)*$");
         //variables for spawn
         double time;
@@ -210,31 +210,31 @@ namespace IOU_Helper
                         }
                     }
                 }
-                for (int i = 0; i < data.Length; ++i)
-                {
-                    //Gold/XP Information
-                    if (data[i] == goldXpInfo[0] && (i + goldXpInfo.Length) < data.Length)
-                    {
-                        log = "gold/xp";
+                //for (int i = 0; i < data.Length; ++i)
+                //{
+                //    //Gold/XP Information
+                //    if (data[i] == goldXpInfo[0] && (i + goldXpInfo.Length) < data.Length)
+                //    {
+                //        log = "gold/xp";
 
-                        string result = System.Text.Encoding.UTF8.GetString(data);
-                        write = true;
-                        for (int j = 0; j < goldXpInfo.Length; ++j)
-                        {
-                            if (data[i + j] != goldXpInfo[j])
-                            {
-                                write = false;
-                                i += j;
-                                break;
-                            }
-                        }
+                //        string result = System.Text.Encoding.UTF8.GetString(data);
+                //        write = true;
+                //        for (int j = 0; j < goldXpInfo.Length; ++j)
+                //        {
+                //            if (data[i + j] != goldXpInfo[j])
+                //            {
+                //                write = false;
+                //                i += j;
+                //                break;
+                //            }
+                //        }
 
-                        if (write == true)
-                        {
-                            Console.WriteLine(result);
-                        }
-                    }
-                }
+                //        if (write == true)
+                //        {
+                //            Console.WriteLine(result);
+                //        }
+                //    }
+                //}
             }
             catch (Exception ex)
             {
