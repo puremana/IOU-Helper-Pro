@@ -38,7 +38,10 @@
     <Setting Name="xpOrb" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="partyBoost" Type="System.Decimal" Scope="User">
+    <Setting Name="partyBoost" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="players" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>

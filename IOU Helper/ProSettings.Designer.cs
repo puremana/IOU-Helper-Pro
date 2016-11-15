@@ -66,6 +66,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxXpAdd = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.comboBoxPlayers = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -346,6 +348,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.comboBoxPlayers);
+            this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.comboBoxXpOrb);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.label12);
@@ -379,7 +383,7 @@
             "6",
             "7",
             "8"});
-            this.comboBoxGoldOrb.Location = new System.Drawing.Point(423, 97);
+            this.comboBoxGoldOrb.Location = new System.Drawing.Point(406, 97);
             this.comboBoxGoldOrb.Name = "comboBoxGoldOrb";
             this.comboBoxGoldOrb.Size = new System.Drawing.Size(180, 39);
             this.comboBoxGoldOrb.TabIndex = 6;
@@ -387,7 +391,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(417, 53);
+            this.label9.Location = new System.Drawing.Point(400, 53);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(186, 32);
             this.label9.TabIndex = 5;
@@ -458,7 +462,7 @@
             "6",
             "7",
             "8"});
-            this.comboBoxXpOrb.Location = new System.Drawing.Point(423, 205);
+            this.comboBoxXpOrb.Location = new System.Drawing.Point(406, 205);
             this.comboBoxXpOrb.Name = "comboBoxXpOrb";
             this.comboBoxXpOrb.Size = new System.Drawing.Size(180, 39);
             this.comboBoxXpOrb.TabIndex = 13;
@@ -466,7 +470,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(439, 161);
+            this.label10.Location = new System.Drawing.Point(422, 161);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(160, 32);
             this.label10.TabIndex = 12;
@@ -496,6 +500,29 @@
             this.label13.Size = new System.Drawing.Size(319, 32);
             this.label13.TabIndex = 7;
             this.label13.Text = "Total Xp Additive Bonus";
+            // 
+            // comboBoxPlayers
+            // 
+            this.comboBoxPlayers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPlayers.FormattingEnabled = true;
+            this.comboBoxPlayers.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.comboBoxPlayers.Location = new System.Drawing.Point(668, 203);
+            this.comboBoxPlayers.Name = "comboBoxPlayers";
+            this.comboBoxPlayers.Size = new System.Drawing.Size(155, 39);
+            this.comboBoxPlayers.TabIndex = 15;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(611, 161);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(213, 32);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Players in Party";
             // 
             // ProSettings
             // 
@@ -570,5 +597,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxXpAdd;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBoxPlayers;
+        private System.Windows.Forms.Label label11;
     }
 }

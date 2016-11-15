@@ -69,9 +69,10 @@ namespace IOU_Helper
             textBoxXpAdd.Text = Properties.Settings.Default.xpAdd.ToString();
             comboBoxGoldOrb.SelectedIndex = comboBoxGoldOrb.FindString(Properties.Settings.Default.goldOrb.ToString());
             comboBoxXpOrb.SelectedIndex = comboBoxXpOrb.FindString(Properties.Settings.Default.xpOrb.ToString());
-            decimal partyBoost = Properties.Settings.Default.partyBoost * 10;
+            double partyBoost = Properties.Settings.Default.partyBoost * 10;
             int pBoost = (int)partyBoost;
             comboBoxPartyBoost.SelectedIndex = comboBoxPartyBoost.FindString(pBoost.ToString());
+            comboBoxPlayers.SelectedIndex = comboBoxPlayers.FindString(Properties.Settings.Default.players.ToString());
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -105,6 +106,7 @@ namespace IOU_Helper
             comboBoxGoldOrb.SelectedIndex = comboBoxGoldOrb.FindString("0");
             comboBoxXpOrb.SelectedIndex = comboBoxXpOrb.FindString("0");
             comboBoxPartyBoost.SelectedIndex = comboBoxPartyBoost.FindString("5");
+            comboBoxPlayers.SelectedIndex = comboBoxPlayers.FindString("4");
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -144,9 +146,10 @@ namespace IOU_Helper
             Properties.Settings.Default.xpAdd = int.Parse(textBoxXpAdd.Text);
             Properties.Settings.Default.goldOrb = int.Parse(comboBoxGoldOrb.SelectedItem.ToString());
             Properties.Settings.Default.xpOrb = int.Parse(comboBoxXpOrb.SelectedItem.ToString());
-            decimal partyBoost = decimal.Parse(comboBoxPartyBoost.SelectedItem.ToString());
+            double partyBoost = double.Parse(comboBoxPartyBoost.SelectedItem.ToString());
             partyBoost = partyBoost / 10;
             Properties.Settings.Default.partyBoost = partyBoost;
+            Properties.Settings.Default.players = int.Parse(comboBoxPlayers.SelectedItem.ToString());
 
             _form1.setOverlayColor(labelColor.BackColor);
             _form1.applyProSettings(time);

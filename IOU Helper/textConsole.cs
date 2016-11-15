@@ -117,6 +117,7 @@ namespace IOU_Helper
         ulong xp = 0;
         ulong gold = 0;
         double infernoLevel = 0;
+        uint pmobLevel = 0;
 
         /// <summary>
         /// Look at packet data and write/ignore
@@ -264,6 +265,7 @@ namespace IOU_Helper
                 string[] values = data.Split(',');
                 hp = ulong.Parse(values[4]);
                 uint mobLevel = uint.Parse(values[2]);
+                pmobLevel = mobLevel;
                 if (mobLevel > 250)
                 {
                     infernoLevel = Math.Floor((((double)mobLevel - 100) / 150));
@@ -344,7 +346,45 @@ namespace IOU_Helper
 
                 string username = _form1.getUsername();
 
-                _plexiglass.updateLabels(username, "xp", "gold", pDamageString, averageTime.ToString(), estCards.ToString(), totalStats);
+                //Gold and XP calculations
+                //BaseXP = MobLevel*(1+(MobLevel*0.003)) XP/Kill = Round((1+%XPBonus)*BaseXP*PartyModifier*(1+(infTier*0.003))*(1+Floor(infTier*0.001,1)*0.03))*(1+%XPOrb))
+                int xpBonus = _form1.getXpAdd();
+                int goldBonus = _form1.getGoldAdd();
+                int xpOrb = _form1.getXpOrb();
+                int goldOrb = _form1.getGoldOrb();
+                double partyBoost = _form1.getPartyBoost();
+                int players = _form1.getPlayers();
+                double partyModifier = (players/10) * (1 + partyBoost);
+                double xpOrbBonus = (xpOrb ^ 2) * 2;
+                double goldOrbBonus = (goldOrb ^ 2) * 2;
+
+                double baseXp = pmobLevel*(pmobLevel*0.003);
+                double xpPerKill = Math.Round((1 + xpBonus)*baseXp*partyModifier*(1 + (infernoLevel*0.003))*(1 + Math.Floor(infernoLevel*0.001)*0.03))*(1 + xpOrbBonus);
+
+                double baseCoin = Math.Pow(pmobLevel, (1.3 + 0.18));
+                double coinValue = Math.Round((baseCoin * (1 + goldBonus) * partyModifier) * (1 + goldOrbBonus));
+                if (players == 1)
+                {
+                    coinValue = coinValue * 1.5;
+                }
+
+                string unitXpGold = _form1.getUnitXPGold();
+                double gold = 0;
+                double xp = 0;
+
+                if (unitXpGold == "Minute")
+                {
+                    //4.13 is average number of coins for max. - (1 - triplesize%) * (1 + coincount/2) + triplesize% * 3 *  (1 + coincount/2)
+                    gold = kPerMin * (coinValue * 4.13);
+                    xp = (xpPerKill * kPerMin);
+                }
+                else if (unitXpGold == "Hour")
+                {
+                    gold = (kPerMin * (coinValue * 4.13)) * 60;
+                    xp = (xpPerKill * kPerMin) * 60;
+                }
+                
+                _plexiglass.updateLabels(username, xp.ToString(), gold.ToString(), pDamageString, averageTime.ToString(), estCards.ToString(), totalStats);
         
             }
             catch

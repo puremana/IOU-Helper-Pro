@@ -1686,9 +1686,14 @@ namespace IOU_Helper
             return Properties.Settings.Default.xpOrb;
         }
 
-        public decimal getPartyBoost()
+        public double getPartyBoost()
         {
             return Properties.Settings.Default.partyBoost;
+        }
+
+        public int getPlayers()
+        {
+            return Properties.Settings.Default.players;
         }
 
         public string getUsername()

@@ -170,12 +170,24 @@ namespace IOU_Helper.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public decimal partyBoost {
+        public double partyBoost {
             get {
-                return ((decimal)(this["partyBoost"]));
+                return ((double)(this["partyBoost"]));
             }
             set {
                 this["partyBoost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int players {
+            get {
+                return ((int)(this["players"]));
+            }
+            set {
+                this["players"] = value;
             }
         }
     }
