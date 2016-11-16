@@ -129,6 +129,46 @@ public partial class Plexiglass : Form
         // Ensure the plexiglass keeps the owner covered
         this.ClientSize = this.Owner.ClientSize;
 
+        if (_form1.getMoveOverlay() == true)
+        {
+            int clientWidth = this.Width;
+            int clientHeight = this.Height;
+
+            //Statistics Panel
+            int p1LocationWidth = Convert.ToInt32(clientWidth * 0.64);
+            int p1LocationHeight = Convert.ToInt32(clientHeight * 0.60); //0.32
+            int p1SizeWidth = Convert.ToInt32(clientWidth * 0.24);
+            int p1SizeHeight = Convert.ToInt32(clientHeight * 0.22);
+
+            panel1.Location = new System.Drawing.Point(p1LocationWidth, p1LocationHeight);
+            panel1.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight);
+
+            //Console Panel
+            int p2LocationHeight = Convert.ToInt32(clientHeight * 0.33);
+            int p2SizeHeight = Convert.ToInt32(clientHeight * 0.25);
+            panelConsole.Location = new System.Drawing.Point(p1LocationWidth, p2LocationHeight);
+            panelConsole.Size = new System.Drawing.Size(p1SizeWidth, p2SizeHeight);
+            //textConsole.Location = new System.Drawing.Point(0, 20);
+            //textConsole.Size = new System.Drawing.Size(p1SizeWidth, p1SizeHeight - 100);
+
+            int labelWL = Convert.ToInt32(clientWidth * 0.30);
+            int labelHL = Convert.ToInt32(clientHeight * 0.05);
+
+            labelHeader.Location = new System.Drawing.Point(labelWL, labelHL);
+
+            int buttonWS = Convert.ToInt32(clientWidth * 0.20);
+            int buttonHS = Convert.ToInt32(clientHeight * 0.10);
+
+            int buttonWL = Convert.ToInt32(clientWidth * 0.40);
+            int buttonHL = Convert.ToInt32(clientHeight * 0.80);
+            panelConsole.Size = new System.Drawing.Size(p1SizeWidth, p2SizeHeight);
+            buttonClose.Location = new System.Drawing.Point(buttonWL, buttonHL);
+            buttonClose.Size = new System.Drawing.Size(buttonWS, buttonHS);
+        }
+    }
+
+    public void setPanelSizes()
+    {
         int clientWidth = this.Width;
         int clientHeight = this.Height;
 
@@ -163,6 +203,8 @@ public partial class Plexiglass : Form
         buttonClose.Location = new System.Drawing.Point(buttonWL, buttonHL);
         buttonClose.Size = new System.Drawing.Size(buttonWS, buttonHS);
 
+        //Show
+        panel1.Visible = true;
     }
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
@@ -205,6 +247,7 @@ public partial class Plexiglass : Form
             moveOnResize = _form1.getMoveOverlay();
 
             this.panel1 = new System.Windows.Forms.Panel();
+            panel1.Visible = false;
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -218,6 +261,7 @@ public partial class Plexiglass : Form
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panelConsole = new System.Windows.Forms.Panel();
+            panelConsole.Visible = false;
             this.textConsole = new IOU_Helper.TextConsole(this, _form1);
             this.labelConsole = new System.Windows.Forms.Label();
             this.labelHeader = new System.Windows.Forms.Label();

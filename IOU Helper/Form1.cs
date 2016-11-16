@@ -1527,6 +1527,8 @@ namespace IOU_Helper
             startToolStripMenuItem.Text = "Stop";
             timerProStats.Interval = (Properties.Settings.Default.refreshTimer * 1000);
             timerProStats.Enabled = true;
+            overlay.setPanelSizes();
+
         }
 
         private void hideOverlayToolStripMenuItem_Click(object sender, EventArgs e)

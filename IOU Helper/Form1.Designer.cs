@@ -61,6 +61,7 @@
             this.closeTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveOverlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +69,7 @@
             this.helpGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyStatsToClipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxKongUser = new System.Windows.Forms.TextBox();
             this.groupBoxAccount = new System.Windows.Forms.GroupBox();
             this.textBoxKongToken = new System.Windows.Forms.TextBox();
@@ -89,8 +91,6 @@
             this.IOUclient = new WebKit.WebKitBrowser();
             this.abilityTimer = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.copyStatsToClipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.proSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerProStats = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBoxAccount.SuspendLayout();
@@ -360,6 +360,13 @@
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
+            // proSettingsToolStripMenuItem
+            // 
+            this.proSettingsToolStripMenuItem.Name = "proSettingsToolStripMenuItem";
+            this.proSettingsToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.proSettingsToolStripMenuItem.Text = "Pro Settings";
+            this.proSettingsToolStripMenuItem.Click += new System.EventHandler(this.proSettingsToolStripMenuItem_Click);
+            // 
             // hideOverlayToolStripMenuItem
             // 
             this.hideOverlayToolStripMenuItem.Name = "hideOverlayToolStripMenuItem";
@@ -371,7 +378,7 @@
             // 
             this.hideConsoleToolStripMenuItem.Name = "hideConsoleToolStripMenuItem";
             this.hideConsoleToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.hideConsoleToolStripMenuItem.Text = "Hide Console";
+            this.hideConsoleToolStripMenuItem.Text = "Show Console";
             this.hideConsoleToolStripMenuItem.Click += new System.EventHandler(this.hideConsoleToolStripMenuItem_Click);
             // 
             // moveOverlayToolStripMenuItem
@@ -407,6 +414,13 @@
             this.resetStatsToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.resetStatsToolStripMenuItem.Text = "Reset Stats";
             this.resetStatsToolStripMenuItem.Click += new System.EventHandler(this.resetStatsToolStripMenuItem_Click);
+            // 
+            // copyStatsToClipToolStripMenuItem
+            // 
+            this.copyStatsToClipToolStripMenuItem.Name = "copyStatsToClipToolStripMenuItem";
+            this.copyStatsToClipToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
+            this.copyStatsToClipToolStripMenuItem.Text = "Copy Stats";
+            this.copyStatsToClipToolStripMenuItem.Click += new System.EventHandler(this.copyStatsToClipToolStripMenuItem_Click);
             // 
             // textBoxKongUser
             // 
@@ -586,20 +600,6 @@
             // abilityTimer
             // 
             this.abilityTimer.Tick += new System.EventHandler(this.abilityTimer_Tick);
-            // 
-            // copyStatsToClipToolStripMenuItem
-            // 
-            this.copyStatsToClipToolStripMenuItem.Name = "copyStatsToClipToolStripMenuItem";
-            this.copyStatsToClipToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.copyStatsToClipToolStripMenuItem.Text = "Copy Stats";
-            this.copyStatsToClipToolStripMenuItem.Click += new System.EventHandler(this.copyStatsToClipToolStripMenuItem_Click);
-            // 
-            // proSettingsToolStripMenuItem
-            // 
-            this.proSettingsToolStripMenuItem.Name = "proSettingsToolStripMenuItem";
-            this.proSettingsToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
-            this.proSettingsToolStripMenuItem.Text = "Pro Settings";
-            this.proSettingsToolStripMenuItem.Click += new System.EventHandler(this.proSettingsToolStripMenuItem_Click);
             // 
             // timerProStats
             // 

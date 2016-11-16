@@ -285,7 +285,7 @@ namespace IOU_Helper
         /// <param name="message"></param>
         public void Write(string message)
         {
-            Console.WriteLine(message);
+            //Console.WriteLine(message);
         }
 
         /// <summary>
@@ -354,12 +354,25 @@ namespace IOU_Helper
                 int goldOrb = _form1.getGoldOrb();
                 double partyBoost = _form1.getPartyBoost();
                 int players = _form1.getPlayers();
-                double partyModifier = (players/10) * (1 + partyBoost);
+                double playerBonus = 1;
+                if (players == 2)
+                {
+                    playerBonus = 0.7;
+                }
+                else if (players == 3)
+                {
+                    playerBonus = 0.5;
+                }
+                else if (players == 4)
+                {
+                    playerBonus = 0.4;
+                }
+                double partyModifier = (playerBonus) * (1 + partyBoost);
                 double xpOrbBonus = (xpOrb ^ 2) * 2;
                 double goldOrbBonus = (goldOrb ^ 2) * 2;
 
-                double baseXp = pmobLevel*(pmobLevel*0.003);
-                double xpPerKill = Math.Round((1 + xpBonus)*baseXp*partyModifier*(1 + (infernoLevel*0.003))*(1 + Math.Floor(infernoLevel*0.001)*0.03))*(1 + xpOrbBonus);
+                double baseXp = pmobLevel * (1 + (pmobLevel * 0.003));
+                double xpPerKill = Math.Round((1 + xpBonus)*baseXp*partyModifier*(1 + (infernoLevel*0.003))*(1 + Math.Floor(infernoLevel*0.01)*0.03))*(1 + xpOrbBonus);
 
                 double baseCoin = Math.Pow(pmobLevel, (1.3 + 0.18));
                 double coinValue = Math.Round((baseCoin * (1 + goldBonus) * partyModifier) * (1 + goldOrbBonus));
