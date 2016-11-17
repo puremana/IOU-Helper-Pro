@@ -190,5 +190,29 @@ namespace IOU_Helper.Properties {
                 this["players"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int globalGold {
+            get {
+                return ((int)(this["globalGold"]));
+            }
+            set {
+                this["globalGold"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int globalXp {
+            get {
+                return ((int)(this["globalXp"]));
+            }
+            set {
+                this["globalXp"] = value;
+            }
+        }
     }
 }

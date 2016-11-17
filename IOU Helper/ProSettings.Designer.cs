@@ -54,6 +54,13 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.comboBoxPlayers = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBoxXpOrb = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxXpAdd = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.comboBoxGoldOrb = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxPartyBoost = new System.Windows.Forms.ComboBox();
@@ -61,13 +68,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxGoldAdd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxXpOrb = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBoxXpAdd = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBoxPlayers = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxHelp = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBoxGlobalGold = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBoxGlobalXp = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -101,6 +109,8 @@
             this.comboBoxCardDrop.Name = "comboBoxCardDrop";
             this.comboBoxCardDrop.Size = new System.Drawing.Size(287, 39);
             this.comboBoxCardDrop.TabIndex = 3;
+            this.comboBoxCardDrop.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.comboBoxCardDrop.MouseHover += new System.EventHandler(this.comboBoxCardDrop_MouseHover);
             // 
             // comboBoxUnitXpGold
             // 
@@ -113,6 +123,8 @@
             this.comboBoxUnitXpGold.Name = "comboBoxUnitXpGold";
             this.comboBoxUnitXpGold.Size = new System.Drawing.Size(287, 39);
             this.comboBoxUnitXpGold.TabIndex = 2;
+            this.comboBoxUnitXpGold.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.comboBoxUnitXpGold.MouseHover += new System.EventHandler(this.comboBoxUnitXpGold_MouseHover);
             // 
             // label2
             // 
@@ -122,6 +134,8 @@
             this.label2.Size = new System.Drawing.Size(214, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "Card Drop Time";
+            this.label2.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label2.MouseHover += new System.EventHandler(this.label2_MouseHover);
             // 
             // label1
             // 
@@ -131,6 +145,8 @@
             this.label1.Size = new System.Drawing.Size(379, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Xp, Gold, Party Damage Unit";
+            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label1.MouseHover += new System.EventHandler(this.label1_MouseHover);
             // 
             // groupBox2
             // 
@@ -165,6 +181,8 @@
             this.comboBoxSigFig.Name = "comboBoxSigFig";
             this.comboBoxSigFig.Size = new System.Drawing.Size(287, 39);
             this.comboBoxSigFig.TabIndex = 3;
+            this.comboBoxSigFig.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.comboBoxSigFig.MouseHover += new System.EventHandler(this.comboBoxSigFig_MouseHover);
             // 
             // textBoxRefreshTimer
             // 
@@ -172,6 +190,8 @@
             this.textBoxRefreshTimer.Name = "textBoxRefreshTimer";
             this.textBoxRefreshTimer.Size = new System.Drawing.Size(287, 38);
             this.textBoxRefreshTimer.TabIndex = 2;
+            this.textBoxRefreshTimer.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.textBoxRefreshTimer.MouseHover += new System.EventHandler(this.textBoxRefreshTimer_MouseHover);
             // 
             // label4
             // 
@@ -181,6 +201,8 @@
             this.label4.Size = new System.Drawing.Size(277, 32);
             this.label4.TabIndex = 1;
             this.label4.Text = "Round to # Decimals";
+            this.label4.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label4.MouseHover += new System.EventHandler(this.label4_MouseHover);
             // 
             // label3
             // 
@@ -190,6 +212,8 @@
             this.label3.Size = new System.Drawing.Size(324, 32);
             this.label3.TabIndex = 0;
             this.label3.Text = "Refresh Timer (seconds)";
+            this.label3.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label3.MouseHover += new System.EventHandler(this.label3_MouseHover);
             // 
             // groupBox3
             // 
@@ -199,7 +223,7 @@
             this.groupBox3.Controls.Add(this.labelColor);
             this.groupBox3.Controls.Add(this.buttonOverlayColor);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(41, 775);
+            this.groupBox3.Location = new System.Drawing.Point(910, 28);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(863, 369);
             this.groupBox3.TabIndex = 2;
@@ -227,6 +251,8 @@
             this.radioButtonMOYes.TabStop = true;
             this.radioButtonMOYes.Text = "Yes";
             this.radioButtonMOYes.UseVisualStyleBackColor = true;
+            this.radioButtonMOYes.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.radioButtonMOYes.MouseHover += new System.EventHandler(this.radioButtonMOYes_MouseHover);
             // 
             // radioButtonMONo
             // 
@@ -238,6 +264,8 @@
             this.radioButtonMONo.TabStop = true;
             this.radioButtonMONo.Text = "No";
             this.radioButtonMONo.UseVisualStyleBackColor = true;
+            this.radioButtonMONo.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.radioButtonMONo.MouseHover += new System.EventHandler(this.radioButtonMONo_MouseHover);
             // 
             // groupBox4
             // 
@@ -260,6 +288,8 @@
             this.radioButtonDCYes.TabStop = true;
             this.radioButtonDCYes.Text = "Yes";
             this.radioButtonDCYes.UseVisualStyleBackColor = true;
+            this.radioButtonDCYes.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.radioButtonDCYes.MouseHover += new System.EventHandler(this.radioButtonDCYes_MouseHover);
             // 
             // radioButtonDCNo
             // 
@@ -271,6 +301,8 @@
             this.radioButtonDCNo.TabStop = true;
             this.radioButtonDCNo.Text = "No";
             this.radioButtonDCNo.UseVisualStyleBackColor = true;
+            this.radioButtonDCNo.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.radioButtonDCNo.MouseHover += new System.EventHandler(this.radioButtonDCNo_MouseHover);
             // 
             // comboBoxAscTier
             // 
@@ -285,6 +317,8 @@
             this.comboBoxAscTier.Name = "comboBoxAscTier";
             this.comboBoxAscTier.Size = new System.Drawing.Size(287, 39);
             this.comboBoxAscTier.TabIndex = 7;
+            this.comboBoxAscTier.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.comboBoxAscTier.MouseHover += new System.EventHandler(this.comboBoxAscTier_MouseHover);
             // 
             // labelColor
             // 
@@ -296,16 +330,20 @@
             this.labelColor.Size = new System.Drawing.Size(125, 54);
             this.labelColor.TabIndex = 4;
             this.labelColor.Text = "label8";
+            this.labelColor.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.labelColor.MouseHover += new System.EventHandler(this.labelColor_MouseHover);
             // 
             // buttonOverlayColor
             // 
-            this.buttonOverlayColor.Location = new System.Drawing.Point(32, 283);
+            this.buttonOverlayColor.Location = new System.Drawing.Point(30, 285);
             this.buttonOverlayColor.Name = "buttonOverlayColor";
             this.buttonOverlayColor.Size = new System.Drawing.Size(249, 57);
             this.buttonOverlayColor.TabIndex = 3;
             this.buttonOverlayColor.Text = "Overlay Color";
             this.buttonOverlayColor.UseVisualStyleBackColor = true;
             this.buttonOverlayColor.Click += new System.EventHandler(this.button1_Click);
+            this.buttonOverlayColor.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.buttonOverlayColor.MouseHover += new System.EventHandler(this.buttonOverlayColor_MouseHover);
             // 
             // label6
             // 
@@ -315,39 +353,53 @@
             this.label6.Size = new System.Drawing.Size(203, 32);
             this.label6.TabIndex = 1;
             this.label6.Text = "Ascension Tier";
+            this.label6.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label6.MouseHover += new System.EventHandler(this.label6_MouseHover);
             // 
             // buttonRestore
             // 
-            this.buttonRestore.Location = new System.Drawing.Point(49, 1160);
+            this.buttonRestore.Location = new System.Drawing.Point(918, 413);
             this.buttonRestore.Name = "buttonRestore";
             this.buttonRestore.Size = new System.Drawing.Size(252, 65);
             this.buttonRestore.TabIndex = 3;
             this.buttonRestore.Text = "Restore Default";
             this.buttonRestore.UseVisualStyleBackColor = true;
             this.buttonRestore.Click += new System.EventHandler(this.buttonRestore_Click);
+            this.buttonRestore.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.buttonRestore.MouseHover += new System.EventHandler(this.buttonRestore_MouseHover);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(331, 1160);
+            this.buttonCancel.Location = new System.Drawing.Point(1200, 413);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(252, 65);
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.buttonCancel.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.buttonCancel.MouseHover += new System.EventHandler(this.buttonCancel_MouseHover);
             // 
             // buttonApply
             // 
-            this.buttonApply.Location = new System.Drawing.Point(622, 1160);
+            this.buttonApply.Location = new System.Drawing.Point(1491, 413);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(252, 65);
             this.buttonApply.TabIndex = 5;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+            this.buttonApply.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.buttonApply.MouseHover += new System.EventHandler(this.buttonApply_MouseHover);
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Controls.Add(this.textBoxGlobalXp);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Controls.Add(this.label16);
+            this.groupBox6.Controls.Add(this.textBoxGlobalGold);
+            this.groupBox6.Controls.Add(this.label15);
             this.groupBox6.Controls.Add(this.comboBoxPlayers);
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.comboBoxXpOrb);
@@ -364,89 +416,37 @@
             this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Location = new System.Drawing.Point(41, 473);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(863, 283);
+            this.groupBox6.Size = new System.Drawing.Size(863, 384);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Gold and Xp Settings";
             // 
-            // comboBoxGoldOrb
+            // comboBoxPlayers
             // 
-            this.comboBoxGoldOrb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGoldOrb.FormattingEnabled = true;
-            this.comboBoxGoldOrb.Items.AddRange(new object[] {
-            "0",
+            this.comboBoxPlayers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPlayers.FormattingEnabled = true;
+            this.comboBoxPlayers.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.comboBoxGoldOrb.Location = new System.Drawing.Point(406, 97);
-            this.comboBoxGoldOrb.Name = "comboBoxGoldOrb";
-            this.comboBoxGoldOrb.Size = new System.Drawing.Size(180, 39);
-            this.comboBoxGoldOrb.TabIndex = 6;
+            "4"});
+            this.comboBoxPlayers.Location = new System.Drawing.Point(44, 310);
+            this.comboBoxPlayers.Name = "comboBoxPlayers";
+            this.comboBoxPlayers.Size = new System.Drawing.Size(208, 39);
+            this.comboBoxPlayers.TabIndex = 15;
+            this.comboBoxPlayers.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.comboBoxPlayers.MouseHover += new System.EventHandler(this.comboBoxPlayers_MouseHover);
             // 
-            // label9
+            // label11
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(400, 53);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(186, 32);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Gold Orb Tier";
-            // 
-            // comboBoxPartyBoost
-            // 
-            this.comboBoxPartyBoost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPartyBoost.FormattingEnabled = true;
-            this.comboBoxPartyBoost.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.comboBoxPartyBoost.Location = new System.Drawing.Point(668, 98);
-            this.comboBoxPartyBoost.Name = "comboBoxPartyBoost";
-            this.comboBoxPartyBoost.Size = new System.Drawing.Size(155, 39);
-            this.comboBoxPartyBoost.TabIndex = 4;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(662, 56);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(161, 32);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Party Boost";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(259, 100);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 32);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "%";
-            // 
-            // textBoxGoldAdd
-            // 
-            this.textBoxGoldAdd.Location = new System.Drawing.Point(44, 98);
-            this.textBoxGoldAdd.Name = "textBoxGoldAdd";
-            this.textBoxGoldAdd.Size = new System.Drawing.Size(208, 38);
-            this.textBoxGoldAdd.TabIndex = 1;
-            this.textBoxGoldAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGoldAdd_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 53);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(345, 32);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Total Gold Additive Bonus";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(26, 261);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(213, 32);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Players in Party";
+            this.label11.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label11.MouseHover += new System.EventHandler(this.label11_MouseHover);
             // 
             // comboBoxXpOrb
             // 
@@ -466,15 +466,19 @@
             this.comboBoxXpOrb.Name = "comboBoxXpOrb";
             this.comboBoxXpOrb.Size = new System.Drawing.Size(180, 39);
             this.comboBoxXpOrb.TabIndex = 13;
+            this.comboBoxXpOrb.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.comboBoxXpOrb.MouseHover += new System.EventHandler(this.comboBoxXpOrb_MouseHover);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(422, 161);
+            this.label10.Location = new System.Drawing.Point(400, 161);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(160, 32);
             this.label10.TabIndex = 12;
             this.label10.Text = "Xp Orb Tier";
+            this.label10.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label10.MouseHover += new System.EventHandler(this.label10_MouseHover);
             // 
             // label12
             // 
@@ -491,6 +495,8 @@
             this.textBoxXpAdd.Name = "textBoxXpAdd";
             this.textBoxXpAdd.Size = new System.Drawing.Size(208, 38);
             this.textBoxXpAdd.TabIndex = 8;
+            this.textBoxXpAdd.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.textBoxXpAdd.MouseHover += new System.EventHandler(this.textBoxXpAdd_MouseHover);
             // 
             // label13
             // 
@@ -500,36 +506,185 @@
             this.label13.Size = new System.Drawing.Size(319, 32);
             this.label13.TabIndex = 7;
             this.label13.Text = "Total Xp Additive Bonus";
+            this.label13.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label13.MouseHover += new System.EventHandler(this.label13_MouseHover);
             // 
-            // comboBoxPlayers
+            // comboBoxGoldOrb
             // 
-            this.comboBoxPlayers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPlayers.FormattingEnabled = true;
-            this.comboBoxPlayers.Items.AddRange(new object[] {
+            this.comboBoxGoldOrb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGoldOrb.FormattingEnabled = true;
+            this.comboBoxGoldOrb.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
-            "4"});
-            this.comboBoxPlayers.Location = new System.Drawing.Point(668, 203);
-            this.comboBoxPlayers.Name = "comboBoxPlayers";
-            this.comboBoxPlayers.Size = new System.Drawing.Size(155, 39);
-            this.comboBoxPlayers.TabIndex = 15;
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.comboBoxGoldOrb.Location = new System.Drawing.Point(406, 97);
+            this.comboBoxGoldOrb.Name = "comboBoxGoldOrb";
+            this.comboBoxGoldOrb.Size = new System.Drawing.Size(180, 39);
+            this.comboBoxGoldOrb.TabIndex = 6;
+            this.comboBoxGoldOrb.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.comboBoxGoldOrb.MouseHover += new System.EventHandler(this.comboBoxGoldOrb_MouseHover);
             // 
-            // label11
+            // label9
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(611, 161);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(213, 32);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Players in Party";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(400, 53);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(186, 32);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Gold Orb Tier";
+            this.label9.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label9.MouseHover += new System.EventHandler(this.label9_MouseHover);
+            // 
+            // comboBoxPartyBoost
+            // 
+            this.comboBoxPartyBoost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPartyBoost.FormattingEnabled = true;
+            this.comboBoxPartyBoost.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxPartyBoost.Location = new System.Drawing.Point(406, 310);
+            this.comboBoxPartyBoost.Name = "comboBoxPartyBoost";
+            this.comboBoxPartyBoost.Size = new System.Drawing.Size(180, 39);
+            this.comboBoxPartyBoost.TabIndex = 4;
+            this.comboBoxPartyBoost.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.comboBoxPartyBoost.MouseHover += new System.EventHandler(this.comboBoxPartyBoost_MouseHover);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(400, 261);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(161, 32);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Party Boost";
+            this.label8.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label8.MouseHover += new System.EventHandler(this.label8_MouseHover);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(259, 100);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 32);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "%";
+            // 
+            // textBoxGoldAdd
+            // 
+            this.textBoxGoldAdd.Location = new System.Drawing.Point(44, 98);
+            this.textBoxGoldAdd.Name = "textBoxGoldAdd";
+            this.textBoxGoldAdd.Size = new System.Drawing.Size(208, 38);
+            this.textBoxGoldAdd.TabIndex = 1;
+            this.textBoxGoldAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGoldAdd_KeyPress);
+            this.textBoxGoldAdd.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.textBoxGoldAdd.MouseHover += new System.EventHandler(this.textBoxGoldAdd_MouseHover);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(345, 32);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Total Gold Additive Bonus";
+            this.label5.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label5.MouseHover += new System.EventHandler(this.label5_MouseHover);
+            // 
+            // textBoxHelp
+            // 
+            this.textBoxHelp.Location = new System.Drawing.Point(918, 570);
+            this.textBoxHelp.Multiline = true;
+            this.textBoxHelp.Name = "textBoxHelp";
+            this.textBoxHelp.ReadOnly = true;
+            this.textBoxHelp.Size = new System.Drawing.Size(855, 287);
+            this.textBoxHelp.TabIndex = 7;
+            this.textBoxHelp.Text = "Hover over something to learn more information.";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(918, 525);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(223, 32);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Help Information";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(651, 53);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(167, 32);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "Global Gold";
+            this.label15.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label15.MouseHover += new System.EventHandler(this.label15_MouseHover);
+            // 
+            // textBoxGlobalGold
+            // 
+            this.textBoxGlobalGold.Location = new System.Drawing.Point(657, 97);
+            this.textBoxGlobalGold.Name = "textBoxGlobalGold";
+            this.textBoxGlobalGold.Size = new System.Drawing.Size(134, 38);
+            this.textBoxGlobalGold.TabIndex = 17;
+            this.textBoxGlobalGold.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.textBoxGlobalGold.MouseHover += new System.EventHandler(this.textBox1_MouseHover);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(798, 98);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 32);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "%";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(798, 206);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(40, 32);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "%";
+            // 
+            // textBoxGlobalXp
+            // 
+            this.textBoxGlobalXp.Location = new System.Drawing.Point(658, 205);
+            this.textBoxGlobalXp.Name = "textBoxGlobalXp";
+            this.textBoxGlobalXp.Size = new System.Drawing.Size(134, 38);
+            this.textBoxGlobalXp.TabIndex = 20;
+            this.textBoxGlobalXp.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.textBoxGlobalXp.MouseHover += new System.EventHandler(this.textBox2_MouseHover);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(651, 161);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(141, 32);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "Global Xp";
+            this.label18.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label18.MouseHover += new System.EventHandler(this.label18_MouseHover);
             // 
             // ProSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(962, 1270);
+            this.ClientSize = new System.Drawing.Size(1798, 869);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.textBoxHelp);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.buttonCancel);
@@ -555,6 +710,7 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -599,5 +755,13 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox comboBoxPlayers;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxHelp;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBoxGlobalXp;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBoxGlobalGold;
+        private System.Windows.Forms.Label label15;
     }
 }
