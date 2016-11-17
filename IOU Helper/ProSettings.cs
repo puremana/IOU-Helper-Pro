@@ -149,8 +149,8 @@ namespace IOU_Helper
             Properties.Settings.Default.overlayColor = labelColor.BackColor;
 
             //Gold and XP Settings
-            Properties.Settings.Default.goldAdd = int.Parse(textBoxGoldAdd.Text);
-            Properties.Settings.Default.xpAdd = int.Parse(textBoxXpAdd.Text);
+            Properties.Settings.Default.goldAdd = decimal.Parse(textBoxGoldAdd.Text);
+            Properties.Settings.Default.xpAdd = decimal.Parse(textBoxXpAdd.Text);
             Properties.Settings.Default.goldOrb = int.Parse(comboBoxGoldOrb.SelectedItem.ToString());
             Properties.Settings.Default.xpOrb = int.Parse(comboBoxXpOrb.SelectedItem.ToString());
             double partyBoost = double.Parse(comboBoxPartyBoost.SelectedItem.ToString());
@@ -170,11 +170,14 @@ namespace IOU_Helper
 
         private void textBoxGoldAdd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
-            if (e.KeyChar == '.')
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -182,11 +185,14 @@ namespace IOU_Helper
 
         private void textBoxXpAdd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+      (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
-            if (e.KeyChar == '.')
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }

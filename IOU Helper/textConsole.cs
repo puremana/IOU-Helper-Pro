@@ -40,40 +40,47 @@ namespace IOU_Helper
         /// <param name="device"></param>
         public void Listen(ICaptureDevice device)
         {
-            _device = device;
-            Console.WriteLine("Listening to " + device.Name);
-
-            // Register our handler function to the 'packet arrival' event
-            device.OnPacketArrival +=
-                new PacketArrivalEventHandler(device_OnPacketArrival);
-
-            // Open the device for capturing
-            int readTimeoutMilliseconds = 1000;
-            if (device is AirPcapDevice)
+            try
             {
-                // NOTE: AirPcap devices cannot disable local capture
-                var airPcap = device as AirPcapDevice;
-                airPcap.Open(SharpPcap.WinPcap.OpenFlags.DataTransferUdp, readTimeoutMilliseconds);
-            }
-            else if (device is WinPcapDevice)
-            {
-                var winPcap = device as WinPcapDevice;
-                winPcap.Open(SharpPcap.WinPcap.OpenFlags.DataTransferUdp | SharpPcap.WinPcap.OpenFlags.NoCaptureLocal, readTimeoutMilliseconds);
-            }
-            else if (device is LibPcapLiveDevice)
-            {
-                var livePcapDevice = device as LibPcapLiveDevice;
-                livePcapDevice.Open(DeviceMode.Promiscuous, readTimeoutMilliseconds);
-            }
-            else
-            {
-                throw new System.InvalidOperationException("unknown device type of " + device.GetType().ToString());
-            }
+                _device = device;
+                Console.WriteLine("Listening to " + device.Name);
 
-            device.Filter = "src port 9000";
+                // Register our handler function to the 'packet arrival' event
+                device.OnPacketArrival +=
+                    new PacketArrivalEventHandler(device_OnPacketArrival);
 
-            // Start the capturing process
-            device.StartCapture();
+                // Open the device for capturing
+                int readTimeoutMilliseconds = 1000;
+                if (device is AirPcapDevice)
+                {
+                    // NOTE: AirPcap devices cannot disable local capture
+                    var airPcap = device as AirPcapDevice;
+                    airPcap.Open(SharpPcap.WinPcap.OpenFlags.DataTransferUdp, readTimeoutMilliseconds);
+                }
+                else if (device is WinPcapDevice)
+                {
+                    var winPcap = device as WinPcapDevice;
+                    winPcap.Open(SharpPcap.WinPcap.OpenFlags.DataTransferUdp | SharpPcap.WinPcap.OpenFlags.NoCaptureLocal, readTimeoutMilliseconds);
+                }
+                else if (device is LibPcapLiveDevice)
+                {
+                    var livePcapDevice = device as LibPcapLiveDevice;
+                    livePcapDevice.Open(DeviceMode.Promiscuous, readTimeoutMilliseconds);
+                }
+                else
+                {
+                    throw new System.InvalidOperationException("unknown device type of " + device.GetType().ToString());
+                }
+
+                device.Filter = "src port 9000";
+
+                // Start the capturing process
+                device.StartCapture();
+            }
+            catch
+            {
+                _form1.showPcapError();
+            }         
         }
             
         public void Start(TextConsole console)
@@ -94,11 +101,20 @@ namespace IOU_Helper
             Console.WriteLine();
         }
 
-        public void stopWriter()
+        public void stopWriter(bool forGood)
         {
             if (writer != null)
             {
-                writer.Close();
+                if (forGood == true) {
+                    writer.FlushAsync();
+                    writer.Dispose();
+                }
+                else {
+                    writer.FlushAsync();
+                    writer.Close();
+                }
+                
+                
             }
         }
 
@@ -384,8 +400,8 @@ namespace IOU_Helper
                 double partyModifier = (playerBonus) * (1 + partyBoost);
                 double xpOrbBonus = (xpOrb ^ 2) * 2;
                 double goldOrbBonus = (goldOrb ^ 2) * 2;
-                double xpBonus = (_form1.getXpAdd() * (1 + globalXp));
-                double goldBonus = ((_form1.getGoldAdd()) + (0.03 * (playerLevel - 200) + 0.25)) * (1 + globalGold);
+                double xpBonus = ((double)_form1.getXpAdd() * (1 + globalXp));
+                double goldBonus = (((double)_form1.getGoldAdd()) + (0.03 * (playerLevel - 200) + 0.25)) * (1 + globalGold);
 
                 double baseXp = pmobLevel * (1 + (pmobLevel * 0.003));
                 double xpPerKill = Math.Round((1 + xpBonus)*baseXp*partyModifier*(1 + (infernoLevel*0.003))*(1 + Math.Floor(infernoLevel*0.01)*0.03))*(1 + xpOrbBonus);
@@ -413,10 +429,16 @@ namespace IOU_Helper
                     xp = (xpPerKill * kPerMin) * 60;
                 }
 
+
+                gold = gold / 1000000;
+                xp = xp / 1000000;
                 gold = Math.Round(gold, sigFig);
                 xp = Math.Round(xp, sigFig);
-                
-                _plexiglass.updateLabels(username, xp.ToString(), gold.ToString(), pDamageString, averageTime.ToString(), estCards.ToString(), totalStats);
+
+                string goldString = gold.ToString() + "M";
+                string xpString = xp.ToString() + "M";
+
+                _plexiglass.updateLabels(username, xpString, goldString, pDamageString, averageTime.ToString(), estCards.ToString(), totalStats);
         
             }
             catch
@@ -451,6 +473,7 @@ namespace IOU_Helper
         public void resetStats()
         {
             spawnList.Clear();
+            totalTime = 0;
         }
     }
 }

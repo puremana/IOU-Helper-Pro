@@ -700,7 +700,7 @@ public partial class Plexiglass : Form
 
     public void stopWriter() 
     {
-        textConsole.stopWriter();
+        textConsole.stopWriter(true);
     }
 
     public void copyStats()

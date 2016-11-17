@@ -122,9 +122,9 @@ namespace IOU_Helper.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int goldAdd {
+        public decimal goldAdd {
             get {
-                return ((int)(this["goldAdd"]));
+                return ((decimal)(this["goldAdd"]));
             }
             set {
                 this["goldAdd"] = value;
@@ -134,9 +134,9 @@ namespace IOU_Helper.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int xpAdd {
+        public decimal xpAdd {
             get {
-                return ((int)(this["xpAdd"]));
+                return ((decimal)(this["xpAdd"]));
             }
             set {
                 this["xpAdd"] = value;

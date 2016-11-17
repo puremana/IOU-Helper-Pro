@@ -1669,12 +1669,12 @@ namespace IOU_Helper
             return Properties.Settings.Default.overlayColor;
         }
 
-        public int getGoldAdd()
+        public decimal getGoldAdd()
         {
             return Properties.Settings.Default.goldAdd;
         }
 
-        public int getXpAdd()
+        public decimal getXpAdd()
         {
             return Properties.Settings.Default.xpAdd;
         }
@@ -1750,6 +1750,11 @@ namespace IOU_Helper
                 }
             }
             return "NOT FOUND";
+        }
+
+        public void showPcapError()
+        {
+            MessageBox.Show("Make sure to have latest version of WinPcap: https://www.winpcap.org/");
         }
 
         //public Plexiglass getOverlay()
