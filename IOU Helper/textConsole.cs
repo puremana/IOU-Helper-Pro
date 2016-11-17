@@ -20,10 +20,10 @@ namespace IOU_Helper
         List<Spawn> spawnList = new List<Spawn>();
         DateTime spawnDifference = new DateTime(2010);
         DateTime checkDifference = new DateTime(2010);
+        ConsoleRedirection.TextBoxStreamWriter writer = null;
 
         //Statistic variables
         double totalTime;
-        string min_hour = "minute";
 
         private readonly Plexiglass _plexiglass;
         private readonly Form1 _form1;
@@ -82,6 +82,7 @@ namespace IOU_Helper
 
             // Instantiate the writer
             ConsoleRedirection.TextBoxStreamWriter _writer = new ConsoleRedirection.TextBoxStreamWriter(console);
+            writer = _writer;
             // Redirect the out Console stream
             Console.SetOut(_writer);
 
@@ -91,6 +92,14 @@ namespace IOU_Helper
             Console.WriteLine("SharpPcap Version " + ver);
 
             Console.WriteLine();
+        }
+
+        public void stopWriter()
+        {
+            if (writer != null)
+            {
+                writer.Close();
+            }
         }
 
         /// <summary>
@@ -348,13 +357,18 @@ namespace IOU_Helper
 
                 //Gold and XP calculations
                 //BaseXP = MobLevel*(1+(MobLevel*0.003)) XP/Kill = Round((1+%XPBonus)*BaseXP*PartyModifier*(1+(infTier*0.003))*(1+Floor(infTier*0.001,1)*0.03))*(1+%XPOrb))
-                int xpBonus = _form1.getXpAdd();
-                int goldBonus = _form1.getGoldAdd();
+                int playerLevel = _form1.getPlayerLevel();
+                //Otherwise will multiply negatively
+                if (playerLevel < 200) {
+                    playerLevel = 200;
+                }
                 int xpOrb = _form1.getXpOrb();
                 int goldOrb = _form1.getGoldOrb();
                 double partyBoost = _form1.getPartyBoost();
                 int players = _form1.getPlayers();
                 double playerBonus = 1;
+                int globalXp = _form1.getGlobalXp();
+                int globalGold = _form1.getGlobalGold();
                 if (players == 2)
                 {
                     playerBonus = 0.7;
@@ -370,6 +384,8 @@ namespace IOU_Helper
                 double partyModifier = (playerBonus) * (1 + partyBoost);
                 double xpOrbBonus = (xpOrb ^ 2) * 2;
                 double goldOrbBonus = (goldOrb ^ 2) * 2;
+                double xpBonus = (_form1.getXpAdd() * (1 + globalXp));
+                double goldBonus = ((_form1.getGoldAdd()) + (0.03 * (playerLevel - 200) + 0.25)) * (1 + globalGold);
 
                 double baseXp = pmobLevel * (1 + (pmobLevel * 0.003));
                 double xpPerKill = Math.Round((1 + xpBonus)*baseXp*partyModifier*(1 + (infernoLevel*0.003))*(1 + Math.Floor(infernoLevel*0.01)*0.03))*(1 + xpOrbBonus);
@@ -396,6 +412,9 @@ namespace IOU_Helper
                     gold = (kPerMin * (coinValue * 4.13)) * 60;
                     xp = (xpPerKill * kPerMin) * 60;
                 }
+
+                gold = Math.Round(gold, sigFig);
+                xp = Math.Round(xp, sigFig);
                 
                 _plexiglass.updateLabels(username, xp.ToString(), gold.ToString(), pDamageString, averageTime.ToString(), estCards.ToString(), totalStats);
         
@@ -420,6 +439,7 @@ namespace IOU_Helper
                     Console.WriteLine(_device.Statistics.ToString());
 
                     _device.Close();
+                    writer.Close();
                 }
                 catch (Exception ex)
                 {

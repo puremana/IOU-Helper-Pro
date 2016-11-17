@@ -76,6 +76,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxGlobalXp = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBoxPlayerLevel = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -394,6 +396,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.textBoxPlayerLevel);
+            this.groupBox6.Controls.Add(this.label19);
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Controls.Add(this.textBoxGlobalXp);
             this.groupBox6.Controls.Add(this.label18);
@@ -679,6 +683,27 @@
             this.label18.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
             this.label18.MouseHover += new System.EventHandler(this.label18_MouseHover);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(651, 261);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(172, 32);
+            this.label19.TabIndex = 22;
+            this.label19.Text = "Player Level";
+            this.label19.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label19.MouseHover += new System.EventHandler(this.label19_MouseHover);
+            // 
+            // textBoxPlayerLevel
+            // 
+            this.textBoxPlayerLevel.Location = new System.Drawing.Point(657, 310);
+            this.textBoxPlayerLevel.Name = "textBoxPlayerLevel";
+            this.textBoxPlayerLevel.Size = new System.Drawing.Size(135, 38);
+            this.textBoxPlayerLevel.TabIndex = 23;
+            this.textBoxPlayerLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBoxPlayerLevel.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.textBoxPlayerLevel.MouseHover += new System.EventHandler(this.textBox1_MouseHover_1);
+            // 
             // ProSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -765,5 +790,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBoxGlobalGold;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxPlayerLevel;
+        private System.Windows.Forms.Label label19;
     }
 }

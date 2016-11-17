@@ -75,6 +75,7 @@ namespace IOU_Helper
             comboBoxPlayers.SelectedIndex = comboBoxPlayers.FindString(Properties.Settings.Default.players.ToString());
             textBoxGlobalXp.Text = Properties.Settings.Default.globalXp.ToString();
             textBoxGlobalGold.Text = Properties.Settings.Default.globalGold.ToString();
+            textBoxPlayerLevel.Text = Properties.Settings.Default.playerLevel.ToString();     
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -112,6 +113,7 @@ namespace IOU_Helper
 
             textBoxGlobalGold.Text = "0";
             textBoxGlobalXp.Text = "0";
+            textBoxPlayerLevel.Text = "400";
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -157,6 +159,7 @@ namespace IOU_Helper
             Properties.Settings.Default.players = int.Parse(comboBoxPlayers.SelectedItem.ToString());
             Properties.Settings.Default.globalXp = int.Parse(textBoxGlobalXp.Text);
             Properties.Settings.Default.globalGold = int.Parse(textBoxGlobalGold.Text);
+            Properties.Settings.Default.playerLevel = int.Parse(textBoxPlayerLevel.Text);
 
             _form1.setOverlayColor(labelColor.BackColor);
             _form1.applyProSettings(time);
@@ -382,6 +385,28 @@ namespace IOU_Helper
         }
 
         private void textBoxGlobalXp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void label19_MouseHover(object sender, EventArgs e)
+        {
+            textBoxHelp.Text = "Player Level: Your current player level in IOU.";
+        }
+
+        private void textBox1_MouseHover_1(object sender, EventArgs e)
+        {
+            textBoxHelp.Text = "Player Level: Your current player level in IOU.";
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {

@@ -214,5 +214,17 @@ namespace IOU_Helper.Properties {
                 this["globalXp"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int playerLevel {
+            get {
+                return ((int)(this["playerLevel"]));
+            }
+            set {
+                this["playerLevel"] = value;
+            }
+        }
     }
 }

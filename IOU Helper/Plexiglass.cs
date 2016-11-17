@@ -698,6 +698,11 @@ public partial class Plexiglass : Form
         textConsole.resetStats();
     }
 
+    public void stopWriter() 
+    {
+        textConsole.stopWriter();
+    }
+
     public void copyStats()
     {
         //Copy username, xp, gold, party damage, average kill time, estimate cards, total kill time

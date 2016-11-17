@@ -1358,6 +1358,7 @@ namespace IOU_Helper
             if (startToolStripMenuItem.Text == "Stop")
             {
                 overlay.getConsole().StopListening();
+                overlay.stopWriter();
             }
         }
 
@@ -1706,6 +1707,11 @@ namespace IOU_Helper
         public int getGlobalXp()
         {
             return Properties.Settings.Default.globalXp;
+        }
+
+        public int getPlayerLevel()
+        {
+            return Properties.Settings.Default.playerLevel;
         }
 
         public string getUsername()
