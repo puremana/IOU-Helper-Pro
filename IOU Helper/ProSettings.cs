@@ -73,6 +73,8 @@ namespace IOU_Helper
             int pBoost = (int)partyBoost;
             comboBoxPartyBoost.SelectedIndex = comboBoxPartyBoost.FindString(pBoost.ToString());
             comboBoxPlayers.SelectedIndex = comboBoxPlayers.FindString(Properties.Settings.Default.players.ToString());
+            textBoxGlobalXp.Text = Properties.Settings.Default.globalXp.ToString();
+            textBoxGlobalGold.Text = Properties.Settings.Default.globalGold.ToString();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -107,6 +109,9 @@ namespace IOU_Helper
             comboBoxXpOrb.SelectedIndex = comboBoxXpOrb.FindString("0");
             comboBoxPartyBoost.SelectedIndex = comboBoxPartyBoost.FindString("5");
             comboBoxPlayers.SelectedIndex = comboBoxPlayers.FindString("4");
+
+            textBoxGlobalGold.Text = "0";
+            textBoxGlobalXp.Text = "0";
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -150,6 +155,8 @@ namespace IOU_Helper
             partyBoost = partyBoost / 10;
             Properties.Settings.Default.partyBoost = partyBoost;
             Properties.Settings.Default.players = int.Parse(comboBoxPlayers.SelectedItem.ToString());
+            Properties.Settings.Default.globalXp = int.Parse(textBoxGlobalXp.Text);
+            Properties.Settings.Default.globalGold = int.Parse(textBoxGlobalGold.Text);
 
             _form1.setOverlayColor(labelColor.BackColor);
             _form1.applyProSettings(time);
@@ -360,6 +367,30 @@ namespace IOU_Helper
         private void buttonApply_MouseHover(object sender, EventArgs e)
         {
             textBoxHelp.Text = "Apply: This will apply the currently set settings and save them within the application for the future. These settings will be loaded on startup of IOU Helper Pro.";
+        }
+
+        private void textBoxGlobalGold_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxGlobalXp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

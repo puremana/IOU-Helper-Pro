@@ -636,6 +636,7 @@
             this.textBoxGlobalGold.Name = "textBoxGlobalGold";
             this.textBoxGlobalGold.Size = new System.Drawing.Size(134, 38);
             this.textBoxGlobalGold.TabIndex = 17;
+            this.textBoxGlobalGold.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGlobalGold_KeyPress);
             this.textBoxGlobalGold.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
             this.textBoxGlobalGold.MouseHover += new System.EventHandler(this.textBox1_MouseHover);
             // 
@@ -663,6 +664,7 @@
             this.textBoxGlobalXp.Name = "textBoxGlobalXp";
             this.textBoxGlobalXp.Size = new System.Drawing.Size(134, 38);
             this.textBoxGlobalXp.TabIndex = 20;
+            this.textBoxGlobalXp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxGlobalXp_KeyPress);
             this.textBoxGlobalXp.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
             this.textBoxGlobalXp.MouseHover += new System.EventHandler(this.textBox2_MouseHover);
             // 

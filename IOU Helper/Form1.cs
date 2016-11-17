@@ -1698,6 +1698,16 @@ namespace IOU_Helper
             return Properties.Settings.Default.players;
         }
 
+        public int getGlobalGold()
+        {
+            return Properties.Settings.Default.globalGold;
+        }
+
+        public int getGlobalXp()
+        {
+            return Properties.Settings.Default.globalXp;
+        }
+
         public string getUsername()
         {
             if (tabControl.SelectedTab.Text == "IOURPG")
