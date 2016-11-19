@@ -8,6 +8,7 @@ using SharpPcap.LibPcap;
 using SharpPcap.AirPcap;
 using SharpPcap.WinPcap;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace IOU_Helper
 {
@@ -43,7 +44,7 @@ namespace IOU_Helper
             try
             {
                 _device = device;
-                Console.WriteLine("Listening to " + device.Name);
+                consoleWrite("Listening to " + device.Name);
 
                 // Register our handler function to the 'packet arrival' event
                 device.OnPacketArrival +=
@@ -82,6 +83,13 @@ namespace IOU_Helper
                 _form1.showPcapError();
             }         
         }
+
+        public void consoleWrite(string str)
+        {
+            Thread thread = new Thread(() => Console.WriteLine(str));
+            thread.IsBackground = true;
+            thread.Start();
+        }
             
         public void Start(TextConsole console)
         {
@@ -95,10 +103,10 @@ namespace IOU_Helper
 
             // Print SharpPcap version
             string ver = SharpPcap.Version.VersionString;
-            Console.WriteLine("Welcome to the IOU Helper Pro Console!");
-            Console.WriteLine("SharpPcap Version " + ver);
+            consoleWrite("Welcome to the IOU Helper Pro Console!");
+            consoleWrite("SharpPcap Version " + ver);
 
-            Console.WriteLine();
+            consoleWrite("");
         }
 
         public void stopWriter(bool forGood)
@@ -125,9 +133,9 @@ namespace IOU_Helper
         {
             this.Process(e.Packet);
             //var len = e.Packet.Data.Length;
-            //Console.WriteLine("{0}:{1}:{2},{3} Len={4}",
+            //consoleWrite("{0}:{1}:{2},{3} Len={4}",
             //    time.Hour, time.Minute, time.Second, time.Millisecond, len);
-            //Console.WriteLine(e.Packet.ToString());
+            //consoleWrite(e.Packet.ToString());
         }
 
         private byte[] findFishGroup = { 0x00, 0x04, 0x66, 0x73, 0x68, 0x70, 0x00 };
@@ -224,7 +232,7 @@ namespace IOU_Helper
                                 DateTime tempTime = packet.Timeval.Date;
                                 TimeSpan difference = tempTime.Subtract(spawnDifference);
                                 double ddif = difference.TotalSeconds;
-                                Console.WriteLine("Kill + Spawn time : " + ddif.ToString() + " seconds");
+                                consoleWrite("Kill + Spawn time : " + ddif.ToString() + " seconds");
                                 totalTime = totalTime + ddif;
                                 time = ddif;
                                 spawnDifference = packet.Timeval.Date;
@@ -257,14 +265,14 @@ namespace IOU_Helper
 
                 //        if (write == true)
                 //        {
-                //            Console.WriteLine(result);
+                //            consoleWrite(result);
                 //        }
                 //    }
                 //}
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                consoleWrite(ex.Message);
             }
         }
 
@@ -276,17 +284,17 @@ namespace IOU_Helper
         {
             //if (!regex.IsMatch(data))
             //{
-            //    Console.WriteLine("" + data);
+            //    consoleWrite("" + data);
             //    return;
             //}
 
             if (log == "fishGroup")
             {
-                Console.WriteLine("Fish Group : " + data);
+                consoleWrite("Fish Group : " + data);
             }
             else if (log == "spawnGroup")
             {
-                Console.WriteLine("Spawn Info : " + data);
+                consoleWrite("Spawn Info : " + data);
                 string[] values = data.Split(',');
                 hp = ulong.Parse(values[4]);
                 uint mobLevel = uint.Parse(values[2]);
@@ -300,7 +308,7 @@ namespace IOU_Helper
             }
             else
             {
-                Console.WriteLine(data);
+                consoleWrite(data);
             }
         }
 
@@ -310,7 +318,7 @@ namespace IOU_Helper
         /// <param name="message"></param>
         public void Write(string message)
         {
-            //Console.WriteLine(message);
+            //consoleWrite(message);
         }
 
         /// <summary>
@@ -457,15 +465,15 @@ namespace IOU_Helper
                 try
                 {
                     _device.StopCapture();
-                    Console.WriteLine("Stopped listening.");
-                    Console.WriteLine(_device.Statistics.ToString());
+                    consoleWrite("Stopped listening.");
+                    consoleWrite(_device.Statistics.ToString());
 
                     _device.Close();
                     writer.Close();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Stop listening error: " + ex.Message);
+                    consoleWrite("Stop listening error: " + ex.Message);
                 }
             }         
         }
