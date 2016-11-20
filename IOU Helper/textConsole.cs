@@ -94,7 +94,7 @@ namespace IOU_Helper
         public void Start(TextConsole console)
         {
             _console = console;
-
+            
             // Instantiate the writer
             ConsoleRedirection.TextBoxStreamWriter _writer = new ConsoleRedirection.TextBoxStreamWriter(console);
             writer = _writer;

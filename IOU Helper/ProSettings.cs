@@ -118,13 +118,20 @@ namespace IOU_Helper
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            int time = int.Parse(textBoxRefreshTimer.Text);
-
             //Apply Properties
             Properties.Settings.Default.unitXpGold = comboBoxUnitXpGold.SelectedItem.ToString();
-
             Properties.Settings.Default.cardDropTime = comboBoxCardDrop.SelectedItem.ToString();
-            Properties.Settings.Default.refreshTimer = int.Parse(textBoxRefreshTimer.Text);
+            int time;
+            if (string.IsNullOrEmpty(textBoxRefreshTimer.Text))
+            {
+                Properties.Settings.Default.refreshTimer = 30;
+                time = 30;
+            }
+            else
+            {
+                Properties.Settings.Default.refreshTimer = int.Parse(textBoxRefreshTimer.Text);
+                time = int.Parse(textBoxRefreshTimer.Text);
+            }
             Properties.Settings.Default.sigFigures = int.Parse(comboBoxSigFig.SelectedItem.ToString());
             if (radioButtonDCYes.Checked == true)
             {
@@ -149,18 +156,53 @@ namespace IOU_Helper
             Properties.Settings.Default.overlayColor = labelColor.BackColor;
 
             //Gold and XP Settings
-            Properties.Settings.Default.goldAdd = decimal.Parse(textBoxGoldAdd.Text);
-            Properties.Settings.Default.xpAdd = decimal.Parse(textBoxXpAdd.Text);
+            if (string.IsNullOrEmpty(textBoxGoldAdd.Text))
+            {
+                Properties.Settings.Default.goldAdd = 0;
+            }
+            else
+            {
+                Properties.Settings.Default.goldAdd = decimal.Parse(textBoxGoldAdd.Text);
+            }
+            if (string.IsNullOrEmpty(textBoxXpAdd.Text))
+            {
+                Properties.Settings.Default.xpAdd = 0;
+            }
+            else
+            {
+                Properties.Settings.Default.xpAdd = decimal.Parse(textBoxXpAdd.Text);
+            }
             Properties.Settings.Default.goldOrb = int.Parse(comboBoxGoldOrb.SelectedItem.ToString());
             Properties.Settings.Default.xpOrb = int.Parse(comboBoxXpOrb.SelectedItem.ToString());
             double partyBoost = double.Parse(comboBoxPartyBoost.SelectedItem.ToString());
             partyBoost = partyBoost / 10;
             Properties.Settings.Default.partyBoost = partyBoost;
             Properties.Settings.Default.players = int.Parse(comboBoxPlayers.SelectedItem.ToString());
-            Properties.Settings.Default.globalXp = int.Parse(textBoxGlobalXp.Text);
-            Properties.Settings.Default.globalGold = int.Parse(textBoxGlobalGold.Text);
-            Properties.Settings.Default.playerLevel = int.Parse(textBoxPlayerLevel.Text);
-
+            if (string.IsNullOrEmpty(textBoxGlobalXp.Text))
+            {
+                Properties.Settings.Default.globalXp = 0;
+            }
+            else 
+            {
+                Properties.Settings.Default.globalXp = int.Parse(textBoxGlobalXp.Text);
+            }
+            if (string.IsNullOrEmpty(textBoxGlobalGold.Text))
+            {
+                Properties.Settings.Default.globalGold = 0;
+            }
+            else
+            {
+                Properties.Settings.Default.globalGold = int.Parse(textBoxGlobalGold.Text);
+            }
+            if (string.IsNullOrEmpty(textBoxPlayerLevel.Text))
+            {
+                Properties.Settings.Default.playerLevel = 400;
+            }
+            else
+            {
+                Properties.Settings.Default.playerLevel = int.Parse(textBoxPlayerLevel.Text);
+            }
+            
             _form1.setOverlayColor(labelColor.BackColor);
             _form1.applyProSettings(time);
             Properties.Settings.Default.Save();
