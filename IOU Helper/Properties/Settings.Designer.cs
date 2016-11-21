@@ -226,5 +226,17 @@ namespace IOU_Helper.Properties {
                 this["playerLevel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint filterMob {
+            get {
+                return ((uint)(this["filterMob"]));
+            }
+            set {
+                this["filterMob"] = value;
+            }
+        }
     }
 }

@@ -75,7 +75,15 @@ namespace IOU_Helper
             comboBoxPlayers.SelectedIndex = comboBoxPlayers.FindString(Properties.Settings.Default.players.ToString());
             textBoxGlobalXp.Text = Properties.Settings.Default.globalXp.ToString();
             textBoxGlobalGold.Text = Properties.Settings.Default.globalGold.ToString();
-            textBoxPlayerLevel.Text = Properties.Settings.Default.playerLevel.ToString();     
+            textBoxPlayerLevel.Text = Properties.Settings.Default.playerLevel.ToString();
+            if (Properties.Settings.Default.filterMob == 0 || Properties.Settings.Default.filterMob == null)
+            {
+                textBoxFilterMob.Text = "";
+            }
+            else
+            {
+                textBoxFilterMob.Text = Properties.Settings.Default.filterMob.ToString();
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -114,6 +122,7 @@ namespace IOU_Helper
             textBoxGlobalGold.Text = "0";
             textBoxGlobalXp.Text = "0";
             textBoxPlayerLevel.Text = "400";
+            textBoxFilterMob.Text = "";
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -201,6 +210,14 @@ namespace IOU_Helper
             else
             {
                 Properties.Settings.Default.playerLevel = int.Parse(textBoxPlayerLevel.Text);
+            }
+            if (string.IsNullOrEmpty(textBoxFilterMob.Text) || textBoxFilterMob.Text == "0")
+            {
+                Properties.Settings.Default.filterMob = 0;
+            }
+            else
+            {
+                Properties.Settings.Default.filterMob = uint.Parse(textBoxFilterMob.Text);
             }
             
             _form1.setOverlayColor(labelColor.BackColor);
@@ -455,6 +472,28 @@ namespace IOU_Helper
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void label20_MouseHover(object sender, EventArgs e)
+        {
+            textBoxHelp.Text = "Filter by Monster Level: Filter the incoming packets and display statistics based on a specific monster level. This is used to seperate info if you are running mulitple accounts. Leave blank if no filter.";
+        }
+
+        private void textBoxFilterMob_MouseHover(object sender, EventArgs e)
+        {
+            textBoxHelp.Text = "Filter by Monster Level: Filter the incoming packets and display statistics based on a specific monster level. This is used to seperate info if you are running mulitple accounts. Leave blank if no filter.";
+        }
+
+        private void textBoxFilterMob_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {

@@ -78,12 +78,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxHelp = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBoxFilterMob = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -360,7 +364,7 @@
             // 
             // buttonRestore
             // 
-            this.buttonRestore.Location = new System.Drawing.Point(918, 413);
+            this.buttonRestore.Location = new System.Drawing.Point(918, 536);
             this.buttonRestore.Name = "buttonRestore";
             this.buttonRestore.Size = new System.Drawing.Size(252, 65);
             this.buttonRestore.TabIndex = 3;
@@ -372,7 +376,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(1200, 413);
+            this.buttonCancel.Location = new System.Drawing.Point(1200, 536);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(252, 65);
             this.buttonCancel.TabIndex = 4;
@@ -384,7 +388,7 @@
             // 
             // buttonApply
             // 
-            this.buttonApply.Location = new System.Drawing.Point(1491, 413);
+            this.buttonApply.Location = new System.Drawing.Point(1491, 536);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(252, 65);
             this.buttonApply.TabIndex = 5;
@@ -688,22 +692,54 @@
             // 
             // textBoxHelp
             // 
-            this.textBoxHelp.Location = new System.Drawing.Point(918, 570);
+            this.textBoxHelp.Location = new System.Drawing.Point(918, 662);
             this.textBoxHelp.Multiline = true;
             this.textBoxHelp.Name = "textBoxHelp";
             this.textBoxHelp.ReadOnly = true;
-            this.textBoxHelp.Size = new System.Drawing.Size(855, 287);
+            this.textBoxHelp.Size = new System.Drawing.Size(855, 195);
             this.textBoxHelp.TabIndex = 7;
             this.textBoxHelp.Text = "Hover over something to learn more information.";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(918, 525);
+            this.label14.Location = new System.Drawing.Point(916, 619);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(223, 32);
             this.label14.TabIndex = 8;
             this.label14.Text = "Help Information";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textBoxFilterMob);
+            this.groupBox7.Controls.Add(this.label20);
+            this.groupBox7.Location = new System.Drawing.Point(918, 404);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(855, 126);
+            this.groupBox7.TabIndex = 9;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Filter Data";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(24, 54);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(292, 32);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Filter by Monster level";
+            this.label20.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label20.MouseHover += new System.EventHandler(this.label20_MouseHover);
+            // 
+            // textBoxFilterMob
+            // 
+            this.textBoxFilterMob.Location = new System.Drawing.Point(403, 48);
+            this.textBoxFilterMob.Name = "textBoxFilterMob";
+            this.textBoxFilterMob.Size = new System.Drawing.Size(346, 38);
+            this.textBoxFilterMob.TabIndex = 1;
+            this.textBoxFilterMob.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFilterMob_KeyPress);
+            this.textBoxFilterMob.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.textBoxFilterMob.MouseHover += new System.EventHandler(this.textBoxFilterMob_MouseHover);
             // 
             // ProSettings
             // 
@@ -711,6 +747,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1798, 869);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBoxHelp);
             this.Controls.Add(this.groupBox6);
@@ -737,6 +774,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -793,5 +832,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxPlayerLevel;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox textBoxFilterMob;
+        private System.Windows.Forms.Label label20;
     }
 }

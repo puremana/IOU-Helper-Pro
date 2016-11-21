@@ -9,6 +9,8 @@ using SharpPcap.AirPcap;
 using SharpPcap.WinPcap;
 using System.Text.RegularExpressions;
 using System.Threading;
+using PacketDotNet;
+using System.IO;
 
 namespace IOU_Helper
 {
@@ -120,9 +122,7 @@ namespace IOU_Helper
                 else {
                     writer.FlushAsync();
                     writer.Close();
-                }
-                
-                
+                }   
             }
         }
 
@@ -159,6 +159,13 @@ namespace IOU_Helper
         private void Process(RawCapture packet)
         {
             byte[] data = packet.Data;
+            // Open the file to read from. 
+            //string readText = File.ReadAllText("log.txt");
+
+            //// Create a file to write to. 
+            //string createText = readText + Convert.ToBase64String(data) + Environment.NewLine;
+            //File.WriteAllText("log.txt", createText);
+
             try
             {
                 bool write = false;
@@ -303,7 +310,7 @@ namespace IOU_Helper
                 {
                     infernoLevel = Math.Floor((((double)mobLevel - 100) / 150));
                 }
-                Spawn newSpawn = new Spawn(time, hp, xp, gold);
+                Spawn newSpawn = new Spawn(time, hp, xp, gold, mobLevel);
                 spawnList.Add(newSpawn);
             }
             else
@@ -332,17 +339,71 @@ namespace IOU_Helper
             ulong totalHP = 0;
             ulong pDamagePerSecond;
             int sigFig = _form1.getSigFigures();
+            uint mobFilter = _form1.getMobFilter();
+            string filterString = mobFilter.ToString();
+            int spawnCounter = 0;
+            string cardDrop = _form1.getCardDropTime();
 
-            foreach (Spawn s in spawnList)
+            if (mobFilter == 0)
             {
-                ptotalTime = totalTime + s.getTime();
-                totalHP = totalHP + s.getHp();
+                if (spawnList.Count != 0)
+                {
+                    foreach (Spawn s in spawnList)
+                    {
+                        ptotalTime = ptotalTime + s.getTime();
+                        totalHP = totalHP + s.getHp();
+                    }
+                    averageTime = ptotalTime / spawnList.Count;
+                    filterString = "None";
+                }
+                else
+                {
+                    _plexiglass.updateLabels(filterString, "0", "0", "0", "0", "0", "0, 0");
+                    return;
+                }
             }
-
-            averageTime = ptotalTime / spawnList.Count;
+            else
+            {
+                if (spawnList.Count != 0)
+                {
+                    foreach (Spawn s in spawnList)
+                    {
+                        if (mobFilter == s.getMobLevel())
+                        {
+                            ptotalTime = ptotalTime + s.getTime();
+                            totalHP = totalHP + s.getHp();
+                            spawnCounter++;
+                        }
+                    }
+                    averageTime = ptotalTime / spawnCounter;
+                    pmobLevel = mobFilter;
+                    if (mobFilter > 250)
+                    {
+                        infernoLevel = Math.Floor((((double)mobFilter - 100) / 150));
+                    }
+                    if (spawnCounter == 0)
+                    {
+                        _plexiglass.updateLabels(filterString, "0", "0", "0", "0", "0", "0, 0");
+                        return;
+                    }
+                }
+                else
+                {
+                    _plexiglass.updateLabels(filterString, "0", "0", "0", "0", "0", "0, 0");
+                    return;
+                }    
+            }
+            
             try
             {
-                pDamagePerSecond = ((ulong)totalHP / (ulong)spawnList.Count) / ((ulong)averageTime);
+                if (mobFilter == 0)
+                {
+                    pDamagePerSecond = ((ulong)totalHP / (ulong)spawnList.Count) / ((ulong)averageTime);
+                }
+                else
+                {
+                    pDamagePerSecond = ((ulong)totalHP / (ulong)spawnCounter) / ((ulong)averageTime);
+                }
 
                 if (_form1.getUnitXPGold() == "Minute")
                 {
@@ -359,9 +420,21 @@ namespace IOU_Helper
 
                 //Kills per minute
                 double kPerMin = (60 / averageTime);
-                //Estimated cards per hour
-                double estCards = ((1 + (infernoLevel / 2)) * kPerMin) * 60;
-
+                //Cards
+                double estCards = 0;
+                if (cardDrop == "Minute")
+                {
+                    estCards = ((1 + (infernoLevel / 2)) * kPerMin);
+                }
+                else if (cardDrop == "Hour")
+                {
+                    estCards = ((1 + (infernoLevel / 2)) * kPerMin) * 60;
+                }
+                else if (cardDrop == "Day")
+                {
+                    estCards = (((1 + (infernoLevel / 2)) * kPerMin) * 60) * 24;
+                }
+                estCards = estCards * 0.002;
                 if (_form1.getDoubleCards() == true)
                 {
                     estCards = estCards * 2;
@@ -372,12 +445,18 @@ namespace IOU_Helper
                 averageTime = Math.Round(averageTime, sigFig);
                 estCards = Math.Round(estCards, sigFig);
                 pDamage = Math.Round(pDamage, sigFig);
-                totalTime = Math.Round(totalTime, sigFig);
+                ptotalTime = Math.Round(ptotalTime, sigFig);
 
                 string pDamageString = pDamage.ToString() + "M";
-                string totalStats = spawnList.Count.ToString() + ", " + totalTime.ToString();
-
-                string username = _form1.getUsername();
+                string totalStats = "";
+                if (mobFilter == 0)
+                {
+                    totalStats = spawnList.Count.ToString() + ", " + ptotalTime.ToString() + "s";
+                }
+                else
+                {
+                    totalStats = spawnCounter + ", " + ptotalTime.ToString() + "s";
+                }
 
                 //Gold and XP calculations
                 //BaseXP = MobLevel*(1+(MobLevel*0.003)) XP/Kill = Round((1+%XPBonus)*BaseXP*PartyModifier*(1+(infTier*0.003))*(1+Floor(infTier*0.001,1)*0.03))*(1+%XPOrb))
@@ -406,10 +485,12 @@ namespace IOU_Helper
                     playerBonus = 0.4;
                 }
                 double partyModifier = (playerBonus) * (1 + partyBoost);
-                double xpOrbBonus = (xpOrb ^ 2) * 2;
-                double goldOrbBonus = (goldOrb ^ 2) * 2;
-                double xpBonus = ((double)_form1.getXpAdd() * (1 + globalXp));
-                double goldBonus = (((double)_form1.getGoldAdd()) + (0.03 * (playerLevel - 200) + 0.25)) * (1 + globalGold);
+                double xpOrbBonus = Math.Pow(xpOrb, 2) * 2;
+                double goldOrbBonus = Math.Pow(goldOrb, 2) * 2;
+                xpOrbBonus = xpOrbBonus / 100;
+                goldOrbBonus = goldOrbBonus / 100;
+                double xpBonus = ((double)_form1.getXpAdd() * (1 + ((double)globalXp / 100))) / 100;
+                double goldBonus = ((((double)_form1.getGoldAdd()) + (0.03 * (playerLevel - 200) + 0.25)) * (1 + ((double)globalGold / 100))) / 100;
 
                 double baseXp = pmobLevel * (1 + (pmobLevel * 0.003));
                 double xpPerKill = Math.Round((1 + xpBonus)*baseXp*partyModifier*(1 + (infernoLevel*0.003))*(1 + Math.Floor(infernoLevel*0.01)*0.03))*(1 + xpOrbBonus);
@@ -437,7 +518,6 @@ namespace IOU_Helper
                     xp = (xpPerKill * kPerMin) * 60;
                 }
 
-
                 gold = gold / 1000000;
                 xp = xp / 1000000;
                 gold = Math.Round(gold, sigFig);
@@ -446,7 +526,7 @@ namespace IOU_Helper
                 string goldString = gold.ToString() + "M";
                 string xpString = xp.ToString() + "M";
 
-                _plexiglass.updateLabels(username, xpString, goldString, pDamageString, averageTime.ToString(), estCards.ToString(), totalStats);
+                _plexiglass.updateLabels(filterString, xpString, goldString, pDamageString, averageTime.ToString() + "s", estCards.ToString(), totalStats);
         
             }
             catch

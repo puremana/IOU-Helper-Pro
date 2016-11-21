@@ -1714,6 +1714,11 @@ namespace IOU_Helper
             return Properties.Settings.Default.playerLevel;
         }
 
+        public uint getMobFilter()
+        {
+            return Properties.Settings.Default.filterMob;
+        }
+
         public string getUsername()
         {
             if (tabControl.SelectedTab.Text == "IOURPG")

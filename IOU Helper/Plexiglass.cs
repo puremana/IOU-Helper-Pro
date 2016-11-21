@@ -367,7 +367,7 @@ public partial class Plexiglass : Form
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(195, 38);
             this.label18.TabIndex = 18;
-            this.label18.Text = "Aver kill/spawn :";
+            this.label18.Text = "Avg KillTime/Spawn :";
             // 
             // label19
             // 
@@ -457,7 +457,7 @@ public partial class Plexiglass : Form
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 38);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Username :";
+            this.label2.Text = "Filter By Mob :";
             // 
             // 
             // panelConsole
@@ -567,9 +567,9 @@ public partial class Plexiglass : Form
 
     }
 
-    public void updateLabels(string username, string xp, string gold, string partyDamage, string averageKillTime, string totalKills, string totalTime) 
+    public void updateLabels(string filter, string xp, string gold, string partyDamage, string averageKillTime, string totalKills, string totalTime) 
     {
-        this.label1.Text = username;
+        this.label1.Text = filter;
         this.label23.Text = xp;
         this.label21.Text = gold;
         this.label19.Text = partyDamage;
@@ -705,7 +705,7 @@ public partial class Plexiglass : Form
 
     public void copyStats()
     {
-        //Copy username, xp, gold, party damage, average kill time, estimate cards, total kill time
+        //Copy filter, xp, gold, party damage, average kill time, estimate cards, total kill time
         string stats = this.label2.Text + this.label1.Text + "," + this.label24.Text + this.label23.Text + "," + this.label22.Text + this.label21.Text + "," + this.label20.Text + this.label19.Text + "," + this.label18.Text + this.label17.Text + "," + this.label16.Text + this.label15.Text + "," + this.label14.Text + this.label13.Text;
         Clipboard.SetText(stats);
         MessageBox.Show("Panel Statistics have been copied to your clipboard.");
