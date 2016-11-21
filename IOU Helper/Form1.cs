@@ -359,7 +359,7 @@ namespace IOU_Helper
                     string[] codeWords = rawCode.Split(new string[] { "FAPI_AS3_", ".swf" }, StringSplitOptions.None);
                     string[] gameWords = rawCode.Split(new string[] {"kongregate_game_version=", "\";" }, StringSplitOptions.None);
 
-                    string raw = wc.DownloadString("http://iouhelper.com/code.html");
+                    string raw = wc.DownloadString("http://iouhelper.com/procode.html");
                     string[] words = raw.Split('|');
 
                     code = codeWords[3];
@@ -1762,9 +1762,9 @@ namespace IOU_Helper
             MessageBox.Show("Make sure to have latest version of WinPcap: https://www.winpcap.org/");
         }
 
-        //public Plexiglass getOverlay()
-        //{
-        //    return overlay;
-        //}
+        private void helpGuideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://iouhelper.com/guide.html");
+        }
     }
 }

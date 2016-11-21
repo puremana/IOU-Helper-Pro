@@ -391,6 +391,7 @@
             this.helpGuideToolStripMenuItem.Name = "helpGuideToolStripMenuItem";
             this.helpGuideToolStripMenuItem.Size = new System.Drawing.Size(327, 46);
             this.helpGuideToolStripMenuItem.Text = "Help Guide";
+            this.helpGuideToolStripMenuItem.Click += new System.EventHandler(this.helpGuideToolStripMenuItem_Click);
             // 
             // refreshStatsToolStripMenuItem
             // 
